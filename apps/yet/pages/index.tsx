@@ -1,5 +1,5 @@
 import type { InferGetStaticPropsType } from "next";
-import { Projects } from "@components";
+import { Profile, Projects, Careers } from "@components";
 import { graphqlClient } from "@libs";
 import { graphql } from "@graphql";
 
@@ -9,35 +9,12 @@ export default function Index(
   return (
     <div>
       <h1>Web</h1>
+      <Profile profile={props.profile} />
       <Projects projects={props.projects} />
+      <Careers careers={props.careers} />
     </div>
   );
 }
-
-const ProfileFragment = graphql(/* GraphQL */ `
-  fragment ProfileItem on Profile {
-    id
-    fullName
-    description
-    details
-    twitterUrl
-    gitHubUrl
-    linkedInUrl
-    facebookUrl
-    emailAddress
-  }
-`);
-
-const CareerFragment = graphql(/* GraphQL */ `
-  fragment CareerItem on Career {
-    id
-    companyName
-    stacks
-    roles
-    joinedAt
-    leavedAt
-  }
-`);
 
 const IndexQuery = graphql(/* GraphQL */ `
   query indexQuery {

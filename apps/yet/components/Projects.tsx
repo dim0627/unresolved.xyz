@@ -1,6 +1,5 @@
 import { FC } from "react";
-import { graphql } from "@graphql";
-import { FragmentType, useFragment } from "../src/gql/fragment-masking";
+import { FragmentType, useFragment, graphql } from "@graphql";
 
 const ProjectFragment = graphql(/* GraphQL */ `
   fragment ProjectItem on Project {
