@@ -3,7 +3,9 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@libs": ["./libs/index.ts"]
+      "@graphql": ["./src/gql/index.ts"],
+      "@libs": ["./libs/index.ts"],
+      "@components": ["./components/index.ts"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
