@@ -5,7 +5,7 @@ const codegenConfig: CodegenConfig = {
   schema: process.env.SCHEMA_PATH,
   generates: {
     "src/gql/": {
-      documents: "pages/**/*.tsx",
+      documents: "./**/*.tsx",
       preset: "client",
       plugins: [],
     },

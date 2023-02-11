@@ -1,51 +1,20 @@
+import type { InferGetStaticPropsType } from "next";
+import { Profile, Projects, Careers } from "@components";
 import { graphqlClient } from "@libs";
-import { graphql } from "src/gql";
-import { Button } from "ui";
+import { graphql } from "@graphql";
 
-export default function Web() {
+export default function Index(
+  props: InferGetStaticPropsType<typeof getStaticProps>
+) {
   return (
     <div>
       <h1>Web</h1>
-      <Button />
+      <Profile profile={props.profile} />
+      <Projects projects={props.projects} />
+      <Careers careers={props.careers} />
     </div>
   );
 }
-
-const ProfileFragment = graphql(/* GraphQL */ `
-  fragment ProfileItem on Profile {
-    id
-    fullName
-    description
-    details
-    twitterUrl
-    gitHubUrl
-    linkedInUrl
-    facebookUrl
-    emailAddress
-  }
-`);
-
-const ProjectFragment = graphql(/* GraphQL */ `
-  fragment ProjectItem on Project {
-    id
-    title
-    stacks
-    description
-    href
-    repositoryUrl
-  }
-`);
-
-const CareerFragment = graphql(/* GraphQL */ `
-  fragment CareerItem on Career {
-    id
-    companyName
-    stacks
-    roles
-    joinedAt
-    leavedAt
-  }
-`);
 
 const IndexQuery = graphql(/* GraphQL */ `
   query indexQuery {
@@ -62,9 +31,16 @@ const IndexQuery = graphql(/* GraphQL */ `
 `);
 
 export async function getStaticProps() {
-  const res = await graphqlClient.request(IndexQuery);
+  const { profiles, projects, careers } = await graphqlClient.request(
+    IndexQuery
+  );
 
   return {
-    props: {}, // will be passed to the page component as props
+    props: {
+      projects,
+      careers,
+      profile: profiles[0],
+    },
+    revalidate: 60 * 60 * 12,
   };
 }
