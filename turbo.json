@@ -4,6 +4,7 @@
   "pipeline": {
     "build": {
       "dependsOn": ["^build"],
+      "env": ["SCHEMA_PATH", "GRAPHCMS_BEARER_TOKEN"],
       "outputs": ["dist/**", ".next/**"]
     },
     "lint": {
