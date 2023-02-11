@@ -6,6 +6,10 @@ on:
   pull_request:
     types: [opened, synchronize]
 
+env:
+  SCHEMA_PATH: ${{ secrets.SCHEMA_PATH }}
+  GRAPHCMS_BEARER_TOKEN: ${{ secrets.GRAPHCMS_BEARER_TOKEN }}
+
 jobs:
   build:
     name: Build and Test
