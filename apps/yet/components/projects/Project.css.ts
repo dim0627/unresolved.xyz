@@ -29,7 +29,7 @@ export const emojiStyle = style({
 export const stacksStyle = style([
   tags,
   {
-    marginTop: "1rem",
+    marginTop: ".5rem",
   },
 ]);
 export const stackItemStyle = tag;
