@@ -66,6 +66,7 @@ export type Asset = Node & {
   size?: Maybe<Scalars['Float']>;
   /** System stage field */
   stage: Stage;
+  thumbnailProfile: Array<Profile>;
   /** The time the document was updated */
   updatedAt: Scalars['DateTime'];
   /** User that last updated this document */
@@ -140,6 +141,20 @@ export type AssetScheduledInArgs = {
 
 
 /** Asset system model */
+export type AssetThumbnailProfileArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
+  last?: InputMaybe<Scalars['Int']>;
+  locales?: InputMaybe<Array<Locale>>;
+  orderBy?: InputMaybe<ProfileOrderByInput>;
+  skip?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<ProfileWhereInput>;
+};
+
+
+/** Asset system model */
 export type AssetUpdatedAtArgs = {
   variation?: SystemDateTimeFieldVariation;
 };
@@ -183,6 +198,7 @@ export type AssetCreateInput = {
   localizations?: InputMaybe<AssetCreateLocalizationsInput>;
   mimeType?: InputMaybe<Scalars['String']>;
   size?: InputMaybe<Scalars['Float']>;
+  thumbnailProfile?: InputMaybe<ProfileCreateManyInlineInput>;
   updatedAt?: InputMaybe<Scalars['DateTime']>;
   width?: InputMaybe<Scalars['Float']>;
 };
@@ -299,6 +315,9 @@ export type AssetManyWhereInput = {
   scheduledIn_every?: InputMaybe<ScheduledOperationWhereInput>;
   scheduledIn_none?: InputMaybe<ScheduledOperationWhereInput>;
   scheduledIn_some?: InputMaybe<ScheduledOperationWhereInput>;
+  thumbnailProfile_every?: InputMaybe<ProfileWhereInput>;
+  thumbnailProfile_none?: InputMaybe<ProfileWhereInput>;
+  thumbnailProfile_some?: InputMaybe<ProfileWhereInput>;
   updatedAt?: InputMaybe<Scalars['DateTime']>;
   /** All values greater than the given value. */
   updatedAt_gt?: InputMaybe<Scalars['DateTime']>;
@@ -356,6 +375,7 @@ export type AssetUpdateInput = {
   localizations?: InputMaybe<AssetUpdateLocalizationsInput>;
   mimeType?: InputMaybe<Scalars['String']>;
   size?: InputMaybe<Scalars['Float']>;
+  thumbnailProfile?: InputMaybe<ProfileUpdateManyInlineInput>;
   width?: InputMaybe<Scalars['Float']>;
 };
 
@@ -637,6 +657,9 @@ export type AssetWhereInput = {
   size_not?: InputMaybe<Scalars['Float']>;
   /** All values that are not contained in given list. */
   size_not_in?: InputMaybe<Array<InputMaybe<Scalars['Float']>>>;
+  thumbnailProfile_every?: InputMaybe<ProfileWhereInput>;
+  thumbnailProfile_none?: InputMaybe<ProfileWhereInput>;
+  thumbnailProfile_some?: InputMaybe<ProfileWhereInput>;
   updatedAt?: InputMaybe<Scalars['DateTime']>;
   /** All values greater than the given value. */
   updatedAt_gt?: InputMaybe<Scalars['DateTime']>;
@@ -704,6 +727,7 @@ export type Career = Node & {
   createdBy?: Maybe<User>;
   /** Get the document in other stages */
   documentInStages: Array<Career>;
+  emoji: Scalars['String'];
   /** List of Career versions */
   history: Array<Version>;
   /** The unique identifier */
@@ -789,6 +813,7 @@ export type CareerConnection = {
 export type CareerCreateInput = {
   companyName: Scalars['String'];
   createdAt?: InputMaybe<Scalars['DateTime']>;
+  emoji: Scalars['String'];
   joinedAt: Scalars['Date'];
   leavedAt?: InputMaybe<Scalars['Date']>;
   roles?: InputMaybe<Array<Scalars['String']>>;
@@ -867,6 +892,25 @@ export type CareerManyWhereInput = {
   documentInStages_every?: InputMaybe<CareerWhereStageInput>;
   documentInStages_none?: InputMaybe<CareerWhereStageInput>;
   documentInStages_some?: InputMaybe<CareerWhereStageInput>;
+  emoji?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  emoji_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  emoji_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  emoji_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values that are not equal to given value. */
+  emoji_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  emoji_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  emoji_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  emoji_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  emoji_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  emoji_starts_with?: InputMaybe<Scalars['String']>;
   id?: InputMaybe<Scalars['ID']>;
   /** All values containing the given string. */
   id_contains?: InputMaybe<Scalars['ID']>;
@@ -978,6 +1022,8 @@ export enum CareerOrderByInput {
   CompanyNameDesc = 'companyName_DESC',
   CreatedAtAsc = 'createdAt_ASC',
   CreatedAtDesc = 'createdAt_DESC',
+  EmojiAsc = 'emoji_ASC',
+  EmojiDesc = 'emoji_DESC',
   IdAsc = 'id_ASC',
   IdDesc = 'id_DESC',
   JoinedAtAsc = 'joinedAt_ASC',
@@ -996,6 +1042,7 @@ export enum CareerOrderByInput {
 
 export type CareerUpdateInput = {
   companyName?: InputMaybe<Scalars['String']>;
+  emoji?: InputMaybe<Scalars['String']>;
   joinedAt?: InputMaybe<Scalars['Date']>;
   leavedAt?: InputMaybe<Scalars['Date']>;
   roles?: InputMaybe<Array<Scalars['String']>>;
@@ -1021,6 +1068,7 @@ export type CareerUpdateManyInlineInput = {
 
 export type CareerUpdateManyInput = {
   companyName?: InputMaybe<Scalars['String']>;
+  emoji?: InputMaybe<Scalars['String']>;
   joinedAt?: InputMaybe<Scalars['Date']>;
   leavedAt?: InputMaybe<Scalars['Date']>;
   roles?: InputMaybe<Array<Scalars['String']>>;
@@ -1124,6 +1172,25 @@ export type CareerWhereInput = {
   documentInStages_every?: InputMaybe<CareerWhereStageInput>;
   documentInStages_none?: InputMaybe<CareerWhereStageInput>;
   documentInStages_some?: InputMaybe<CareerWhereStageInput>;
+  emoji?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  emoji_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  emoji_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  emoji_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values that are not equal to given value. */
+  emoji_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  emoji_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  emoji_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  emoji_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  emoji_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  emoji_starts_with?: InputMaybe<Scalars['String']>;
   id?: InputMaybe<Scalars['ID']>;
   /** All values containing the given string. */
   id_contains?: InputMaybe<Scalars['ID']>;
@@ -2167,6 +2234,7 @@ export type Profile = Node & {
   scheduledIn: Array<ScheduledOperation>;
   /** System stage field */
   stage: Stage;
+  thumbnail: Asset;
   twitterUrl?: Maybe<Scalars['String']>;
   /** The time the document was updated */
   updatedAt: Scalars['DateTime'];
@@ -2229,6 +2297,12 @@ export type ProfileScheduledInArgs = {
 };
 
 
+export type ProfileThumbnailArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
+  locales?: InputMaybe<Array<Locale>>;
+};
+
+
 export type ProfileUpdatedAtArgs = {
   variation?: SystemDateTimeFieldVariation;
 };
@@ -2269,6 +2343,7 @@ export type ProfileCreateInput = {
   linkedInUrl?: InputMaybe<Scalars['String']>;
   /** Inline mutations for managing document localizations excluding the default locale */
   localizations?: InputMaybe<ProfileCreateLocalizationsInput>;
+  thumbnail: AssetCreateOneInlineInput;
   twitterUrl?: InputMaybe<Scalars['String']>;
   updatedAt?: InputMaybe<Scalars['DateTime']>;
 };
@@ -2476,6 +2551,7 @@ export type ProfileManyWhereInput = {
   scheduledIn_every?: InputMaybe<ScheduledOperationWhereInput>;
   scheduledIn_none?: InputMaybe<ScheduledOperationWhereInput>;
   scheduledIn_some?: InputMaybe<ScheduledOperationWhereInput>;
+  thumbnail?: InputMaybe<AssetWhereInput>;
   twitterUrl?: InputMaybe<Scalars['String']>;
   /** All values containing the given string. */
   twitterUrl_contains?: InputMaybe<Scalars['String']>;
@@ -2552,6 +2628,7 @@ export type ProfileUpdateInput = {
   linkedInUrl?: InputMaybe<Scalars['String']>;
   /** Manage document localizations */
   localizations?: InputMaybe<ProfileUpdateLocalizationsInput>;
+  thumbnail?: InputMaybe<AssetUpdateOneInlineInput>;
   twitterUrl?: InputMaybe<Scalars['String']>;
 };
 
@@ -2877,6 +2954,7 @@ export type ProfileWhereInput = {
   scheduledIn_every?: InputMaybe<ScheduledOperationWhereInput>;
   scheduledIn_none?: InputMaybe<ScheduledOperationWhereInput>;
   scheduledIn_some?: InputMaybe<ScheduledOperationWhereInput>;
+  thumbnail?: InputMaybe<AssetWhereInput>;
   twitterUrl?: InputMaybe<Scalars['String']>;
   /** All values containing the given string. */
   twitterUrl_contains?: InputMaybe<Scalars['String']>;
@@ -2942,6 +3020,7 @@ export type Project = Node & {
   description: Scalars['String'];
   /** Get the document in other stages */
   documentInStages: Array<Project>;
+  emoji: Scalars['String'];
   /** List of Project versions */
   history: Array<Version>;
   href?: Maybe<Scalars['String']>;
@@ -3027,6 +3106,7 @@ export type ProjectConnection = {
 export type ProjectCreateInput = {
   createdAt?: InputMaybe<Scalars['DateTime']>;
   description: Scalars['String'];
+  emoji: Scalars['String'];
   href?: InputMaybe<Scalars['String']>;
   repositoryUrl?: InputMaybe<Scalars['String']>;
   stacks?: InputMaybe<Array<Scalars['String']>>;
@@ -3105,6 +3185,25 @@ export type ProjectManyWhereInput = {
   documentInStages_every?: InputMaybe<ProjectWhereStageInput>;
   documentInStages_none?: InputMaybe<ProjectWhereStageInput>;
   documentInStages_some?: InputMaybe<ProjectWhereStageInput>;
+  emoji?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  emoji_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  emoji_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  emoji_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values that are not equal to given value. */
+  emoji_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  emoji_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  emoji_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  emoji_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  emoji_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  emoji_starts_with?: InputMaybe<Scalars['String']>;
   href?: InputMaybe<Scalars['String']>;
   /** All values containing the given string. */
   href_contains?: InputMaybe<Scalars['String']>;
@@ -3233,6 +3332,8 @@ export enum ProjectOrderByInput {
   CreatedAtDesc = 'createdAt_DESC',
   DescriptionAsc = 'description_ASC',
   DescriptionDesc = 'description_DESC',
+  EmojiAsc = 'emoji_ASC',
+  EmojiDesc = 'emoji_DESC',
   HrefAsc = 'href_ASC',
   HrefDesc = 'href_DESC',
   IdAsc = 'id_ASC',
@@ -3251,6 +3352,7 @@ export enum ProjectOrderByInput {
 
 export type ProjectUpdateInput = {
   description?: InputMaybe<Scalars['String']>;
+  emoji?: InputMaybe<Scalars['String']>;
   href?: InputMaybe<Scalars['String']>;
   repositoryUrl?: InputMaybe<Scalars['String']>;
   stacks?: InputMaybe<Array<Scalars['String']>>;
@@ -3276,6 +3378,7 @@ export type ProjectUpdateManyInlineInput = {
 
 export type ProjectUpdateManyInput = {
   description?: InputMaybe<Scalars['String']>;
+  emoji?: InputMaybe<Scalars['String']>;
   stacks?: InputMaybe<Array<Scalars['String']>>;
 };
 
@@ -3376,6 +3479,25 @@ export type ProjectWhereInput = {
   documentInStages_every?: InputMaybe<ProjectWhereStageInput>;
   documentInStages_none?: InputMaybe<ProjectWhereStageInput>;
   documentInStages_some?: InputMaybe<ProjectWhereStageInput>;
+  emoji?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  emoji_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  emoji_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  emoji_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values that are not equal to given value. */
+  emoji_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  emoji_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  emoji_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  emoji_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  emoji_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  emoji_starts_with?: InputMaybe<Scalars['String']>;
   href?: InputMaybe<Scalars['String']>;
   /** All values containing the given string. */
   href_contains?: InputMaybe<Scalars['String']>;
@@ -5374,11 +5496,11 @@ export enum _SystemDateTimeFieldVariation {
   Localization = 'localization'
 }
 
-export type ProjectItemFragment = { __typename?: 'Project', id: string, title: string, stacks: Array<string>, description: string, href?: string | null, repositoryUrl?: string | null } & { ' $fragmentName'?: 'ProjectItemFragment' };
+export type CareerItemFragment = { __typename?: 'Career', id: string, emoji: string, companyName: string, stacks: Array<string>, roles: Array<string>, joinedAt: any, leavedAt?: any | null } & { ' $fragmentName'?: 'CareerItemFragment' };
 
-export type ProfileItemFragment = { __typename?: 'Profile', id: string, fullName: string, description: string, details: string, twitterUrl?: string | null, gitHubUrl?: string | null, linkedInUrl?: string | null, facebookUrl?: string | null, emailAddress?: string | null } & { ' $fragmentName'?: 'ProfileItemFragment' };
+export type ProfileItemFragment = { __typename?: 'Profile', id: string, fullName: string, description: string, details: string, twitterUrl?: string | null, gitHubUrl?: string | null, linkedInUrl?: string | null, facebookUrl?: string | null, emailAddress?: string | null, thumbnail: { __typename?: 'Asset', url: string } } & { ' $fragmentName'?: 'ProfileItemFragment' };
 
-export type CareerItemFragment = { __typename?: 'Career', id: string, companyName: string, stacks: Array<string>, roles: Array<string>, joinedAt: any, leavedAt?: any | null } & { ' $fragmentName'?: 'CareerItemFragment' };
+export type ProjectItemFragment = { __typename?: 'Project', id: string, emoji: string, title: string, stacks: Array<string>, description: string, href?: string | null, repositoryUrl?: string | null } & { ' $fragmentName'?: 'ProjectItemFragment' };
 
 export type IndexQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -5394,7 +5516,7 @@ export type IndexQueryQuery = { __typename?: 'Query', profiles: Array<(
     & { ' $fragmentRefs'?: { 'CareerItemFragment': CareerItemFragment } }
   )> };
 
-export const ProjectItemFragmentDoc = {"kind":"Document","definitions":[{"kind":"FragmentDefinition","name":{"kind":"Name","value":"ProjectItem"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"Project"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"stacks"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"href"}},{"kind":"Field","name":{"kind":"Name","value":"repositoryUrl"}}]}}]} as unknown as DocumentNode<ProjectItemFragment, unknown>;
-export const ProfileItemFragmentDoc = {"kind":"Document","definitions":[{"kind":"FragmentDefinition","name":{"kind":"Name","value":"ProfileItem"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"Profile"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"fullName"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"details"}},{"kind":"Field","name":{"kind":"Name","value":"twitterUrl"}},{"kind":"Field","name":{"kind":"Name","value":"gitHubUrl"}},{"kind":"Field","name":{"kind":"Name","value":"linkedInUrl"}},{"kind":"Field","name":{"kind":"Name","value":"facebookUrl"}},{"kind":"Field","name":{"kind":"Name","value":"emailAddress"}}]}}]} as unknown as DocumentNode<ProfileItemFragment, unknown>;
-export const CareerItemFragmentDoc = {"kind":"Document","definitions":[{"kind":"FragmentDefinition","name":{"kind":"Name","value":"CareerItem"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"Career"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"companyName"}},{"kind":"Field","name":{"kind":"Name","value":"stacks"}},{"kind":"Field","name":{"kind":"Name","value":"roles"}},{"kind":"Field","name":{"kind":"Name","value":"joinedAt"}},{"kind":"Field","name":{"kind":"Name","value":"leavedAt"}}]}}]} as unknown as DocumentNode<CareerItemFragment, unknown>;
+export const CareerItemFragmentDoc = {"kind":"Document","definitions":[{"kind":"FragmentDefinition","name":{"kind":"Name","value":"CareerItem"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"Career"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"emoji"}},{"kind":"Field","name":{"kind":"Name","value":"companyName"}},{"kind":"Field","name":{"kind":"Name","value":"stacks"}},{"kind":"Field","name":{"kind":"Name","value":"roles"}},{"kind":"Field","name":{"kind":"Name","value":"joinedAt"}},{"kind":"Field","name":{"kind":"Name","value":"leavedAt"}}]}}]} as unknown as DocumentNode<CareerItemFragment, unknown>;
+export const ProfileItemFragmentDoc = {"kind":"Document","definitions":[{"kind":"FragmentDefinition","name":{"kind":"Name","value":"ProfileItem"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"Profile"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"thumbnail"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"url"}}]}},{"kind":"Field","name":{"kind":"Name","value":"fullName"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"details"}},{"kind":"Field","name":{"kind":"Name","value":"twitterUrl"}},{"kind":"Field","name":{"kind":"Name","value":"gitHubUrl"}},{"kind":"Field","name":{"kind":"Name","value":"linkedInUrl"}},{"kind":"Field","name":{"kind":"Name","value":"facebookUrl"}},{"kind":"Field","name":{"kind":"Name","value":"emailAddress"}}]}}]} as unknown as DocumentNode<ProfileItemFragment, unknown>;
+export const ProjectItemFragmentDoc = {"kind":"Document","definitions":[{"kind":"FragmentDefinition","name":{"kind":"Name","value":"ProjectItem"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"Project"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"emoji"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"stacks"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"href"}},{"kind":"Field","name":{"kind":"Name","value":"repositoryUrl"}}]}}]} as unknown as DocumentNode<ProjectItemFragment, unknown>;
 export const IndexQueryDocument = {"kind":"Document", "definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"indexQuery"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"profiles"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"ProfileItem"}}]}},{"kind":"Field","name":{"kind":"Name","value":"projects"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"ProjectItem"}}]}},{"kind":"Field","name":{"kind":"Name","value":"careers"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"CareerItem"}}]}}]}},...ProfileItemFragmentDoc.definitions,...ProjectItemFragmentDoc.definitions,...CareerItemFragmentDoc.definitions]} as unknown as DocumentNode<IndexQueryQuery, IndexQueryQueryVariables>;

@@ -1,5 +1,13 @@
+import Head from "next/head";
 import type { InferGetStaticPropsType } from "next";
-import { Profile, Projects, Careers } from "@components";
+import {
+  Section,
+  Profile,
+  Projects,
+  Careers,
+  Container,
+  Footer,
+} from "@components";
 import { graphqlClient } from "@libs";
 import { graphql } from "@graphql";
 
@@ -7,12 +15,21 @@ export default function Index(
   props: InferGetStaticPropsType<typeof getStaticProps>
 ) {
   return (
-    <div>
-      <h1>Web</h1>
-      <Profile profile={props.profile} />
-      <Projects projects={props.projects} />
-      <Careers careers={props.careers} />
-    </div>
+    <>
+      <Head>
+        <title>dtsuji@dim0627 - Portfolio</title>
+      </Head>
+      <Section>
+        <Profile profile={props.profile} />
+      </Section>
+      <Section title="Projects">
+        <Projects projects={props.projects} />
+      </Section>
+      <Section title="Careers">
+        <Careers careers={props.careers} />
+      </Section>
+      <Footer />
+    </>
   );
 }
 
