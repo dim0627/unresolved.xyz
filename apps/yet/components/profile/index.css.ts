@@ -28,6 +28,11 @@ export const thumbnailStyle = style({
   marginRight: "2rem",
   borderRadius: "12%",
   boxShadow: `0 0 0 .3rem ${variables.color.brand}, 0 0 0 .4rem ${variables.color.base}`,
+  "@media": {
+    "screen and (max-width: 750px)": {
+      marginRight: 0,
+    },
+  },
 });
 
 export const nameStyle = style({
