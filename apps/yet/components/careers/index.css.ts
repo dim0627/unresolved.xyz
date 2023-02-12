@@ -16,7 +16,7 @@ export const containerStyle = style({
       top: 0,
       bottom: 0,
       left: 0,
-      border: `2px solid ${variables.color.base}`,
+      border: `2px solid rgba(51, 51, 51, .1)`,
       borderRadius: "10px",
     },
   },
