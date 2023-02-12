@@ -12,6 +12,7 @@ globalStyle("body", {
   fontSize: 20,
   lineHeight: 1.5,
   background: variables.color.brand,
+  color: variables.color.base,
 });
 
 globalStyle("h1, h2, h3, h4, h5, h6, p", {
