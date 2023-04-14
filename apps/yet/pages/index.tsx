@@ -1,13 +1,6 @@
 import Head from "next/head";
 import type { InferGetStaticPropsType } from "next";
-import {
-  Section,
-  Profile,
-  Projects,
-  Careers,
-  Container,
-  Footer,
-} from "@components";
+import { Section, Profile, Projects, Careers, Footer } from "@components";
 import { graphqlClient } from "@libs";
 import { graphql } from "@graphql";
 
