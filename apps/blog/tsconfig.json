@@ -3,7 +3,8 @@
   "compilerOptions": {
     "paths": {
       "@libs": ["./libs/index.ts"],
-      "@components": ["./components/index.ts"]
+      "@components": ["./components/index.ts"],
+      "@styles/*": ["./styles/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],

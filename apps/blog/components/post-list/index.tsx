@@ -12,8 +12,8 @@ interface ItemProps {
 const Item: FC<ItemProps> = ({ post }) => {
   const { title, body } = post.fields;
   return (
-    <div>
-      <h2>{title as string}</h2>
+    <div className="my-4">
+      <h2 className="font-bold text-2xl mb-2">{title as string}</h2>
       <div>
         <ReactMarkdown remarkPlugins={[strip]}>{body as string}</ReactMarkdown>
       </div>

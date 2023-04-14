@@ -1,11 +1,15 @@
 import { ContentfulService } from "@libs";
-import { PostList } from "@components";
+import { Container, PostList } from "@components";
 import { InferGetStaticPropsType } from "next";
 
 export default function Index(
   props: InferGetStaticPropsType<typeof getStaticProps>
 ) {
-  return <PostList posts={props.posts} />;
+  return (
+    <Container>
+      <PostList posts={props.posts} />;
+    </Container>
+  );
 }
 
 export async function getStaticProps() {
