@@ -4,6 +4,7 @@
     "paths": {
       "@libs": ["./libs/index.ts"],
       "@components": ["./components/index.ts"],
+      "@layouts": ["./layouts/index.ts"],
       "@styles/*": ["./styles/*"]
     }
   },
