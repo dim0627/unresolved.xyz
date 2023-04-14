@@ -1,5 +1,7 @@
 import { FC } from "react";
 import { ContentfulService } from "@libs";
+import strip from "strip-markdown";
+import ReactMarkdown from "react-markdown";
 
 interface ItemProps {
   post: Awaited<
@@ -8,9 +10,13 @@ interface ItemProps {
 }
 
 const Item: FC<ItemProps> = ({ post }) => {
+  const { title, body } = post.fields;
   return (
     <div>
-      <h2>{post.fields.title as string}</h2>
+      <h2>{title as string}</h2>
+      <div>
+        <ReactMarkdown remarkPlugins={[strip]}>{body as string}</ReactMarkdown>
+      </div>
     </div>
   );
 };
