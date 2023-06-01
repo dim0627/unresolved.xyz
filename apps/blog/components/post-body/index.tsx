@@ -25,7 +25,7 @@ export const PostBody: FC<PostBodyProps> = ({ post }) => {
         pre: ({ node, ...props }) => (
           <pre
             {...props}
-            className="my-4 p-6 text-xs bg-slate-50 rounded whitespace-pre-wrap overflow-scroll"
+            className="my-4 p-6 text-xs bg-slate-50 rounded whitespace-pre overflow-scroll"
           />
         ),
         a: ({ node, ...props }) => (
