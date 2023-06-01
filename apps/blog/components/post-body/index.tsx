@@ -2,6 +2,9 @@ import { FC } from "react";
 import { ContentfulService } from "../../libs/contentful";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
+import rehypeSlug from "rehype-slug";
+import rehypeRaw from "rehype-raw";
+import toc from "remark-toc";
 
 interface PostBodyProps {
   post: Awaited<
@@ -13,7 +16,8 @@ export const PostBody: FC<PostBodyProps> = ({ post }) => {
   return (
     <ReactMarkdown
       className="break-all"
-      remarkPlugins={[remarkGfm]}
+      remarkPlugins={[remarkGfm, [toc, { tight: true }]]}
+      rehypePlugins={[rehypeSlug, rehypeRaw]}
       components={{
         h2: ({ node, ...props }) => (
           <h2 {...props} className="text-xl font-semibold mt-16 mb-4" />
@@ -42,12 +46,12 @@ export const PostBody: FC<PostBodyProps> = ({ post }) => {
           />
         ),
         ul: ({ node, ...props }) => (
-          <ul {...props} className="list-disc list-inside pl-4" />
+          <ul {...props} className="list-disc pl-8" />
         ),
         ol: ({ node, ...props }) => (
-          <ul {...props} className="list-decimal list-inside pl-4" />
+          <ul {...props} className="list-decimal pl-8" />
         ),
-        li: ({ node, ...props }) => <li {...props} className="my-2" />,
+        li: ({ node, ...props }) => <li {...props} className="my-2 text-lg" />,
       }}
     >
       {post.fields.body as string}
