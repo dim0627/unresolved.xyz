@@ -2,6 +2,7 @@ import { FC } from "react";
 import { ContentfulService } from "@libs";
 import strip from "strip-markdown";
 import ReactMarkdown from "react-markdown";
+import Link from "next/link";
 
 interface ItemProps {
   post: Awaited<
@@ -12,14 +13,17 @@ interface ItemProps {
 const Item: FC<ItemProps> = ({ post }) => {
   const { title, body } = post.fields;
   return (
-    <div className="p-6 rounded-3xl shadow-[0_4px_0_0_rgba(0,0,0,.2)] bg-white">
-      <h2 className="font-bold text-2xl mb-2 text-gray-700">
+    <Link
+      className="block hover:bg-slate-50 p-6 -mx-6 rounded-3xl duration-200"
+      href={`/${post.fields.slug}`}
+    >
+      <h2 className="mb-2 text-xl tracking-widest font-semibold">
         {title as string}
       </h2>
-      <div className="line-clamp-4">
+      <div className="line-clamp-4 text-slate-500">
         <ReactMarkdown remarkPlugins={[strip]}>{body as string}</ReactMarkdown>
       </div>
-    </div>
+    </Link>
   );
 };
 
@@ -31,7 +35,7 @@ interface PostListProps {
 
 export const PostList: FC<PostListProps> = ({ posts }) => {
   return (
-    <div className="flex flex-col gap-y-4">
+    <div className="flex flex-col gap-y-2">
       {posts.map((post) => (
         <Item key={post.sys.id} post={post} />
       ))}

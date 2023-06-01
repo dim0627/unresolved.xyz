@@ -5,9 +5,7 @@ export const Shell: FC<PropsWithChildren> = ({ children }) => {
   return (
     <>
       <Header />
-      <div className="py-8 bg-gradient-to-b from-rose-500 to-blue-500">
-        {children}
-      </div>
+      <div className="my-6">{children}</div>
       <Footer />
     </>
   );
