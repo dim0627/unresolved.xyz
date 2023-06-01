@@ -12,6 +12,7 @@ interface PostBodyProps {
 export const PostBody: FC<PostBodyProps> = ({ post }) => {
   return (
     <ReactMarkdown
+      className="break-all"
       remarkPlugins={[remarkGfm]}
       components={{
         h2: ({ node, ...props }) => (
