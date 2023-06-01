@@ -14,7 +14,7 @@ const Item: FC<ItemProps> = ({ post }) => {
   const { title, body } = post.fields;
   return (
     <Link
-      className="block hover:bg-slate-50 p-6 -mx-4 rounded-none sm:rounded-3xl duration-200"
+      className="block hover:bg-slate-50 p-4 -mx-4 rounded-none sm:rounded-3xl duration-200"
       href={`/${post.fields.slug}`}
     >
       <h2 className="mb-2 text-xl tracking-widest font-semibold">
