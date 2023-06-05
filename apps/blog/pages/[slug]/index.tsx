@@ -16,9 +16,9 @@ export default function Index(
       <Head>
         <title>{post.fields.title as string} - blog.unresolved.xyz</title>
       </Head>
-      <div className="bg-slate-50 py-12 -mt-6 mb-6">
+      <div className="bg-slate-800 pt-20 pb-8 -mt-6 mb-6">
         <Container>
-          <h1 className="text-3xl font-semibold leading-relaxed">
+          <h1 className="text-3xl font-semibold leading-relaxed text-white">
             {post.fields.title as string}
           </h1>
         </Container>

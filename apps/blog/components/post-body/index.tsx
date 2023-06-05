@@ -1,10 +1,44 @@
 import { FC } from "react";
 import { ContentfulService } from "../../libs/contentful";
 import ReactMarkdown from "react-markdown";
+import { SpecialComponents } from "react-markdown/lib/ast-to-react";
 import remarkGfm from "remark-gfm";
 import rehypeSlug from "rehype-slug";
 import rehypeRaw from "rehype-raw";
 import toc from "remark-toc";
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import { nord } from "react-syntax-highlighter/dist/cjs/styles/prism";
+
+const CodeBlock: SpecialComponents["code"] = ({
+  node,
+  inline,
+  className,
+  children,
+  ...props
+}) => {
+  const match = /language-(\w+)/.exec(className || "");
+  return !inline && match ? (
+    <SyntaxHighlighter
+      {...props}
+      style={nord}
+      language={match[1]}
+      codeTagProps={{ className: "text-xs leading-3" }}
+      PreTag={(props) => (
+        <div {...props} className="!rounded !my-0 !bg-slate-800" />
+      )}
+      showLineNumbers
+    >
+      {String(children).replace(/\n$/, "")}
+    </SyntaxHighlighter>
+  ) : (
+    <code
+      {...props}
+      className="bg-slate-800 text-white rounded px-2 py-1 text-xs"
+    >
+      {children}
+    </code>
+  );
+};
 
 interface PostBodyProps {
   post: Awaited<
@@ -26,24 +60,13 @@ export const PostBody: FC<PostBodyProps> = ({ post }) => {
           <h3 {...props} className="text-lg font-semibold mt-10 mb-4" />
         ),
         p: ({ node, ...props }) => <p {...props} className="my-4 text-lg" />,
-        pre: ({ node, ...props }) => (
-          <pre
-            {...props}
-            className="my-4 p-6 text-xs bg-slate-50 rounded whitespace-pre overflow-scroll"
-          />
-        ),
+        code: CodeBlock,
         a: ({ node, ...props }) => (
           <a {...props} className="text-red-500 underline" />
         ),
         b: ({ node, ...props }) => <b {...props} className="font-semibold" />,
         strong: ({ node, ...props }) => (
           <b {...props} className="font-semibold" />
-        ),
-        code: ({ node, ...props }) => (
-          <code
-            {...props}
-            className="bg-slate-50 text-slate-700 rounded px-2 py-1 text-xs"
-          />
         ),
         ul: ({ node, ...props }) => (
           <ul {...props} className="list-disc pl-8" />
