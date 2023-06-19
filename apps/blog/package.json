@@ -19,7 +19,7 @@
     "remark-gfm": "^3.0.1",
     "remark-toc": "^8.0.1",
     "strip-markdown": "^5.0.0",
-    "yup": "^1.1.0"
+    "yup": "^1.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.21.8",
