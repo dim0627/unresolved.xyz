@@ -33,19 +33,25 @@ export default function Index(
 export async function getStaticPaths() {
   const client = new ContentfulService();
   const posts = await client.getPosts();
-  const paths = posts.items.map((post) => ({
-    params: { slug: post.fields.slug as string },
-  }));
+  const paths = posts.items
+    .map((post) => ({
+      params: { slug: post.fields.slug as string },
+    }))
+    .filter((path) => !!path.params.slug);
 
   return {
     paths,
-    fallback: false,
+    fallback: true,
   };
 }
 
-export async function getStaticProps({ params }: { params: { slug: string } }) {
+export const getStaticProps = async ({
+  params,
+}: {
+  params: { slug: string };
+}) => {
   const client = new ContentfulService();
-  const post = await client.getPost(params.slug);
+  const post = await client.getPost(params.slug as string);
 
   return {
     props: {
@@ -53,4 +59,4 @@ export async function getStaticProps({ params }: { params: { slug: string } }) {
     },
     revalidate: 60 * 60 * 12,
   };
-}
+};
