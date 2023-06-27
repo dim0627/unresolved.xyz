@@ -23,7 +23,7 @@
     "yup": "^1.2.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.21.8",
+    "@babel/core": "^7.22.5",
     "@graphql-codegen/cli": "4.0.1",
     "@graphql-codegen/client-preset": "^4.0.0",
     "@types/node": "^20.2.3",
