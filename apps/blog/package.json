@@ -22,7 +22,7 @@
     "yup": "^1.2.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.21.8",
+    "@babel/core": "^7.22.5",
     "@tailwindcss/line-clamp": "^0.4.4",
     "@types/node": "^20.2.3",
     "@types/react": "^18.2.6",
