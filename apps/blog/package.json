@@ -18,7 +18,7 @@
     "rehype-slug": "^5.1.0",
     "remark-gfm": "^3.0.1",
     "remark-toc": "^8.0.1",
-    "strip-markdown": "^5.0.0",
+    "strip-markdown": "^5.0.1",
     "yup": "^1.2.0"
   },
   "devDependencies": {
