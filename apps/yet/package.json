@@ -10,7 +10,7 @@
     "codegen": "DOTENV_CONFIG_PATH='./.env.local' graphql-codegen --config codegen.ts --require dotenv/config"
   },
   "dependencies": {
-    "@next/font": "^13.4.12",
+    "@next/font": "^13.4.13",
     "@vanilla-extract/next-plugin": "^2.2.1",
     "graphql": "^16.7.1",
     "graphql-request": "^6.0.0",
