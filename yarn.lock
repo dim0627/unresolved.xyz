@@ -1547,12 +1547,12 @@
     mlly "^1.1.0"
     outdent "^0.8.0"
 
-"@vanilla-extract/next-plugin@^2.2.2":
-  version "2.2.2"
-  resolved "https://registry.yarnpkg.com/@vanilla-extract/next-plugin/-/next-plugin-2.2.2.tgz#24810af0432192940ff3fe68a694b94c8718e413"
-  integrity sha512-IyIJMFJpwJgip/UwRmTL1Unkndt6U7MhklXXh4SuG9WAazGtN4AIx/u4zySbXErStoWA+fyNZal4Tsc7cuPMBQ==
+"@vanilla-extract/next-plugin@^2.3.0":
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/@vanilla-extract/next-plugin/-/next-plugin-2.3.0.tgz#d5793ee241d889a0ca205ab74774638cdcd73896"
+  integrity sha512-l7ZzcL1G9zuJTAhBbOy6NKW/FPDOhDzfUXPhFGSTN1sdtO7qBmGLtOGFZATAYboAuIWXhGgnrfkyNgQh2adXZw==
   dependencies:
-    "@vanilla-extract/webpack-plugin" "^2.2.0"
+    "@vanilla-extract/webpack-plugin" "^2.3.0"
     browserslist "^4.19.1"
 
 "@vanilla-extract/private@^1.0.3":
@@ -1560,10 +1560,10 @@
   resolved "https://registry.yarnpkg.com/@vanilla-extract/private/-/private-1.0.3.tgz#7ec72bc2ff6fe51f9d650f962e8d1989b073690f"
   integrity sha512-17kVyLq3ePTKOkveHxXuIJZtGYs+cSoev7BlP+Lf4916qfDhk/HBjvlYDe8egrea7LNPHKwSZJK/bzZC+Q6AwQ==
 
-"@vanilla-extract/webpack-plugin@^2.2.0":
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/@vanilla-extract/webpack-plugin/-/webpack-plugin-2.2.0.tgz#e7d07543d531a9fe283c37eebaabe746a44fbe30"
-  integrity sha512-EQrnT7gIki+Wm57eIRZRw6pi4M4VVnwiSp5OOcQF81XdZvoYXo51Ern7+dHKS+Xxli151BWTUsg/UZSpaAz29Q==
+"@vanilla-extract/webpack-plugin@^2.3.0":
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/@vanilla-extract/webpack-plugin/-/webpack-plugin-2.3.0.tgz#277f1e979f81c85148a8ba82a2bceb1564a2589c"
+  integrity sha512-c+oaozLGNu+dqLNattJ9nVmy6t2OZw6qEW0xJkPS4bRXlpMSNrPwkKB1Lpov2yd2/eDuxTFi760zTZygwFNBVA==
   dependencies:
     "@vanilla-extract/integration" "^6.0.0"
     chalk "^4.1.1"
