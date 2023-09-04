@@ -26,12 +26,12 @@ jobs:
       # https://engineering.mobalab.net/2021/04/30/make-secrets-available-in-pull-request-opened-by-dependabot/
       - name: Checkout
         if: ${{ github.event_name != 'pull_request_target' }}
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       # pull_request_target 駆動の場合、コンテキストは Pull request のターゲットブランチ (main ブランチ) になるので、
       # 当該 Pull request の HEAD コミットを明示的に指定しないと変更内容に対する CI を実行できない
       - name: Checkout PR
         if: ${{ github.event_name == 'pull_request_target' }}
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           ref: ${{ github.event.pull_request.head.sha }}
 
