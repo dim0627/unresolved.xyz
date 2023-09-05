@@ -16,16 +16,12 @@ export default function Index(
       <Head>
         <title>{post.fields.title as string} - blog.unresolved.xyz</title>
       </Head>
-      <div className="bg-slate-800 pt-20 pb-8 -mt-6 mb-6">
         <Container>
-          <h1 className="text-3xl font-semibold leading-relaxed text-white">
+          <h1 className="text-3xl font-semibold">
             {post.fields.title as string}
           </h1>
+          <PostBody post={post} />
         </Container>
-      </div>
-      <Container>
-        <PostBody post={post} />
-      </Container>
     </Shell>
   );
 }
