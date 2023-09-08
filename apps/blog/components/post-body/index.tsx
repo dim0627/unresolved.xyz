@@ -1,5 +1,7 @@
+"use client";
+
 import { FC } from "react";
-import { ContentfulService } from "../../libs/contentful";
+import { ContentfulService } from "@libs";
 import ReactMarkdown from "react-markdown";
 import { SpecialComponents } from "react-markdown/lib/ast-to-react";
 import remarkGfm from "remark-gfm";
@@ -24,7 +26,7 @@ const CodeBlock: SpecialComponents["code"] = ({
       language={match[1]}
       codeTagProps={{ className: "text-xs leading-3" }}
       PreTag={(props) => (
-        <div {...props} className="!rounded !my-0 !bg-slate-800" />
+        <div {...props} className="!rounded !my-6 !bg-slate-800" />
       )}
       showLineNumbers
     >
@@ -59,7 +61,7 @@ export const PostBody: FC<PostBodyProps> = ({ post }) => {
         h3: ({ node, ...props }) => (
           <h3 {...props} className="text-lg font-semibold mt-10 mb-4" />
         ),
-        p: ({ node, ...props }) => <p {...props} className="my-4 text-lg" />,
+        p: ({ node, ...props }) => <p {...props} className="my-6 text-lg" />,
         code: CodeBlock,
         a: ({ node, ...props }) => (
           <a {...props} className="text-red-500 underline" />
