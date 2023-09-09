@@ -42,13 +42,13 @@ const CodeBlock: SpecialComponents["code"] = ({
   );
 };
 
-interface PostBodyProps {
+interface BodyProps {
   post: Awaited<
     ReturnType<InstanceType<typeof ContentfulService>["getPosts"]>
   >["items"][0];
 }
 
-export const PostBody: FC<PostBodyProps> = ({ post }) => {
+export const Body: FC<BodyProps> = ({ post }) => {
   return (
     <ReactMarkdown
       className="break-all"
