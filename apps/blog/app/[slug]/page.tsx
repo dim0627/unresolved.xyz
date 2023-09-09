@@ -18,11 +18,11 @@ export default async function Page({ params }: PageProps) {
 
   return (
     <div>
-      <header className="mt-8 mb-4">
+      <header className="mb-4 mt-8">
         <h1 className="text-2xl font-semibold">
           {post.fields.title as string}
         </h1>
-        <div className="flex mt-4 justify-between text-xs">
+        <div className="mt-4 flex justify-between text-xs">
           <span className="font-semibold text-slate-500">
             {new Date(post.fields.date as string).toDateString()}
           </span>

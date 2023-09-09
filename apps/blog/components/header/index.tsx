@@ -8,7 +8,7 @@ export const Header: FC = () => {
       <Container>
         <Link
           href="/"
-          className="text-xl text-red-500 tracking-widest font-semibold"
+          className="text-xl font-semibold tracking-widest text-red-500"
         >
           blog.unresolved.xyz
         </Link>
