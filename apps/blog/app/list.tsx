@@ -14,10 +14,10 @@ const Item: FC<ItemProps> = ({ item }) => {
   const { title, body } = item.fields;
   return (
     <Link
-      className="block hover:bg-slate-50 p-4 -mx-4 rounded-none sm:rounded-3xl duration-200"
+      className="-mx-4 block rounded-none p-4 duration-200 hover:bg-slate-50 sm:rounded-3xl"
       href={`/${item.fields.slug}`}
     >
-      <h2 className="mb-2 text-xl tracking-widest font-semibold">
+      <h2 className="mb-2 text-xl font-semibold tracking-widest">
         {title as string}
       </h2>
       <div className="line-clamp-4 text-slate-500">

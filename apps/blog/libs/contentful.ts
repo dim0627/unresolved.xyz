@@ -19,6 +19,7 @@ export class ContentfulService {
   getPosts() {
     return this.client.getEntries({
       content_type: "2wKn6yEnZewu2SCCkus4as",
+      order: "-fields.date" as any,
     });
   }
 

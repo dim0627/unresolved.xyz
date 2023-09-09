@@ -26,7 +26,7 @@ const CodeBlock: SpecialComponents["code"] = ({
       language={match[1]}
       codeTagProps={{ className: "text-xs leading-3" }}
       PreTag={(props) => (
-        <div {...props} className="!rounded !my-6 !bg-slate-800" />
+        <div {...props} className="!my-6 !rounded !bg-slate-800" />
       )}
       showLineNumbers
     >
@@ -35,20 +35,20 @@ const CodeBlock: SpecialComponents["code"] = ({
   ) : (
     <code
       {...props}
-      className="bg-slate-800 text-white rounded px-2 py-1 text-xs"
+      className="rounded bg-slate-800 px-2 py-1 text-xs text-white"
     >
       {children}
     </code>
   );
 };
 
-interface PostBodyProps {
+interface BodyProps {
   post: Awaited<
     ReturnType<InstanceType<typeof ContentfulService>["getPosts"]>
   >["items"][0];
 }
 
-export const PostBody: FC<PostBodyProps> = ({ post }) => {
+export const Body: FC<BodyProps> = ({ post }) => {
   return (
     <ReactMarkdown
       className="break-all"
@@ -56,10 +56,10 @@ export const PostBody: FC<PostBodyProps> = ({ post }) => {
       rehypePlugins={[rehypeSlug, rehypeRaw]}
       components={{
         h2: ({ node, ...props }) => (
-          <h2 {...props} className="text-xl font-semibold mt-16 mb-4" />
+          <h2 {...props} className="mb-4 mt-16 text-xl font-semibold" />
         ),
         h3: ({ node, ...props }) => (
-          <h3 {...props} className="text-lg font-semibold mt-10 mb-4" />
+          <h3 {...props} className="mb-4 mt-10 text-lg font-semibold" />
         ),
         p: ({ node, ...props }) => <p {...props} className="my-6 text-lg" />,
         code: CodeBlock,

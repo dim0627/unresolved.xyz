@@ -1,5 +1,5 @@
 import { metaTitle, ContentfulService } from "@libs";
-import { PostBody } from "@components";
+import { Body } from "./body";
 import { Metadata, ResolvingMetadata } from "next";
 
 export const revalidate = 60 * 60; // revalidate every hour
@@ -18,10 +18,25 @@ export default async function Page({ params }: PageProps) {
 
   return (
     <div>
-      <h1 className="text-3xl font-semibold my-8">
-        {post.fields.title as string}
-      </h1>
-      <PostBody post={post} />
+      <header className="mb-4 mt-8">
+        <h1 className="text-2xl font-semibold">
+          {post.fields.title as string}
+        </h1>
+        <div className="mt-4 flex justify-between text-xs">
+          <span className="font-semibold text-slate-500">
+            {new Date(post.fields.date as string).toDateString()}
+          </span>
+          <ul className="flex gap-4">
+            {/* @ts-ignore */}
+            {post.fields.tags?.map((tag) => (
+              <li key={tag.sys.id} className="font-semibold text-red-500">
+                {tag.fields.name}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </header>
+      <Body post={post} />
     </div>
   );
 }
