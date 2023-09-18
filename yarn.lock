@@ -1554,23 +1554,22 @@
     mlly "^1.1.0"
     outdent "^0.8.0"
 
-"@vanilla-extract/next-plugin@^2.3.0":
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/@vanilla-extract/next-plugin/-/next-plugin-2.3.0.tgz#d5793ee241d889a0ca205ab74774638cdcd73896"
-  integrity sha512-l7ZzcL1G9zuJTAhBbOy6NKW/FPDOhDzfUXPhFGSTN1sdtO7qBmGLtOGFZATAYboAuIWXhGgnrfkyNgQh2adXZw==
+"@vanilla-extract/next-plugin@^2.3.1":
+  version "2.3.1"
+  resolved "https://registry.yarnpkg.com/@vanilla-extract/next-plugin/-/next-plugin-2.3.1.tgz#5c117903b2d8dd3c71c4ace02832bd8a9133d5aa"
+  integrity sha512-aoDTnCY3gJXjytoxlA7Xk4A/BDxdzUBeZhHWypauKJ06XJKlV/odjXt8K5FhCrMy8o+nqnCpjOD6KXcg6JmIdw==
   dependencies:
-    "@vanilla-extract/webpack-plugin" "^2.3.0"
-    browserslist "^4.19.1"
+    "@vanilla-extract/webpack-plugin" "^2.3.1"
 
 "@vanilla-extract/private@^1.0.3":
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/@vanilla-extract/private/-/private-1.0.3.tgz#7ec72bc2ff6fe51f9d650f962e8d1989b073690f"
   integrity sha512-17kVyLq3ePTKOkveHxXuIJZtGYs+cSoev7BlP+Lf4916qfDhk/HBjvlYDe8egrea7LNPHKwSZJK/bzZC+Q6AwQ==
 
-"@vanilla-extract/webpack-plugin@^2.3.0":
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/@vanilla-extract/webpack-plugin/-/webpack-plugin-2.3.0.tgz#277f1e979f81c85148a8ba82a2bceb1564a2589c"
-  integrity sha512-c+oaozLGNu+dqLNattJ9nVmy6t2OZw6qEW0xJkPS4bRXlpMSNrPwkKB1Lpov2yd2/eDuxTFi760zTZygwFNBVA==
+"@vanilla-extract/webpack-plugin@^2.3.1":
+  version "2.3.1"
+  resolved "https://registry.yarnpkg.com/@vanilla-extract/webpack-plugin/-/webpack-plugin-2.3.1.tgz#359d93b8b579560c1dadc6ae8eb655126332e02e"
+  integrity sha512-S767iP+S67Uh+BsTe+u60BMbtRqZAxzjK7gYd6a+1hcbMKznYxdQMeP2qs9wr+NhRqZFrNxewo3/ztMnN85TOg==
   dependencies:
     "@vanilla-extract/integration" "^6.0.0"
     chalk "^4.1.1"
@@ -1962,7 +1961,7 @@ braces@^3.0.2, braces@~3.0.2:
   dependencies:
     fill-range "^7.0.1"
 
-browserslist@^4.19.1, browserslist@^4.21.10, browserslist@^4.21.9:
+browserslist@^4.21.10, browserslist@^4.21.9:
   version "4.21.10"
   resolved "https://registry.yarnpkg.com/browserslist/-/browserslist-4.21.10.tgz#dbbac576628c13d3b2231332cb2ec5a46e015bb0"
   integrity sha512-bipEBdZfVH5/pwrvqc+Ub0kUPVfGUhlKxbvfD+z1BDnPEO/X98ruXGA1WP5ASpAFKan7Qr6j736IacbZQuAlKQ==
