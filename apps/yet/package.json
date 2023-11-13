@@ -18,7 +18,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.11.0",
-    "react-markdown": "^8.0.7",
+    "react-markdown": "^9.0.1",
     "react-responsive-masonry": "^2.1.7",
     "yup": "^1.2.0"
   },
