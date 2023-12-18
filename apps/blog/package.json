@@ -33,7 +33,7 @@
     "eslint-config-custom": "*",
     "eslint-plugin-tailwindcss": "^3.13.0",
     "postcss": "^8.4.31",
-    "tailwindcss": "^3.3.3",
+    "tailwindcss": "^3.3.6",
     "tsconfig": "*",
     "typescript": "^5.2.2"
   }
