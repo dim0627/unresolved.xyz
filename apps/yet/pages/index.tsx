@@ -34,16 +34,15 @@ const IndexQuery = graphql(/* GraphQL */ `
     projects {
       ...ProjectItem
     }
-    careers {
+    careers(orderBy: joinedAt_ASC) {
       ...CareerItem
     }
   }
 `);
 
 export async function getStaticProps() {
-  const { profiles, projects, careers } = await graphqlClient.request(
-    IndexQuery
-  );
+  const { profiles, projects, careers } =
+    await graphqlClient.request(IndexQuery);
 
   return {
     props: {
