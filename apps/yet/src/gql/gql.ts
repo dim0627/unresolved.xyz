@@ -10,13 +10,13 @@ import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/
  * 2. It is not minifiable, so the string of a GraphQL query will be multiple times inside the bundle.
  * 3. It does not support dead code elimination, so it will add unused operations.
  *
- * Therefore it is highly recommended to use the babel-plugin for production.
+ * Therefore it is highly recommended to use the babel or swc plugin for production.
  */
 const documents = {
     "\n  fragment CareerItem on Career {\n    id\n    emoji\n    companyName\n    stacks\n    roles\n    joinedAt\n    leavedAt\n  }\n": types.CareerItemFragmentDoc,
     "\n  fragment ProfileItem on Profile {\n    id\n    thumbnail {\n      url\n    }\n    fullName\n    description\n    details\n    twitterUrl\n    gitHubUrl\n    linkedInUrl\n    facebookUrl\n    emailAddress\n  }\n": types.ProfileItemFragmentDoc,
     "\n  fragment ProjectItem on Project {\n    id\n    emoji\n    title\n    stacks\n    description\n    href\n    repositoryUrl\n  }\n": types.ProjectItemFragmentDoc,
-    "\n  query indexQuery {\n    profiles {\n      ...ProfileItem\n    }\n    projects {\n      ...ProjectItem\n    }\n    careers {\n      ...CareerItem\n    }\n  }\n": types.IndexQueryDocument,
+    "\n  query indexQuery {\n    profiles {\n      ...ProfileItem\n    }\n    projects {\n      ...ProjectItem\n    }\n    careers(orderBy: joinedAt_ASC) {\n      ...CareerItem\n    }\n  }\n": types.IndexQueryDocument,
 };
 
 /**
@@ -25,7 +25,7 @@ const documents = {
  *
  * @example
  * ```ts
- * const query = gql(`query GetUser($id: ID!) { user(id: $id) { name } }`);
+ * const query = graphql(`query GetUser($id: ID!) { user(id: $id) { name } }`);
  * ```
  *
  * The query argument is unknown!
@@ -48,7 +48,7 @@ export function graphql(source: "\n  fragment ProjectItem on Project {\n    id\n
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(source: "\n  query indexQuery {\n    profiles {\n      ...ProfileItem\n    }\n    projects {\n      ...ProjectItem\n    }\n    careers {\n      ...CareerItem\n    }\n  }\n"): (typeof documents)["\n  query indexQuery {\n    profiles {\n      ...ProfileItem\n    }\n    projects {\n      ...ProjectItem\n    }\n    careers {\n      ...CareerItem\n    }\n  }\n"];
+export function graphql(source: "\n  query indexQuery {\n    profiles {\n      ...ProfileItem\n    }\n    projects {\n      ...ProjectItem\n    }\n    careers(orderBy: joinedAt_ASC) {\n      ...CareerItem\n    }\n  }\n"): (typeof documents)["\n  query indexQuery {\n    profiles {\n      ...ProfileItem\n    }\n    projects {\n      ...ProjectItem\n    }\n    careers(orderBy: joinedAt_ASC) {\n      ...CareerItem\n    }\n  }\n"];
 
 export function graphql(source: string) {
   return (documents as any)[source] ?? {};
