@@ -31,7 +31,7 @@ const IndexQuery = graphql(/* GraphQL */ `
     profiles {
       ...ProfileItem
     }
-    projects {
+    projects(orderBy: position_DESC) {
       ...ProjectItem
     }
     careers(orderBy: joinedAt_ASC) {
