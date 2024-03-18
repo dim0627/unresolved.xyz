@@ -68,7 +68,7 @@
   resolved "https://registry.yarnpkg.com/@babel/compat-data/-/compat-data-7.23.5.tgz#ffb878728bb6bdcb6f4510aa51b1be9afb8cfd98"
   integrity sha512-uU27kfDRlhfKl+w1U6vp16IuvSLtjAxdArVXPa9BvLkrr7CYIsxH5adpHObeAGY/41+syctUWOZ140a2Rvkgjw==
 
-"@babel/core@^7.14.0", "@babel/core@^7.20.7", "@babel/core@^7.23.9":
+"@babel/core@^7.14.0", "@babel/core@^7.23.9":
   version "7.23.9"
   resolved "https://registry.yarnpkg.com/@babel/core/-/core-7.23.9.tgz#b028820718000f267870822fec434820e9b1e4d1"
   integrity sha512-5q0175NOjddqpvvzU+kDiSOAk4PfdO6FvwCWoQ6RO7rTzEe8vlo+4HVfcnAREhD4npMs0e9uZypjTwzZPCf/cw==
@@ -207,6 +207,11 @@
   version "7.20.2"
   resolved "https://registry.yarnpkg.com/@babel/helper-plugin-utils/-/helper-plugin-utils-7.20.2.tgz#d1b9000752b18d0877cff85a5c376ce5c3121629"
   integrity sha512-8RvlJG2mj4huQ4pZ+rU9lqKi9ZKiRmuvGuM2HlWmkmgOhbs6zEAw6IEiJ5cQqGbDzGZOhwuOQNtZMi/ENLjZoQ==
+
+"@babel/helper-plugin-utils@^7.22.5":
+  version "7.24.0"
+  resolved "https://registry.yarnpkg.com/@babel/helper-plugin-utils/-/helper-plugin-utils-7.24.0.tgz#945681931a52f15ce879fd5b86ce2dae6d3d7f2a"
+  integrity sha512-9cUznXMG0+FxRuJfvL82QlTqIzhVW9sL0KjMPHhAOOvpQGL8QtdxnBKILjBqxlHyliz0yCa1G903ZXI/FuHy2w==
 
 "@babel/helper-replace-supers@^7.18.6", "@babel/helper-replace-supers@^7.20.7":
   version "7.20.7"
@@ -347,12 +352,12 @@
   dependencies:
     "@babel/helper-plugin-utils" "^7.8.0"
 
-"@babel/plugin-syntax-typescript@^7.20.0":
-  version "7.20.0"
-  resolved "https://registry.yarnpkg.com/@babel/plugin-syntax-typescript/-/plugin-syntax-typescript-7.20.0.tgz#4e9a0cfc769c85689b77a2e642d24e9f697fc8c7"
-  integrity sha512-rd9TkG+u1CExzS4SM1BlMEhMXwFLKVjOAFFCDx9PbX5ycJWDoWMcwdJH9RhkPu1dOgn5TrxLot/Gx6lWFuAUNQ==
+"@babel/plugin-syntax-typescript@^7.23.3":
+  version "7.23.3"
+  resolved "https://registry.yarnpkg.com/@babel/plugin-syntax-typescript/-/plugin-syntax-typescript-7.23.3.tgz#24f460c85dbbc983cd2b9c4994178bcc01df958f"
+  integrity sha512-9EiNjVJOMwCO+43TqoTrgQ8jMwcAd0sWyXi9RPfIsLTj4R2MADDDQXELhffaUx/uJv2AYcxBgPwH6j4TIA4ytQ==
   dependencies:
-    "@babel/helper-plugin-utils" "^7.19.0"
+    "@babel/helper-plugin-utils" "^7.22.5"
 
 "@babel/plugin-transform-arrow-functions@^7.0.0":
   version "7.20.7"
@@ -1729,12 +1734,12 @@
   resolved "https://registry.yarnpkg.com/@ungap/structured-clone/-/structured-clone-1.2.0.tgz#756641adb587851b5ccb3e095daf27ae581c8406"
   integrity sha512-zuVdFrMJiuCDQUMCzQaD6KL28MjnqqN8XnAqiEq9PNm/hCPTSGfrXCOfwj1ow4LFb/tNymJPwsNbVePc1xFqrQ==
 
-"@vanilla-extract/babel-plugin-debug-ids@^1.0.4":
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/@vanilla-extract/babel-plugin-debug-ids/-/babel-plugin-debug-ids-1.0.4.tgz#09bafadcc22b5d06b68ad04ea1eccca1627068d1"
-  integrity sha512-mevYcVMwsT6960xnXRw/Rr2K7SOEwzwVBApg/2SJ3eg2KGsHfj1rN0oQ12WdoTT3RzThq+0551bVQKPvQnjeaA==
+"@vanilla-extract/babel-plugin-debug-ids@^1.0.5":
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/@vanilla-extract/babel-plugin-debug-ids/-/babel-plugin-debug-ids-1.0.5.tgz#e24424f46dd7737764a4bb5ac6dcdf19240f88bc"
+  integrity sha512-Rc9A6ylsw7EBErmpgqCMvc/Z/eEZxI5k1xfLQHw7f5HHh3oc5YfzsAsYU/PdmSNjF1dp3sGEViBdDltvwnfVaA==
   dependencies:
-    "@babel/core" "^7.20.7"
+    "@babel/core" "^7.23.9"
 
 "@vanilla-extract/css@^1.14.0":
   version "1.14.1"
@@ -1753,14 +1758,14 @@
     modern-ahocorasick "^1.0.0"
     outdent "^0.8.0"
 
-"@vanilla-extract/integration@^6.4.0":
-  version "6.4.0"
-  resolved "https://registry.yarnpkg.com/@vanilla-extract/integration/-/integration-6.4.0.tgz#dd979c343e9ee4ada0b31df50f0468efb65a7c3a"
-  integrity sha512-yl2iKArGUCsIxtfOeOu3ki+YyIZ6c+uKy/AJv3e+oqmZatzSNv0EPVLk6lUUZcHKJyZNdcPXV3GDYWd/3OE7xg==
+"@vanilla-extract/integration@^7.0.0":
+  version "7.1.1"
+  resolved "https://registry.yarnpkg.com/@vanilla-extract/integration/-/integration-7.1.1.tgz#fd7781f859efea5698a2f1bb0b3d1107096ea496"
+  integrity sha512-2JjDKL2HDTazis4oTkUFsQFUyw61k8oym9r0NOLSJC0JB0W25W1ryVZvDx74d3deIyB5AWbCselyzl3gja30kQ==
   dependencies:
-    "@babel/core" "^7.20.7"
-    "@babel/plugin-syntax-typescript" "^7.20.0"
-    "@vanilla-extract/babel-plugin-debug-ids" "^1.0.4"
+    "@babel/core" "^7.23.9"
+    "@babel/plugin-syntax-typescript" "^7.23.3"
+    "@vanilla-extract/babel-plugin-debug-ids" "^1.0.5"
     "@vanilla-extract/css" "^1.14.0"
     esbuild "npm:esbuild@~0.17.6 || ~0.18.0 || ~0.19.0"
     eval "0.1.8"
@@ -1772,24 +1777,24 @@
     vite "^5.0.11"
     vite-node "^1.2.0"
 
-"@vanilla-extract/next-plugin@^2.3.5":
-  version "2.3.5"
-  resolved "https://registry.yarnpkg.com/@vanilla-extract/next-plugin/-/next-plugin-2.3.5.tgz#b3221672571fc45083def593a214df4229aff759"
-  integrity sha512-oDVvzaLjiYbKttK0O5Mrv2ANKWF4SRQtV2ngOvPyCG1RQVjjeuAA9NW+PFMxiP8lRDCt6PkLcW2E2k592Kfpzg==
+"@vanilla-extract/next-plugin@^2.3.7":
+  version "2.3.7"
+  resolved "https://registry.yarnpkg.com/@vanilla-extract/next-plugin/-/next-plugin-2.3.7.tgz#a4b5d6ee9a7900a8dd72b8eaf2e449cad45b373e"
+  integrity sha512-/11nYE5a3waT0lwRps+2thvyQlBKi4wK+SF8za/QWwO5GTD3O/bZ3nl96MC00SXZHALHwbV1trdtqVLCq9Xqpw==
   dependencies:
-    "@vanilla-extract/webpack-plugin" "^2.3.4"
+    "@vanilla-extract/webpack-plugin" "^2.3.7"
 
 "@vanilla-extract/private@^1.0.3":
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/@vanilla-extract/private/-/private-1.0.3.tgz#7ec72bc2ff6fe51f9d650f962e8d1989b073690f"
   integrity sha512-17kVyLq3ePTKOkveHxXuIJZtGYs+cSoev7BlP+Lf4916qfDhk/HBjvlYDe8egrea7LNPHKwSZJK/bzZC+Q6AwQ==
 
-"@vanilla-extract/webpack-plugin@^2.3.4":
-  version "2.3.4"
-  resolved "https://registry.yarnpkg.com/@vanilla-extract/webpack-plugin/-/webpack-plugin-2.3.4.tgz#9fedfca9ad2793d62a810672347ee4d792768d5d"
-  integrity sha512-xYldP6Tte4rv5aYWQqfbKQsDAHVln6+XAVEXdvdr/2Jz59AWYEu69DgbOtWjXDjzP/sRh30IKmbfyahlLkmmrw==
+"@vanilla-extract/webpack-plugin@^2.3.7":
+  version "2.3.7"
+  resolved "https://registry.yarnpkg.com/@vanilla-extract/webpack-plugin/-/webpack-plugin-2.3.7.tgz#46ead16c6cf4c6e3477d112e7750a042c32db804"
+  integrity sha512-xKhl7BUGqjj1eRzgASBcfKSvzIWGN1ndNT9ycUcfDz1AXZr6rok99LSj+Z2LqAnCGZGAiLsYzdQ5AYBABXV+vA==
   dependencies:
-    "@vanilla-extract/integration" "^6.4.0"
+    "@vanilla-extract/integration" "^7.0.0"
     chalk "^4.1.1"
     debug "^4.3.1"
     loader-utils "^2.0.0"
