@@ -23,7 +23,7 @@
     "yup": "^1.4.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.23.9",
+    "@babel/core": "^7.25.2",
     "@types/node": "^22.5.0",
     "@types/react": "^18.2.78",
     "@types/react-dom": "^18.2.15",
