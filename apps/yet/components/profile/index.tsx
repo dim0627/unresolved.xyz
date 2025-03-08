@@ -1,5 +1,5 @@
-import { FC } from "react";
-import { FragmentType, useFragment, graphql } from "@graphql";
+import type { FC } from "react";
+import { type FragmentType, useFragment, graphql } from "@graphql";
 import {
   heroStyle,
   headingStyle,
