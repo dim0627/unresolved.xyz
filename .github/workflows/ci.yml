@@ -49,6 +49,9 @@ jobs:
       - name: Build
         run: pnpm build
 
+      - name: syncpack
+        run: pnpm syncpack:lint
+
       - name: Lint
         run: pnpm lint
 

@@ -7,10 +7,14 @@
     "dev": "turbo run dev",
     "lint": "biome check ./apps ./packages",
     "lint:fix": "biome check ./apps ./packages --write --unsafe",
+    "syncpack:fix": "syncpack fix",
+    "syncpack:format": "syncpack format",
+    "syncpack:lint": "syncpack lint",
     "test": "turbo run test"
   },
   "devDependencies": {
     "@biomejs/biome": "2.1.1",
+    "syncpack": "14.0.0-alpha.18",
     "turbo": "latest"
   },
   "engines": {

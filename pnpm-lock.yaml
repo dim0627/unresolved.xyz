@@ -11,6 +11,9 @@ importers:
       '@biomejs/biome':
         specifier: 2.1.1
         version: 2.1.1
+      syncpack:
+        specifier: 14.0.0-alpha.18
+        version: 14.0.0-alpha.18
       turbo:
         specifier: latest
         version: 2.5.4
@@ -70,7 +73,7 @@ importers:
         specifier: ^15.5.11
         version: 15.5.13
       '@unresolved/tsconfig':
-        specifier: '*'
+        specifier: 0.0.0
         version: link:../../packages/tsconfig
       autoprefixer:
         specifier: ^10.4.17
@@ -1617,6 +1620,9 @@ packages:
     resolution: {integrity: sha512-sTSfBjoXBp89JvIKIefqw7U2CCebsc74kiY6awiGogKtoSGbgjYE/G/+l9sF3MWFPNc9IcoOC4ODfKHfxFmp0g==}
     engines: {node: '>= 0.4'}
 
+  get-tsconfig@4.10.1:
+    resolution: {integrity: sha512-auHyJ4AgMz7vgS8Hp3N6HXSmlMdUyhSUrfBF16w153rxtLIEOE+HGqaBppczZvnHLqQJfiHotCYpNhl0lUROFQ==}
+
   github-slugger@2.0.0:
     resolution: {integrity: sha512-IaOQ9puYtjrkq7Y0Ygl9KDZnrf/aiUJYUpVf89y8kyaxbRG7Y1SrX/jaumrv81vc61+kiMempujsM3Yw7w5qcw==}
 
@@ -2573,6 +2579,9 @@ packages:
     resolution: {integrity: sha512-qYg9KP24dD5qka9J47d0aVky0N+b4fTU89LN9iDnjB5waksiC49rvMB0PrUJQGoTmH50XPiqOvAjDfaijGxYZw==}
     engines: {node: '>=8'}
 
+  resolve-pkg-maps@1.0.0:
+    resolution: {integrity: sha512-seS2Tj26TBVOC2NIc2rOe2y2ZO7efxITtLZcGSOnHHNOQ7CkiUBfw0Iw2ck6xkIhPwLhKNLS8BO+hEpngQlqzw==}
+
   resolve@1.22.10:
     resolution: {integrity: sha512-NPRy+/ncIMeDlTAsuqwKIiferiawhefFJtkNSW0qZJEqMEb+qBt/77B/jGeeek+F0uOeN05CDa6HXbbIgtVX4w==}
     engines: {node: '>= 0.4'}
@@ -2782,6 +2791,41 @@ packages:
     resolution: {integrity: sha512-c7AfkZ9udatCuAy9RSfiGPpeOKKUAUK5e1cXadLOGUjasdxqYqAK0jTNkM/FSEyJ3a5Ra27j/tw/PS0qLmaF/A==}
     engines: {node: '>=18'}
 
+  syncpack-darwin-arm64@14.0.0-alpha.18:
+    resolution: {integrity: sha512-39cBD1HmMCqhzbrn/vOl2UK29W5T0Wjn6NjlfcHmGV1McRA8cQTd2x7KjBYeWcc5JxX2FE19U4Jq/2rlXI7DKw==}
+    cpu: [arm64]
+    os: [darwin]
+
+  syncpack-darwin-x64@14.0.0-alpha.18:
+    resolution: {integrity: sha512-DjACq+9JSL9WaoWzHz/LDV3KgIZv8DoxLFGuWVUsiec+SyrfX1t19lfCGrcrQVjQAPwENWMn1A+OYqjZgIRVzQ==}
+    cpu: [x64]
+    os: [darwin]
+
+  syncpack-linux-arm64@14.0.0-alpha.18:
+    resolution: {integrity: sha512-O0xZn/6M7jIAWJ/XZtnyS90e/ZafTF6YhO1NAnEAoKEkLwh4U2xswOZ8w2gfvmGVdfIXGtZDH7FU+ossyI4zYQ==}
+    cpu: [arm64]
+    os: [linux]
+
+  syncpack-linux-x64@14.0.0-alpha.18:
+    resolution: {integrity: sha512-8k+/pB5T9iEzCgJt21OkpUg1hJnhN462d41o3hJ3wO6FEbSX/PYG5FT+mJWOnlwpsMshQquoQAE3SR0CHdP15A==}
+    cpu: [x64]
+    os: [linux]
+
+  syncpack-windows-arm64@14.0.0-alpha.18:
+    resolution: {integrity: sha512-UvtqQkO55yMMP/tet9n5imwCDRUOO4wk6H7DtjnhJLeAPfba1B81FNbR5wO+34BgG0yw4ssIdU+EMbOEVSW6kA==}
+    cpu: [arm64]
+    os: [win32]
+
+  syncpack-windows-x64@14.0.0-alpha.18:
+    resolution: {integrity: sha512-mc7D5WSdeXPtaU5lXlukICThpdMtOTLu0oPlN6TFndKlQLEdTHyyJJe05D5QheZV3BwMeVaeCpWBFUujjr/shQ==}
+    cpu: [x64]
+    os: [win32]
+
+  syncpack@14.0.0-alpha.18:
+    resolution: {integrity: sha512-n4FD9yrNPAIt1KrapyvEEDX6LS2xmSMeGIJyMlRtuPtYBPHZP6tZqZvrrBusgR6yyjkp806/MpNTlnFo1hCMIg==}
+    engines: {node: '>=14.17.0'}
+    hasBin: true
+
   tailwindcss@3.4.17:
     resolution: {integrity: sha512-w33E2aCvSDP0tW9RZuNXadXlkHXqFzSkQew/aIa2i/Sj8fThxwovwlXHSPXTbAHwEIhBFXAedUhP2tueAKP8Og==}
     engines: {node: '>=14.0.0'}
@@ -2866,6 +2910,11 @@ packages:
 
   tslib@2.8.1:
     resolution: {integrity: sha512-oJFu94HQb+KVduSUQL7wnpmqnfmLsOA/nAh6b6EH0wCEoK0/mPeXU6c3wKDV83MkOuHPRHtSXKKU99IBazS/2w==}
+
+  tsx@4.20.3:
+    resolution: {integrity: sha512-qjbnuR9Tr+FJOMBqJCW5ehvIo/buZq7vH7qD7JziU98h6l3qGy0a/yPFjwO+y0/T7GFpNgNAvEcPPVfyT8rrPQ==}
+    engines: {node: '>=18.0.0'}
+    hasBin: true
 
   turbo-darwin-64@2.5.4:
     resolution: {integrity: sha512-ah6YnH2dErojhFooxEzmvsoZQTMImaruZhFPfMKPBq8sb+hALRdvBNLqfc8NWlZq576FkfRZ/MSi4SHvVFT9PQ==}
@@ -4773,6 +4822,10 @@ snapshots:
       dunder-proto: 1.0.1
       es-object-atoms: 1.1.1
 
+  get-tsconfig@4.10.1:
+    dependencies:
+      resolve-pkg-maps: 1.0.0
+
   github-slugger@2.0.0: {}
 
   glob-parent@5.1.2:
@@ -5945,6 +5998,8 @@ snapshots:
 
   resolve-from@5.0.0: {}
 
+  resolve-pkg-maps@1.0.0: {}
+
   resolve@1.22.10:
     dependencies:
       is-core-module: 2.16.1
@@ -6160,6 +6215,35 @@ snapshots:
       timeout-signal: 2.0.0
       whatwg-mimetype: 4.0.0
 
+  syncpack-darwin-arm64@14.0.0-alpha.18:
+    optional: true
+
+  syncpack-darwin-x64@14.0.0-alpha.18:
+    optional: true
+
+  syncpack-linux-arm64@14.0.0-alpha.18:
+    optional: true
+
+  syncpack-linux-x64@14.0.0-alpha.18:
+    optional: true
+
+  syncpack-windows-arm64@14.0.0-alpha.18:
+    optional: true
+
+  syncpack-windows-x64@14.0.0-alpha.18:
+    optional: true
+
+  syncpack@14.0.0-alpha.18:
+    dependencies:
+      tsx: 4.20.3
+    optionalDependencies:
+      syncpack-darwin-arm64: 14.0.0-alpha.18
+      syncpack-darwin-x64: 14.0.0-alpha.18
+      syncpack-linux-arm64: 14.0.0-alpha.18
+      syncpack-linux-x64: 14.0.0-alpha.18
+      syncpack-windows-arm64: 14.0.0-alpha.18
+      syncpack-windows-x64: 14.0.0-alpha.18
+
   tailwindcss@3.4.17:
     dependencies:
       '@alloc/quick-lru': 5.2.0
@@ -6253,6 +6337,13 @@ snapshots:
   tslib@2.6.3: {}
 
   tslib@2.8.1: {}
+
+  tsx@4.20.3:
+    dependencies:
+      esbuild: 0.25.6
+      get-tsconfig: 4.10.1
+    optionalDependencies:
+      fsevents: 2.3.3
 
   turbo-darwin-64@2.5.4:
     optional: true
