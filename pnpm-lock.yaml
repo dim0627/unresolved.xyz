@@ -127,8 +127,8 @@ importers:
         specifier: ^8.0.7
         version: 8.0.7(@types/react@18.3.23)(react@18.3.1)
       react-responsive-masonry:
-        specifier: ^2.1.7
-        version: 2.7.1
+        specifier: 2.2.0
+        version: 2.2.0
       yup:
         specifier: ^1.4.0
         version: 1.6.1
@@ -3396,8 +3396,8 @@ packages:
       '@types/react': '>=16'
       react: '>=16'
 
-  react-responsive-masonry@2.7.1:
-    resolution: {integrity: sha512-Q+u+nOH87PzjqGFd2PgTcmLpHPZnCmUPREHYoNBc8dwJv6fi51p9U6hqwG8g/T8MN86HrFjrU+uQU6yvETU7cA==}
+  react-responsive-masonry@2.2.0:
+    resolution: {integrity: sha512-IYbnfe2tWCZ3pvyTLyBWPj7uv5ZmNOULYMcAZi5a47ZLhSotOck1vkkISq6gP2qiyWdMvPfeMhjvYzUYGw9BOQ==}
 
   react-syntax-highlighter@15.6.1:
     resolution: {integrity: sha512-OqJ2/vL7lEeV5zTJyG7kmARppUjiB9h9udl4qHQjjgEos66z00Ia0OckwYfRxCSFrW8RJIBnsBwQsHZbVPspqg==}
@@ -8273,7 +8273,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  react-responsive-masonry@2.7.1: {}
+  react-responsive-masonry@2.2.0: {}
 
   react-syntax-highlighter@15.6.1(react@18.3.1):
     dependencies:
