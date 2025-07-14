@@ -1,4 +1,4 @@
-const { createVanillaExtractPlugin } = require("@vanilla-extract/next-plugin");
+const { createVanillaExtractPlugin } = require('@vanilla-extract/next-plugin');
 const withVanillaExtract = createVanillaExtractPlugin();
 
 /** @type {import('next').NextConfig} */
@@ -7,12 +7,12 @@ const nextConfig = {
   images: {
     remotePatterns: [
       {
-        protocol: "https",
-        hostname: "media.graphassets.com",
+        protocol: 'https',
+        hostname: 'media.graphassets.com',
       },
       {
-        protocol: "https",
-        hostname: "*.graphassets.com",
+        protocol: 'https',
+        hostname: '*.graphassets.com',
       },
     ],
   },

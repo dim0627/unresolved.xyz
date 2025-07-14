@@ -1,6 +1,6 @@
-import { Container } from "components/container";
-import { FC } from "react";
-import { containerStyle } from "./index.css";
+import { Container } from 'components/container';
+import type { FC } from 'react';
+import { containerStyle } from './index.css';
 
 export const Footer: FC = () => {
   return (

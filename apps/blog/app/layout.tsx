@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import { ReactNode } from "react";
-import "@styles/global.css";
-import { Container } from "@components";
-import Link from "next/link";
+import type { ReactNode } from 'react';
+import '@styles/global.css';
+import { Container } from '@components';
+import Link from 'next/link';
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
@@ -13,7 +13,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           <Container fullWidth>
             <Link
               href="/"
-              className="text-xl font-semibold tracking-widest text-red-500"
+              className="font-semibold text-red-500 text-xl tracking-widest"
             >
               blog.unresolved.xyz
             </Link>

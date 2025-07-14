@@ -1,16 +1,16 @@
-import { CareerItemFragment } from "@graphql/graphql";
+import type { CareerItemFragment } from '@graphql/graphql';
+import type { FC } from 'react';
 import {
-  rolesStyle,
-  roleItemStyle,
-  stacksStyle,
-  stackItemStyle,
   containerStyle,
   dateStyle,
-  titleStyle,
   emojiStyle,
   headerStyle,
-} from "./Career.css";
-import { FC } from "react";
+  roleItemStyle,
+  rolesStyle,
+  stackItemStyle,
+  stacksStyle,
+  titleStyle,
+} from './Career.css';
 
 interface CareerProps {
   career: CareerItemFragment;
@@ -42,7 +42,7 @@ export const Career: FC<CareerProps> = ({ career }) => {
           ))}
         </ul>
       </div>
-      <div className={dateStyle}>{career.leavedAt || "Now"}</div>
+      <div className={dateStyle}>{career.leavedAt || 'Now'}</div>
     </div>
   );
 };

@@ -1,41 +1,41 @@
-"use client";
+'use client';
 
-import { FC } from "react";
-import { ContentfulService } from "@libs";
-import ReactMarkdown from "react-markdown";
-import { SpecialComponents } from "react-markdown/lib/ast-to-react";
-import remarkGfm from "remark-gfm";
-import rehypeSlug from "rehype-slug";
-import rehypeRaw from "rehype-raw";
-import toc from "remark-toc";
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { nord } from "react-syntax-highlighter/dist/cjs/styles/prism";
+import type { ContentfulService } from '@libs';
+import type { FC } from 'react';
+import ReactMarkdown from 'react-markdown';
+import type { SpecialComponents } from 'react-markdown/lib/ast-to-react';
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { nord } from 'react-syntax-highlighter/dist/cjs/styles/prism';
+import rehypeRaw from 'rehype-raw';
+import rehypeSlug from 'rehype-slug';
+import remarkGfm from 'remark-gfm';
+import toc from 'remark-toc';
 
-const CodeBlock: SpecialComponents["code"] = ({
+const CodeBlock: SpecialComponents['code'] = ({
   node,
   inline,
   className,
   children,
   ...props
 }) => {
-  const match = /language-(\w+)/.exec(className || "");
+  const match = /language-(\w+)/.exec(className || '');
   return !inline && match ? (
     <SyntaxHighlighter
       {...props}
       style={nord}
       language={match[1]}
-      codeTagProps={{ className: "text-xs leading-3" }}
+      codeTagProps={{ className: 'text-xs leading-3' }}
       PreTag={(props) => (
         <div {...props} className="!my-6 !rounded !bg-slate-800" />
       )}
       showLineNumbers
     >
-      {String(children).replace(/\n$/, "")}
+      {String(children).replace(/\n$/, '')}
     </SyntaxHighlighter>
   ) : (
     <code
       {...props}
-      className="rounded bg-slate-800 px-2 py-1 text-xs text-white"
+      className="rounded bg-slate-800 px-2 py-1 text-white text-xs"
     >
       {children}
     </code>
@@ -44,8 +44,8 @@ const CodeBlock: SpecialComponents["code"] = ({
 
 interface BodyProps {
   post: Awaited<
-    ReturnType<InstanceType<typeof ContentfulService>["getPosts"]>
-  >["items"][0];
+    ReturnType<InstanceType<typeof ContentfulService>['getPosts']>
+  >['items'][0];
 }
 
 export const Body: FC<BodyProps> = ({ post }) => {
@@ -56,10 +56,10 @@ export const Body: FC<BodyProps> = ({ post }) => {
       rehypePlugins={[rehypeSlug, rehypeRaw]}
       components={{
         h2: ({ node, ...props }) => (
-          <h2 {...props} className="mb-4 mt-16 text-xl font-semibold" />
+          <h2 {...props} className="mt-16 mb-4 font-semibold text-xl" />
         ),
         h3: ({ node, ...props }) => (
-          <h3 {...props} className="mb-4 mt-10 text-lg font-semibold" />
+          <h3 {...props} className="mt-10 mb-4 font-semibold text-lg" />
         ),
         p: ({ node, ...props }) => <p {...props} className="my-6 text-lg" />,
         code: CodeBlock,

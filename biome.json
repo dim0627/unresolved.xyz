@@ -1,0 +1,87 @@
+{
+  "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
+  "vcs": {
+    "enabled": false,
+    "clientKind": "git",
+    "useIgnoreFile": true
+  },
+  "files": {
+    "ignoreUnknown": false,
+    "includes": [
+      "**",
+      "!**/dist",
+      "!**/.next",
+      "!**/.clerk",
+      "!**/node_modules",
+      "!**/generated",
+      "!**/apps/api/prisma/mdm-client",
+      "!**/apps/api/prisma/bridge-client",
+      "!**/apps/api/schema*",
+      "!**/apps/cli/bin/**/*",
+      "!**/packages/vendor-api-client/**/schema.json",
+      "!**/packages/vendor-api-client/**/generated"
+    ]
+  },
+  "formatter": {
+    "formatWithErrors": true,
+    "enabled": true,
+    "indentStyle": "space"
+  },
+  "assist": { "actions": { "source": { "organizeImports": "on" } } },
+  "linter": {
+    "enabled": true,
+    "rules": {
+      "recommended": true,
+      "suspicious": {
+        "noExplicitAny": "off",
+        "noConsole": { "level": "warn", "options": { "allow": ["log"] } }
+      },
+      "a11y": {
+        "noSvgWithoutTitle": "off"
+      },
+      "complexity": {
+        "noForEach": "off",
+        "noBannedTypes": "off"
+      },
+      "style": {
+        "noNonNullAssertion": "off",
+        "noParameterAssign": "error",
+        "useAsConstAssertion": "error",
+        "useDefaultParameterLast": "error",
+        "useEnumInitializers": "error",
+        "useSelfClosingElements": "error",
+        "useSingleVarDeclarator": "error",
+        "noUnusedTemplateLiteral": "error",
+        "useNumberNamespace": "error",
+        "noInferrableTypes": "error",
+        "noUselessElse": "error"
+      },
+      "correctness": {
+        "noUnusedImports": "warn",
+        "noUnusedVariables": "warn",
+        "noConstantCondition": "off"
+      },
+      "nursery": { "useSortedClasses": "warn" }
+    }
+  },
+  "javascript": {
+    "formatter": {
+      "quoteStyle": "single"
+    },
+    "parser": {
+      "unsafeParameterDecoratorsEnabled": true
+    }
+  },
+  "overrides": [
+    {
+      "includes": ["**/apps/api/**/*"],
+      "linter": {
+        "rules": {
+          "style": {
+            "useImportType": "off"
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,7 +1,7 @@
-import { FC } from "react";
-import { FragmentType, useFragment, graphql } from "@graphql";
-import { Career } from "./Career";
-import { containerStyle } from "./index.css";
+import { type FragmentType, graphql, useFragment } from '@graphql';
+import type { FC } from 'react';
+import { Career } from './Career';
+import { containerStyle } from './index.css';
 
 const CareerFragment = graphql(/* GraphQL */ `
   fragment CareerItem on Career {

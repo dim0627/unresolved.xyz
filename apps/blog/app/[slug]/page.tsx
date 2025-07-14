@@ -1,6 +1,6 @@
-import { metaTitle, ContentfulService } from "@libs";
-import { Body } from "./body";
-import { Metadata, ResolvingMetadata } from "next";
+import { ContentfulService, metaTitle } from '@libs';
+import type { Metadata, ResolvingMetadata } from 'next';
+import { Body } from './body';
 
 export const revalidate = 60 * 60; // revalidate every hour
 
@@ -18,8 +18,8 @@ export default async function Page({ params }: PageProps) {
 
   return (
     <div>
-      <header className="mb-4 mt-8">
-        <h1 className="text-2xl font-semibold">
+      <header className="mt-8 mb-4">
+        <h1 className="font-semibold text-2xl">
           {post.fields.title as string}
         </h1>
         <div className="mt-4 flex justify-between text-xs">
@@ -52,7 +52,7 @@ export async function generateStaticParams() {
 
 export async function generateMetadata(
   { params }: PageProps,
-  parent: ResolvingMetadata
+  _parent: ResolvingMetadata,
 ): Promise<Metadata> {
   const client = new ContentfulService();
   const post = await client.getPost(params.slug as string);

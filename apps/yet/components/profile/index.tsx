@@ -1,15 +1,15 @@
-import type { FC } from "react";
-import { type FragmentType, useFragment, graphql } from "@graphql";
+import { type FragmentType, graphql, useFragment } from '@graphql';
+import Image from 'next/image';
+import type { FC } from 'react';
+import ReactMarkdown from 'react-markdown';
 import {
-  heroStyle,
-  headingStyle,
-  thumbnailStyle,
-  nameStyle,
   detailStyle,
-} from "./index.css";
-import { SocialLinks } from "./SocialLinks";
-import ReactMarkdown from "react-markdown";
-import Image from "next/image";
+  headingStyle,
+  heroStyle,
+  nameStyle,
+  thumbnailStyle,
+} from './index.css';
+import { SocialLinks } from './SocialLinks';
 
 export const ProfileFragment = graphql(/* GraphQL */ `
   fragment ProfileItem on Profile {

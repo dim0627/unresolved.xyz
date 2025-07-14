@@ -1,5 +1,5 @@
-import classNames from "classnames";
-import { FC, PropsWithChildren } from "react";
+import classNames from 'classnames';
+import type { FC, PropsWithChildren } from 'react';
 
 interface ContainerProps {
   fullWidth?: boolean;
@@ -8,7 +8,7 @@ interface ContainerProps {
 export const Container: FC<PropsWithChildren<ContainerProps>> = (props) => {
   return (
     <div
-      className={classNames("px-4 mx-auto", { "max-w-2xl": !props.fullWidth })}
+      className={classNames('mx-auto px-4', { 'max-w-2xl': !props.fullWidth })}
     >
       {props.children}
     </div>

@@ -1,6 +1,6 @@
-import { Container } from "components/container";
-import { FC, PropsWithChildren, ReactNode } from "react";
-import { containerStyle, titleStyle } from "./index.css";
+import { Container } from 'components/container';
+import type { FC, PropsWithChildren, ReactNode } from 'react';
+import { containerStyle, titleStyle } from './index.css';
 
 interface SectionProps {
   title?: ReactNode;

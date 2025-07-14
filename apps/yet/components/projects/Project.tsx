@@ -1,21 +1,19 @@
-import { ProjectItemFragment } from "@graphql/graphql";
-import { FC } from "react";
-import { FiGithub, FiLink } from "react-icons/fi";
-import ReactMarkdown from "react-markdown";
+import type { ProjectItemFragment } from '@graphql/graphql';
+import type { FC } from 'react';
+import { FiGithub, FiLink } from 'react-icons/fi';
+import ReactMarkdown from 'react-markdown';
 import {
-  containerStyle,
-  titleStyle,
-  emojiStyle,
-  headerStyle,
   bodyStyle,
+  containerStyle,
+  emojiStyle,
   footerStyle,
-} from "./Project.css";
-import {
-  stacksStyle,
-  stackItemStyle,
-  linksStyle,
+  headerStyle,
   linkItemStyle,
-} from "./Project.css";
+  linksStyle,
+  stackItemStyle,
+  stacksStyle,
+  titleStyle,
+} from './Project.css';
 
 interface ProjectProps {
   project: ProjectItemFragment;
