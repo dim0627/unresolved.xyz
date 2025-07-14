@@ -1,9 +1,9 @@
-import type { AppProps } from "next/app";
-import { Josefin_Sans } from "@next/font/google";
-import "@styles/global.css";
-import Script from "next/script";
+import { Josefin_Sans } from '@next/font/google';
+import type { AppProps } from 'next/app';
+import '@styles/global.css';
+import Script from 'next/script';
 
-const font = Josefin_Sans({ subsets: ["latin"] });
+const font = Josefin_Sans({ subsets: ['latin'] });
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   return (

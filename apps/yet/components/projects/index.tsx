@@ -1,8 +1,8 @@
-import { FC } from "react";
-import { FragmentType, useFragment, graphql } from "@graphql";
-import { Project } from "./Project";
-import { containerStyle } from "./index.css";
-import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
+import { type FragmentType, graphql, useFragment } from '@graphql';
+import type { FC } from 'react';
+import Masonry, { ResponsiveMasonry } from 'react-responsive-masonry';
+import { containerStyle } from './index.css';
+import { Project } from './Project';
 
 const ProjectFragment = graphql(/* GraphQL */ `
   fragment ProjectItem on Project {

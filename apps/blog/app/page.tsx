@@ -1,6 +1,6 @@
-import { ContentfulService } from "@libs";
-import { List } from "./list";
-import { Metadata } from "next";
+import { ContentfulService } from '@libs';
+import type { Metadata } from 'next';
+import { List } from './list';
 
 export const revalidate = 60 * 60; // revalidate every hour
 
@@ -12,5 +12,5 @@ export default async function Page() {
 }
 
 export const metadata: Metadata = {
-  title: "blog.unresolved.xyz",
+  title: 'blog.unresolved.xyz',
 };

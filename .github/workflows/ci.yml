@@ -1,39 +1,41 @@
+# https://turbo.build/repo/docs/ci/github-actions
 name: CI
 
 on:
   push:
     branches: ["main"]
-  pull_request_target:
+  pull_request:
     types: [opened, synchronize]
 
-env:
-  SCHEMA_PATH: ${{ secrets.SCHEMA_PATH }}
-  GRAPHCMS_BEARER_TOKEN: ${{ secrets.GRAPHCMS_BEARER_TOKEN }}
-  CONTENTFUL_SPACE_ID: ${{ secrets.CONTENTFUL_SPACE_ID }}
-  CONTENTFUL_ACCESS_TOKEN: ${{ secrets.CONTENTFUL_ACCESS_TOKEN }}
-  CONTENTFUL_PREVIEW_ENABLED: ${{ secrets.CONTENTFUL_PREVIEW_ENABLED }}
+# 同じRefで複数のワークフローが発生した場合は古い方をキャンセルする
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   build:
-    name: Build and Test
+    name: Build
     timeout-minutes: 15
     runs-on: ubuntu-latest
-    # https://engineering.mobalab.net/2021/04/30/make-secrets-available-in-pull-request-opened-by-dependabot/
-    if: |
-      (github.event_name == 'pull_request_target' && github.actor == 'dependabot[bot]') ||
-      (github.event_name != 'pull_request_target' && github.actor != 'dependabot[bot]')
+    # To use Remote Caching, uncomment the next lines and follow the steps below.
+    env:
+      NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY: ${{ secrets.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY }}
+      CLERK_SECRET_KEY: ${{ secrets.CLERK_SECRET_KEY }}
+      SCHEMA_PATH: ${{ secrets.SCHEMA_PATH }}
+      GRAPHCMS_BEARER_TOKEN: ${{ secrets.GRAPHCMS_BEARER_TOKEN }}
+      CONTENTFUL_SPACE_ID: ${{ secrets.CONTENTFUL_SPACE_ID }}
+      CONTENTFUL_ACCESS_TOKEN: ${{ secrets.CONTENTFUL_ACCESS_TOKEN }}
+      CONTENTFUL_PREVIEW_ENABLED: ${{ secrets.CONTENTFUL_PREVIEW_ENABLED }}
+    #  TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
+    #  TURBO_TEAM: ${{ vars.TURBO_TEAM }}
+    #  TURBO_REMOTE_ONLY: true
+
     steps:
-      # https://engineering.mobalab.net/2021/04/30/make-secrets-available-in-pull-request-opened-by-dependabot/
       - name: Checkout
-        if: ${{ github.event_name != 'pull_request_target' }}
         uses: actions/checkout@v4
-      # pull_request_target 駆動の場合、コンテキストは Pull request のターゲットブランチ (main ブランチ) になるので、
-      # 当該 Pull request の HEAD コミットを明示的に指定しないと変更内容に対する CI を実行できない
-      - name: Checkout PR
-        if: ${{ github.event_name == 'pull_request_target' }}
-        uses: actions/checkout@v4
-        with:
-          ref: ${{ github.event.pull_request.head.sha }}
+
+      - name: Setup pnpm environment
+        uses: pnpm/action-setup@v4
 
       - name: Setup Node.js environment
         uses: actions/setup-node@v4
@@ -42,13 +44,16 @@ jobs:
           cache: "pnpm"
 
       - name: Install dependencies
-        run: yarn
+        run: pnpm i
 
       - name: Build
-        run: yarn build
+        run: pnpm build
+
+      - name: syncpack
+        run: pnpm syncpack:lint
 
       - name: Lint
-        run: yarn lint
+        run: pnpm lint
 
       - name: Test
-        run: yarn test
+        run: pnpm test

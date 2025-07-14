@@ -1,5 +1,5 @@
-import * as contentful from "contentful";
-import { settings } from "./settings";
+import * as contentful from 'contentful';
+import { settings } from './settings';
 
 export class ContentfulService {
   client: ReturnType<typeof contentful.createClient>;
@@ -9,7 +9,7 @@ export class ContentfulService {
       space: settings.contentfulSpace,
       accessToken: settings.contentfulAccessToken,
       host: settings.contentfulPreviewEnabled
-        ? "preview.contentful.com"
+        ? 'preview.contentful.com'
         : undefined,
     };
 
@@ -18,8 +18,8 @@ export class ContentfulService {
 
   getPosts() {
     return this.client.getEntries({
-      content_type: "2wKn6yEnZewu2SCCkus4as",
-      order: "-fields.date" as any,
+      content_type: '2wKn6yEnZewu2SCCkus4as',
+      order: '-fields.date' as any,
     });
   }
 

@@ -5,19 +5,21 @@
   "scripts": {
     "build": "turbo run build",
     "dev": "turbo run dev",
-    "lint": "turbo run lint",
-    "test": "turbo run test",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+    "lint": "biome check ./apps ./packages",
+    "lint:fix": "biome check ./apps ./packages --write --unsafe",
+    "syncpack:fix": "syncpack fix",
+    "syncpack:format": "syncpack format",
+    "syncpack:lint": "syncpack lint",
+    "test": "turbo run test"
   },
   "devDependencies": {
-    "eslint-config-custom": "*",
-    "prettier": "latest",
+    "@biomejs/biome": "2.1.1",
+    "syncpack": "14.0.0-alpha.18",
     "turbo": "latest"
   },
   "engines": {
     "node": ">=18.10.0"
   },
-  "dependencies": {},
   "packageManager": "pnpm@10.12.2",
   "workspaces": [
     "apps/*",

@@ -1,13 +1,13 @@
-import { pressable } from "@styles/button.css";
-import { style } from "@vanilla-extract/css";
+import { pressable } from '@styles/button.css';
+import { style } from '@vanilla-extract/css';
 
 export const container = style({
-  display: "flex",
-  listStyle: "none",
-  gap: "1rem",
-  "@media": {
-    "screen and (max-width: 750px)": {
-      justifyContent: "center",
+  display: 'flex',
+  listStyle: 'none',
+  gap: '1rem',
+  '@media': {
+    'screen and (max-width: 750px)': {
+      justifyContent: 'center',
     },
   },
 });
@@ -15,6 +15,6 @@ export const container = style({
 export const item = style([
   pressable,
   {
-    padding: "1rem",
+    padding: '1rem',
   },
 ]);

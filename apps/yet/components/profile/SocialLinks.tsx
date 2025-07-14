@@ -1,14 +1,14 @@
+import type { ProfileItemFragment } from '@graphql/graphql';
+import type { FC } from 'react';
+import type { IconType } from 'react-icons';
 import {
-  FiMail,
   FiFacebook,
-  FiLinkedin,
   FiGithub,
+  FiLinkedin,
+  FiMail,
   FiTwitter,
-} from "react-icons/fi";
-import { IconType } from "react-icons";
-import { FC } from "react";
-import { container, item } from "./SocialLinks.css";
-import { ProfileItemFragment } from "@graphql/graphql";
+} from 'react-icons/fi';
+import { container, item } from './SocialLinks.css';
 
 interface SocialLinksProps {
   profile: ProfileItemFragment;

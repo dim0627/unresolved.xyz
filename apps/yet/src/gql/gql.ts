@@ -1,6 +1,7 @@
 /* eslint-disable */
+
+import type { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/core';
 import * as types from './graphql';
-import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/core';
 
 /**
  * Map of all GraphQL operations in the project.
@@ -13,10 +14,14 @@ import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/
  * Therefore it is highly recommended to use the babel or swc plugin for production.
  */
 const documents = {
-    "\n  fragment CareerItem on Career {\n    id\n    emoji\n    companyName\n    stacks\n    roles\n    joinedAt\n    leavedAt\n  }\n": types.CareerItemFragmentDoc,
-    "\n  fragment ProfileItem on Profile {\n    id\n    thumbnail {\n      url\n    }\n    fullName\n    description\n    details\n    twitterUrl\n    gitHubUrl\n    linkedInUrl\n    facebookUrl\n    emailAddress\n  }\n": types.ProfileItemFragmentDoc,
-    "\n  fragment ProjectItem on Project {\n    id\n    emoji\n    title\n    stacks\n    description\n    href\n    repositoryUrl\n  }\n": types.ProjectItemFragmentDoc,
-    "\n  query indexQuery {\n    profiles {\n      ...ProfileItem\n    }\n    projects(orderBy: position_DESC) {\n      ...ProjectItem\n    }\n    careers(orderBy: joinedAt_ASC) {\n      ...CareerItem\n    }\n  }\n": types.IndexQueryDocument,
+  '\n  fragment CareerItem on Career {\n    id\n    emoji\n    companyName\n    stacks\n    roles\n    joinedAt\n    leavedAt\n  }\n':
+    types.CareerItemFragmentDoc,
+  '\n  fragment ProfileItem on Profile {\n    id\n    thumbnail {\n      url\n    }\n    fullName\n    description\n    details\n    twitterUrl\n    gitHubUrl\n    linkedInUrl\n    facebookUrl\n    emailAddress\n  }\n':
+    types.ProfileItemFragmentDoc,
+  '\n  fragment ProjectItem on Project {\n    id\n    emoji\n    title\n    stacks\n    description\n    href\n    repositoryUrl\n  }\n':
+    types.ProjectItemFragmentDoc,
+  '\n  query indexQuery {\n    profiles {\n      ...ProfileItem\n    }\n    projects(orderBy: position_DESC) {\n      ...ProjectItem\n    }\n    careers(orderBy: joinedAt_ASC) {\n      ...CareerItem\n    }\n  }\n':
+    types.IndexQueryDocument,
 };
 
 /**
@@ -36,22 +41,31 @@ export function graphql(source: string): unknown;
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(source: "\n  fragment CareerItem on Career {\n    id\n    emoji\n    companyName\n    stacks\n    roles\n    joinedAt\n    leavedAt\n  }\n"): (typeof documents)["\n  fragment CareerItem on Career {\n    id\n    emoji\n    companyName\n    stacks\n    roles\n    joinedAt\n    leavedAt\n  }\n"];
+export function graphql(
+  source: '\n  fragment CareerItem on Career {\n    id\n    emoji\n    companyName\n    stacks\n    roles\n    joinedAt\n    leavedAt\n  }\n',
+): (typeof documents)['\n  fragment CareerItem on Career {\n    id\n    emoji\n    companyName\n    stacks\n    roles\n    joinedAt\n    leavedAt\n  }\n'];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(source: "\n  fragment ProfileItem on Profile {\n    id\n    thumbnail {\n      url\n    }\n    fullName\n    description\n    details\n    twitterUrl\n    gitHubUrl\n    linkedInUrl\n    facebookUrl\n    emailAddress\n  }\n"): (typeof documents)["\n  fragment ProfileItem on Profile {\n    id\n    thumbnail {\n      url\n    }\n    fullName\n    description\n    details\n    twitterUrl\n    gitHubUrl\n    linkedInUrl\n    facebookUrl\n    emailAddress\n  }\n"];
+export function graphql(
+  source: '\n  fragment ProfileItem on Profile {\n    id\n    thumbnail {\n      url\n    }\n    fullName\n    description\n    details\n    twitterUrl\n    gitHubUrl\n    linkedInUrl\n    facebookUrl\n    emailAddress\n  }\n',
+): (typeof documents)['\n  fragment ProfileItem on Profile {\n    id\n    thumbnail {\n      url\n    }\n    fullName\n    description\n    details\n    twitterUrl\n    gitHubUrl\n    linkedInUrl\n    facebookUrl\n    emailAddress\n  }\n'];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(source: "\n  fragment ProjectItem on Project {\n    id\n    emoji\n    title\n    stacks\n    description\n    href\n    repositoryUrl\n  }\n"): (typeof documents)["\n  fragment ProjectItem on Project {\n    id\n    emoji\n    title\n    stacks\n    description\n    href\n    repositoryUrl\n  }\n"];
+export function graphql(
+  source: '\n  fragment ProjectItem on Project {\n    id\n    emoji\n    title\n    stacks\n    description\n    href\n    repositoryUrl\n  }\n',
+): (typeof documents)['\n  fragment ProjectItem on Project {\n    id\n    emoji\n    title\n    stacks\n    description\n    href\n    repositoryUrl\n  }\n'];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(source: "\n  query indexQuery {\n    profiles {\n      ...ProfileItem\n    }\n    projects(orderBy: position_DESC) {\n      ...ProjectItem\n    }\n    careers(orderBy: joinedAt_ASC) {\n      ...CareerItem\n    }\n  }\n"): (typeof documents)["\n  query indexQuery {\n    profiles {\n      ...ProfileItem\n    }\n    projects(orderBy: position_DESC) {\n      ...ProjectItem\n    }\n    careers(orderBy: joinedAt_ASC) {\n      ...CareerItem\n    }\n  }\n"];
+export function graphql(
+  source: '\n  query indexQuery {\n    profiles {\n      ...ProfileItem\n    }\n    projects(orderBy: position_DESC) {\n      ...ProjectItem\n    }\n    careers(orderBy: joinedAt_ASC) {\n      ...CareerItem\n    }\n  }\n',
+): (typeof documents)['\n  query indexQuery {\n    profiles {\n      ...ProfileItem\n    }\n    projects(orderBy: position_DESC) {\n      ...ProjectItem\n    }\n    careers(orderBy: joinedAt_ASC) {\n      ...CareerItem\n    }\n  }\n'];
 
 export function graphql(source: string) {
   return (documents as any)[source] ?? {};
 }
 
-export type DocumentType<TDocumentNode extends DocumentNode<any, any>> = TDocumentNode extends DocumentNode<  infer TType,  any>  ? TType  : never;
+export type DocumentType<TDocumentNode extends DocumentNode<any, any>> =
+  TDocumentNode extends DocumentNode<infer TType, any> ? TType : never;

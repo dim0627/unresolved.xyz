@@ -1,6 +1,6 @@
-import { FC } from "react";
-import { Container } from "@components";
-import Link from "next/link";
+import { Container } from '@components';
+import Link from 'next/link';
+import type { FC } from 'react';
 
 export const Header: FC = () => {
   return (
@@ -8,7 +8,7 @@ export const Header: FC = () => {
       <Container>
         <Link
           href="/"
-          className="text-xl font-semibold tracking-widest text-red-500"
+          className="font-semibold text-red-500 text-xl tracking-widest"
         >
           blog.unresolved.xyz
         </Link>
