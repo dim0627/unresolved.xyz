@@ -10,7 +10,6 @@
   },
   "dependencies": {
     "@next/font": "^14.0.4",
-
     "graphql": "^16.9.0",
     "graphql-request": "^6.1.0",
     "next": "^14.2.7",
@@ -32,7 +31,7 @@
     "autoprefixer": "^10.4.17",
     "postcss": "^8.4.44",
     "tailwindcss": "^3.4.4",
-    "tsconfig": "*",
+    "@unresolved/tsconfig": "workspace:*",
     "typescript": "^5.3.3"
   }
 }
