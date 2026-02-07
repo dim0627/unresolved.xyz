@@ -2,13 +2,6 @@ import { type FragmentType, graphql, useFragment } from '@graphql';
 import Image from 'next/image';
 import type { FC } from 'react';
 import ReactMarkdown from 'react-markdown';
-import {
-  detailStyle,
-  headingStyle,
-  heroStyle,
-  nameStyle,
-  thumbnailStyle,
-} from './index.css';
 import { SocialLinks } from './SocialLinks';
 
 export const ProfileFragment = graphql(/* GraphQL */ `
@@ -37,18 +30,18 @@ export const Profile: FC<ProfileProps> = (props) => {
 
   return (
     <>
-      <div className={heroStyle}>
+      <div className="flex h-[40vh] items-center max-md:block">
         <div>
-          <div className={headingStyle}>
+          <div className="flex mb-6 items-center max-md:flex-col">
             <Image
               src={profile.thumbnail.url}
               alt={profile.fullName}
               width={128}
               height={128}
-              className={thumbnailStyle}
+              className="mr-8 rounded-[12%] shadow-bordered max-md:mr-0"
             />
             <div>
-              <h1 className={nameStyle}>{profile.fullName}</h1>
+              <h1 className="text-[3rem] max-md:mt-4">{profile.fullName}</h1>
               <div>{profile.description}</div>
             </div>
           </div>
@@ -61,7 +54,7 @@ export const Profile: FC<ProfileProps> = (props) => {
             <a target="_blank" rel="nofollow noreferrer" {...props} />
           ),
         }}
-        className={detailStyle}
+        className="mt-12 profile-detail"
       >
         {profile.details}
       </ReactMarkdown>

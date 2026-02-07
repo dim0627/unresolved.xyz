@@ -1,6 +1,5 @@
 import type { FC, PropsWithChildren } from 'react';
-import { cotnainerStyle } from './index.css';
 
 export const Container: FC<PropsWithChildren<{}>> = (props) => {
-  return <div className={cotnainerStyle}>{props.children}</div>;
+  return <div className="max-w-[60rem] mx-auto px-6">{props.children}</div>;
 };

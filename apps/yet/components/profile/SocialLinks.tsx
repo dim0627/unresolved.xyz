@@ -8,7 +8,6 @@ import {
   FiMail,
   FiTwitter,
 } from 'react-icons/fi';
-import { container, item } from './SocialLinks.css';
 
 interface SocialLinksProps {
   profile: ProfileItemFragment;
@@ -16,7 +15,7 @@ interface SocialLinksProps {
 
 export const SocialLinks: FC<SocialLinksProps> = ({ profile }) => {
   return (
-    <ul className={container}>
+    <ul className="flex list-none gap-4 max-md:justify-center">
       {profile.twitterUrl && (
         <Item href={profile.twitterUrl} Icon={FiTwitter} />
       )}
@@ -42,7 +41,12 @@ interface ItemProps {
 const Item: FC<ItemProps> = ({ href, Icon }) => {
   return (
     <li>
-      <a href={href} rel="nofollow noreferrer" target="_blank" className={item}>
+      <a
+        href={href}
+        rel="nofollow noreferrer"
+        target="_blank"
+        className="inline-flex border border-base rounded-2xl shadow-button p-4"
+      >
         <Icon size={20} />
       </a>
     </li>
