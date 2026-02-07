@@ -45,7 +45,7 @@ const Item: FC<ItemProps> = ({ href, Icon }) => {
         href={href}
         rel="nofollow noreferrer"
         target="_blank"
-        className="inline-flex border border-base rounded-2xl shadow-button p-4"
+        className="inline-flex rounded-2xl border border-base p-4 shadow-button"
       >
         <Icon size={20} />
       </a>

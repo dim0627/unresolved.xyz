@@ -1,5 +1,5 @@
-import { Josefin_Sans } from '@next/font/google';
 import type { AppProps } from 'next/app';
+import { Josefin_Sans } from 'next/font/google';
 import '@styles/global.css';
 import Script from 'next/script';
 

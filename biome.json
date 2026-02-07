@@ -19,8 +19,14 @@
       "!**/apps/api/schema*",
       "!**/apps/cli/bin/**/*",
       "!**/packages/vendor-api-client/**/schema.json",
-      "!**/packages/vendor-api-client/**/generated"
+      "!**/packages/vendor-api-client/**/generated",
+      "!**/next-env.d.ts"
     ]
+  },
+  "css": {
+    "parser": {
+      "tailwindDirectives": true
+    }
   },
   "formatter": {
     "formatWithErrors": true,

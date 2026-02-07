@@ -8,18 +8,18 @@ interface CareerProps {
 export const Career: FC<CareerProps> = ({ career }) => {
   return (
     <div>
-      <div className="relative text-base before:content-[''] before:absolute before:box-border before:w-4 before:h-4 before:top-1 before:bottom-0 before:-left-[1.75rem] before:border-2 before:border-base before:bg-brand before:rounded-[10px]">
+      <div className="relative text-base before:absolute before:top-1 before:bottom-0 before:-left-[1.75rem] before:box-border before:h-4 before:w-4 before:rounded-[10px] before:border-2 before:border-base before:bg-brand before:content-['']">
         {career.joinedAt}
       </div>
-      <div className="border-2 border-base rounded-3xl shadow-bordered m-2 px-6 py-4">
+      <div className="m-2 rounded-3xl border-2 border-base px-6 py-4 shadow-bordered">
         <div className="flex items-end">
-          <span className="text-2xl mr-4 leading-8">{career.emoji}</span>
+          <span className="mr-4 text-2xl leading-8">{career.emoji}</span>
           <div>
-            <ul className="flex gap-2 list-none flex-wrap">
+            <ul className="flex list-none flex-wrap gap-2">
               {career.roles.map((role) => (
                 <li
                   key={role}
-                  className="inline-block py-0.5 px-2 leading-tight text-[.7rem] bg-base/5 rounded-[3px]"
+                  className="inline-block rounded-[3px] bg-base/5 px-2 py-0.5 text-[.7rem] leading-tight"
                 >
                   {role}
                 </li>
@@ -28,18 +28,18 @@ export const Career: FC<CareerProps> = ({ career }) => {
             <h3 className="mt-2">{career.companyName}</h3>
           </div>
         </div>
-        <ul className="flex gap-2 list-none flex-wrap mt-2">
+        <ul className="mt-2 flex list-none flex-wrap gap-2">
           {career.stacks.map((stack) => (
             <li
               key={stack}
-              className="inline-block py-1 px-3 text-[.7rem] border border-base/10 rounded-full"
+              className="inline-block rounded-full border border-base/10 px-3 py-1 text-[.7rem]"
             >
               {stack}
             </li>
           ))}
         </ul>
       </div>
-      <div className="relative text-base before:content-[''] before:absolute before:box-border before:w-4 before:h-4 before:top-1 before:bottom-0 before:-left-[1.75rem] before:border-2 before:border-base before:bg-brand before:rounded-[10px]">
+      <div className="relative text-base before:absolute before:top-1 before:bottom-0 before:-left-[1.75rem] before:box-border before:h-4 before:w-4 before:rounded-[10px] before:border-2 before:border-base before:bg-brand before:content-['']">
         {career.leavedAt || 'Now'}
       </div>
     </div>

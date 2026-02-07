@@ -32,7 +32,7 @@ export const Profile: FC<ProfileProps> = (props) => {
     <>
       <div className="flex h-[40vh] items-center max-md:block">
         <div>
-          <div className="flex mb-6 items-center max-md:flex-col">
+          <div className="mb-6 flex items-center max-md:flex-col">
             <Image
               src={profile.thumbnail.url}
               alt={profile.fullName}
@@ -48,16 +48,17 @@ export const Profile: FC<ProfileProps> = (props) => {
           <SocialLinks profile={profile} />
         </div>
       </div>
-      <ReactMarkdown
-        components={{
-          a: ({ node, ...props }) => (
-            <a target="_blank" rel="nofollow noreferrer" {...props} />
-          ),
-        }}
-        className="mt-12 profile-detail"
-      >
-        {profile.details}
-      </ReactMarkdown>
+      <div className="profile-detail mt-12">
+        <ReactMarkdown
+          components={{
+            a: (props) => (
+              <a target="_blank" rel="nofollow noreferrer" {...props} />
+            ),
+          }}
+        >
+          {profile.details}
+        </ReactMarkdown>
+      </div>
     </>
   );
 };

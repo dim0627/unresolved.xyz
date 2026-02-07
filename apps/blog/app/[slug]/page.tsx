@@ -2,17 +2,18 @@ import { ContentfulService, metaTitle } from '@libs';
 import type { Metadata, ResolvingMetadata } from 'next';
 import { Body } from './body';
 
-export const revalidate = 60 * 60; // revalidate every hour
+export const revalidate = 3600; // revalidate every hour
 
 type PageProps = {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 };
 
 export default async function Page({ params }: PageProps) {
+  const { slug } = await params;
   const client = new ContentfulService();
-  const post = await client.getPost(params.slug as string);
+  const post = await client.getPost(slug as string);
 
   if (!post) return null;
 
@@ -45,17 +46,20 @@ export async function generateStaticParams() {
   const client = new ContentfulService();
   const posts = await client.getPosts();
 
-  return posts.items.map((post) => ({
-    slug: post.fields.slug as string,
-  }));
+  return posts.items
+    .filter((post) => typeof post.fields.slug === 'string')
+    .map((post) => ({
+      slug: post.fields.slug as string,
+    }));
 }
 
 export async function generateMetadata(
   { params }: PageProps,
   _parent: ResolvingMetadata,
 ): Promise<Metadata> {
+  const { slug } = await params;
   const client = new ContentfulService();
-  const post = await client.getPost(params.slug as string);
+  const post = await client.getPost(slug as string);
 
   if (!post) return {};
 

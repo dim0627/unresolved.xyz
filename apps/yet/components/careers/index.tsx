@@ -22,7 +22,7 @@ export const Careers: FC<Props> = (props) => {
   const careers = useFragment(CareerFragment, props.careers);
 
   return (
-    <div className="flex relative flex-col gap-8 max-w-[32rem] py-6 pl-6 before:content-[''] before:absolute before:w-1 before:top-0 before:bottom-0 before:left-0 before:border-2 before:border-base/10 before:rounded-[10px]">
+    <div className="relative flex max-w-[32rem] flex-col gap-8 py-6 pl-6 before:absolute before:top-0 before:bottom-0 before:left-0 before:w-1 before:rounded-[10px] before:border-2 before:border-base/10 before:content-['']">
       {careers.map((career) => (
         <Career key={career.id} career={career} />
       ))}

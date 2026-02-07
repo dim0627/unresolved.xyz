@@ -9,20 +9,22 @@ interface ProjectProps {
 
 export const Project: FC<ProjectProps> = ({ project }) => {
   return (
-    <div className="border-2 border-base rounded-3xl shadow-bordered">
+    <div className="rounded-3xl border-2 border-base shadow-bordered">
       <div className="px-6 pt-4 pb-4">
         <header className="flex">
-          <span className="text-[2rem] mt-2 mr-4 leading-8">{project.emoji}</span>
+          <span className="mt-2 mr-4 text-[2rem] leading-8">
+            {project.emoji}
+          </span>
           <div>
-            <h3 className="text-2xl font-bold">{project.title}</h3>
+            <h3 className="font-bold text-2xl">{project.title}</h3>
             <ReactMarkdown>{project.description}</ReactMarkdown>
           </div>
         </header>
-        <ul className="flex gap-2 list-none flex-wrap mt-2">
+        <ul className="mt-2 flex list-none flex-wrap gap-2">
           {project.stacks.map((stack) => (
             <li
               key={stack}
-              className="inline-block py-1 px-3 text-[.7rem] border border-base/10 rounded-full"
+              className="inline-block rounded-full border border-base/10 px-3 py-1 text-[.7rem]"
             >
               {stack}
             </li>
@@ -30,14 +32,14 @@ export const Project: FC<ProjectProps> = ({ project }) => {
         </ul>
       </div>
       {(project.href || project.repositoryUrl) && (
-        <footer className="px-6 py-4 border-t-2 border-dashed border-base">
-          <ul className="flex gap-2 list-none">
+        <footer className="border-base border-t-2 border-dashed px-6 py-4">
+          <ul className="flex list-none gap-2">
             {project.href && (
               <li>
                 <a
                   href={project.href}
                   aria-label={project.title}
-                  className="inline-flex border border-base rounded-2xl shadow-button py-2 px-4"
+                  className="inline-flex rounded-2xl border border-base px-4 py-2 shadow-button"
                 >
                   <FiLink size={15} />
                 </a>
@@ -50,7 +52,7 @@ export const Project: FC<ProjectProps> = ({ project }) => {
                   rel="nofollow noreferrer"
                   target="_blank"
                   aria-label="repository url"
-                  className="inline-flex border border-base rounded-2xl shadow-button py-2 px-4"
+                  className="inline-flex rounded-2xl border border-base px-4 py-2 shadow-button"
                 >
                   <FiGithub size={15} />
                 </a>
