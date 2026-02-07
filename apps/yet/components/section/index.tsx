@@ -1,6 +1,5 @@
 import { Container } from 'components/container';
 import type { FC, PropsWithChildren, ReactNode } from 'react';
-import { containerStyle, titleStyle } from './index.css';
 
 interface SectionProps {
   title?: ReactNode;
@@ -8,9 +7,9 @@ interface SectionProps {
 
 export const Section: FC<PropsWithChildren<SectionProps>> = (props) => {
   return (
-    <section className={containerStyle}>
+    <section className="py-16">
       <Container>
-        {props.title && <h2 className={titleStyle}>{props.title}</h2>}
+        {props.title && <h2 className="mb-6 text-[4rem]">{props.title}</h2>}
         {props.children}
       </Container>
     </section>

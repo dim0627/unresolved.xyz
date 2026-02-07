@@ -3,7 +3,6 @@
 import type { ContentfulService } from '@libs';
 import type { FC } from 'react';
 import ReactMarkdown from 'react-markdown';
-import type { SpecialComponents } from 'react-markdown/lib/ast-to-react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { nord } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 import rehypeRaw from 'rehype-raw';
@@ -11,17 +10,14 @@ import rehypeSlug from 'rehype-slug';
 import remarkGfm from 'remark-gfm';
 import toc from 'remark-toc';
 
-const CodeBlock: SpecialComponents['code'] = ({
-  node,
-  inline,
+const CodeBlock = ({
   className,
   children,
   ...props
-}) => {
+}: React.ComponentPropsWithoutRef<'code'>) => {
   const match = /language-(\w+)/.exec(className || '');
-  return !inline && match ? (
+  return match ? (
     <SyntaxHighlighter
-      {...props}
       style={nord}
       language={match[1]}
       codeTagProps={{ className: 'text-xs leading-3' }}
@@ -50,36 +46,29 @@ interface BodyProps {
 
 export const Body: FC<BodyProps> = ({ post }) => {
   return (
-    <ReactMarkdown
-      className="break-all"
-      remarkPlugins={[remarkGfm, [toc, { tight: true }]]}
-      rehypePlugins={[rehypeSlug, rehypeRaw]}
-      components={{
-        h2: ({ node, ...props }) => (
-          <h2 {...props} className="mt-16 mb-4 font-semibold text-xl" />
-        ),
-        h3: ({ node, ...props }) => (
-          <h3 {...props} className="mt-10 mb-4 font-semibold text-lg" />
-        ),
-        p: ({ node, ...props }) => <p {...props} className="my-6 text-lg" />,
-        code: CodeBlock,
-        a: ({ node, ...props }) => (
-          <a {...props} className="text-red-500 underline" />
-        ),
-        b: ({ node, ...props }) => <b {...props} className="font-semibold" />,
-        strong: ({ node, ...props }) => (
-          <b {...props} className="font-semibold" />
-        ),
-        ul: ({ node, ...props }) => (
-          <ul {...props} className="list-disc pl-8" />
-        ),
-        ol: ({ node, ...props }) => (
-          <ul {...props} className="list-decimal pl-8" />
-        ),
-        li: ({ node, ...props }) => <li {...props} className="my-2 text-lg" />,
-      }}
-    >
-      {post.fields.body as string}
-    </ReactMarkdown>
+    <div className="break-all">
+      <ReactMarkdown
+        remarkPlugins={[remarkGfm, [toc, { tight: true }]]}
+        rehypePlugins={[rehypeSlug, rehypeRaw]}
+        components={{
+          h2: (props) => (
+            <h2 {...props} className="mt-16 mb-4 font-semibold text-xl" />
+          ),
+          h3: (props) => (
+            <h3 {...props} className="mt-10 mb-4 font-semibold text-lg" />
+          ),
+          p: (props) => <p {...props} className="my-6 text-lg" />,
+          code: CodeBlock,
+          a: (props) => <a {...props} className="text-red-500 underline" />,
+          b: (props) => <b {...props} className="font-semibold" />,
+          strong: (props) => <b {...props} className="font-semibold" />,
+          ul: (props) => <ul {...props} className="list-disc pl-8" />,
+          ol: (props) => <ul {...props} className="list-decimal pl-8" />,
+          li: (props) => <li {...props} className="my-2 text-lg" />,
+        }}
+      >
+        {post.fields.body as string}
+      </ReactMarkdown>
+    </div>
   );
 };

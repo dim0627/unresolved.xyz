@@ -1,7 +1,5 @@
 import { type FragmentType, graphql, useFragment } from '@graphql';
 import type { FC } from 'react';
-import Masonry, { ResponsiveMasonry } from 'react-responsive-masonry';
-import { containerStyle } from './index.css';
 import { Project } from './Project';
 
 const ProjectFragment = graphql(/* GraphQL */ `
@@ -24,14 +22,12 @@ export const Projects: FC<Props> = (props) => {
   const projects = useFragment(ProjectFragment, props.projects);
 
   return (
-    <ResponsiveMasonry columnsCountBreakPoints={{ 350: 1, 750: 2, 900: 2 }}>
-      <Masonry className={containerStyle} gutter="1.5rem">
-        {projects.map((project) => (
-          <li key={project.id}>
-            <Project project={project} />
-          </li>
-        ))}
-      </Masonry>
-    </ResponsiveMasonry>
+    <ul className="list-none columns-1 gap-6 sm:columns-2">
+      {projects.map((project) => (
+        <li key={project.id} className="mb-6 break-inside-avoid">
+          <Project project={project} />
+        </li>
+      ))}
+    </ul>
   );
 };

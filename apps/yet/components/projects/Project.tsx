@@ -2,18 +2,6 @@ import type { ProjectItemFragment } from '@graphql/graphql';
 import type { FC } from 'react';
 import { FiGithub, FiLink } from 'react-icons/fi';
 import ReactMarkdown from 'react-markdown';
-import {
-  bodyStyle,
-  containerStyle,
-  emojiStyle,
-  footerStyle,
-  headerStyle,
-  linkItemStyle,
-  linksStyle,
-  stackItemStyle,
-  stacksStyle,
-  titleStyle,
-} from './Project.css';
 
 interface ProjectProps {
   project: ProjectItemFragment;
@@ -21,32 +9,37 @@ interface ProjectProps {
 
 export const Project: FC<ProjectProps> = ({ project }) => {
   return (
-    <div className={containerStyle}>
-      <div className={bodyStyle}>
-        <header className={headerStyle}>
-          <span className={emojiStyle}>{project.emoji}</span>
+    <div className="rounded-3xl border-2 border-base shadow-bordered">
+      <div className="px-6 pt-4 pb-4">
+        <header className="flex">
+          <span className="mt-2 mr-4 text-[2rem] leading-8">
+            {project.emoji}
+          </span>
           <div>
-            <h3 className={titleStyle}>{project.title}</h3>
+            <h3 className="font-bold text-2xl">{project.title}</h3>
             <ReactMarkdown>{project.description}</ReactMarkdown>
           </div>
         </header>
-        <ul className={stacksStyle}>
+        <ul className="mt-2 flex list-none flex-wrap gap-2">
           {project.stacks.map((stack) => (
-            <li key={stack} className={stackItemStyle}>
+            <li
+              key={stack}
+              className="inline-block rounded-full border border-base/10 px-3 py-1 text-[.7rem]"
+            >
               {stack}
             </li>
           ))}
         </ul>
       </div>
       {(project.href || project.repositoryUrl) && (
-        <footer className={footerStyle}>
-          <ul className={linksStyle}>
+        <footer className="border-base border-t-2 border-dashed px-6 py-4">
+          <ul className="flex list-none gap-2">
             {project.href && (
               <li>
                 <a
                   href={project.href}
                   aria-label={project.title}
-                  className={linkItemStyle}
+                  className="inline-flex rounded-2xl border border-base px-4 py-2 shadow-button"
                 >
                   <FiLink size={15} />
                 </a>
@@ -59,7 +52,7 @@ export const Project: FC<ProjectProps> = ({ project }) => {
                   rel="nofollow noreferrer"
                   target="_blank"
                   aria-label="repository url"
-                  className={linkItemStyle}
+                  className="inline-flex rounded-2xl border border-base px-4 py-2 shadow-button"
                 >
                   <FiGithub size={15} />
                 </a>
