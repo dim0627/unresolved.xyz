@@ -13,7 +13,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           <Container fullWidth>
             <Link
               href="/"
-              className="font-semibold text-red-500 text-xl tracking-widest"
+              className="font-semibold text-black text-xl tracking-widest"
             >
               blog.unresolved.xyz
             </Link>
@@ -22,7 +22,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <Container>{children}</Container>
         <footer className="mt-8 py-4">
           <Container fullWidth>
-            <span className="text-slate-500">
+            <span className="text-neutral-500">
               &copy; {new Date().getFullYear()} blog.unresolved.xyz
             </span>
           </Container>

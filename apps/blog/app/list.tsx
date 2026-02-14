@@ -11,13 +11,13 @@ interface ItemProps {
 const Item: FC<ItemProps> = ({ item }) => {
   return (
     <Link
-      className="-mx-4 block rounded-none p-4 duration-200 hover:bg-slate-50 sm:rounded-3xl"
+      className="-mx-4 block rounded-none p-4 duration-200 hover:bg-neutral-100 sm:rounded-3xl"
       href={`/${item.slug}`}
     >
       <h2 className="mb-2 font-semibold text-xl tracking-widest">
         {item.title}
       </h2>
-      <div className="line-clamp-4 text-slate-500">
+      <div className="line-clamp-4 text-neutral-500">
         <ReactMarkdown remarkPlugins={[strip]}>{item.body}</ReactMarkdown>
       </div>
     </Link>

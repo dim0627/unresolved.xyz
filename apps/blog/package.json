@@ -8,6 +8,8 @@
     "start": "next start"
   },
   "dependencies": {
+    "@fontsource/ibm-plex-mono": "^5.2.7",
+    "@fontsource/noto-sans-mono": "^5.2.10",
     "classnames": "^2.5.1",
     "gray-matter": "^4.0.3",
     "next": "^16.1.6",

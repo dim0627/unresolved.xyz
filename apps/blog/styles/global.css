@@ -1,6 +1,11 @@
-@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;600&display=swap");
+@import "@fontsource/noto-sans-mono/400.css";
+@import "@fontsource/noto-sans-mono/600.css";
+@import "@fontsource/ibm-plex-mono/400.css";
+@import "@fontsource/ibm-plex-mono/600.css";
 @import "tailwindcss";
 
 html {
-  font-family: "Noto Sans JP", sans-serif;
+  font-family: "IBM Plex Mono", "Noto Sans Mono", monospace;
+  background-color: #fff;
+  color: #1a1a1a;
 }
