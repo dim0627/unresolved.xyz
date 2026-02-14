@@ -1,14 +1,14 @@
 ---
-title: "tsconfigのbaseUrlとeslintを共存させる"
+title: "tsconfigのbaseUrlとeslintを共存させる方法"
 date: "2020-08-10T00:00+09:00"
 tags:
   - "TypeScript"
   - "TIL"
 ---
 
-tsconfigにbaseUrlを設定しているとeslintがコケることがある。
+tsconfigにbaseUrlを設定しているとeslintがコケることがあります。
 
-1回設定したら終わりだしメモらなくていいでしょ〜って思ってたけど5回ぐらいググってるのでこっちにメモっとく。
+1回設定したら終わりだしメモしなくていいだろうと思っていましたが、5回くらいググっているのでこちらにメモしておきます。
 
 ```text
 error  Unable to resolve path to module '#/foo'  import/no-unresolved
@@ -16,7 +16,7 @@ error  Unable to resolve path to module '#/foo'  import/no-unresolved
 
 ## eslint-import-resolver-typescriptの導入とresolverの設定をする
 
-ようはimport記法でtsファイルを解決できてないらしい。
+要はimport記法でtsファイルを解決できていないようです。
 
 ```bash
 yarn add -D eslint-import-resolver-typescript
@@ -35,7 +35,7 @@ yarn add -D eslint-import-resolver-typescript
 }
 ```
 
-したら消えます。
+としたら消えます。
 
 ## refs
 

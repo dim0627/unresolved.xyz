@@ -17,8 +17,8 @@ export default async function Page({ params }: PageProps) {
   return (
     <div>
       <header className="mt-8 mb-4">
-        <h1 className="font-semibold text-2xl">{post.title}</h1>
-        <div className="mt-4 flex justify-between text-xs">
+        <h1 className="font-semibold text-2xl tracking-widest">{post.title}</h1>
+        <div className="mt-4 flex justify-between text-sm">
           <span className="font-semibold text-neutral-500">
             {new Date(post.date).toDateString()}
           </span>

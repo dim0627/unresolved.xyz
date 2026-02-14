@@ -8,7 +8,7 @@ interface ContainerProps {
 export const Container: FC<PropsWithChildren<ContainerProps>> = (props) => {
   return (
     <div
-      className={classNames('mx-auto px-4', { 'max-w-2xl': !props.fullWidth })}
+      className={classNames('mx-auto px-4', { 'max-w-4xl': !props.fullWidth })}
     >
       {props.children}
     </div>

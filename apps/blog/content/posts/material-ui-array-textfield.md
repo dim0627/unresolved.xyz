@@ -1,5 +1,5 @@
 ---
-title: "Material-UIで配列を複数のTextFieldに分割して処理する"
+title: "Material-UIで配列を複数のTextFieldに分割して処理する方法"
 date: "2021-07-01T00:00+09:00"
 tags:
   - "React"

@@ -1,12 +1,12 @@
 ---
-title: "NativeBaseのFabがBottomTab(React Navigation)にかぶってしまう"
+title: "NativeBaseのFabがBottomTab(React Navigation)にかぶってしまう問題の解決方法"
 date: "2022-03-24T00:00+09:00"
 tags:
   - "React Native"
   - "TIL"
 ---
 
-BottomTabのheightは `useBottomTabBarHeight` で取得できるので、こんな感じで逃げられる。
+BottomTabのheightは `useBottomTabBarHeight` で取得できるので、このような形で回避できます。
 
 ``` tsx
 import { Box, Fab, Icon, Text } from 'native-base';

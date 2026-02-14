@@ -1,11 +1,11 @@
 ---
-title: "rmagickで画像を一括リサイズする"
+title: "rmagickで画像を一括リサイズする方法"
 date: "2020-05-18T00:00+09:00"
 tags:
   - "Ruby"
 ---
 
-前回に続いてローカルの作業自動化で何回か使ったので見失わないようにメモ。
+前回に続いてローカルの作業自動化で何回か使ったので、見失わないようにメモしておきます。
 
 ``` ruby
 Dir.glob('app/javascript/images/flags/improved/*.png').each do |file|
@@ -15,7 +15,7 @@ Dir.glob('app/javascript/images/flags/improved/*.png').each do |file|
 end
 ```
 
-記事にしなくてもTILでいいじゃんね。
+記事にしなくてもTILで十分ですね。
 
 ## 参考にさせていただきました
 

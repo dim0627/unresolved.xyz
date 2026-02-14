@@ -21,7 +21,7 @@ const CodeBlock = ({
       language={match[1]}
       codeTagProps={{ className: 'text-xs leading-3' }}
       PreTag={(props) => (
-        <div {...props} className="!my-6 !rounded !bg-neutral-900" />
+        <div {...props} className="!my-6 !rounded-xl !bg-neutral-900" />
       )}
       showLineNumbers
     >
@@ -30,7 +30,7 @@ const CodeBlock = ({
   ) : (
     <code
       {...props}
-      className="rounded bg-neutral-200 px-2 py-1 text-neutral-800 text-xs"
+      className="rounded-xl bg-neutral-200 px-2 py-1 text-neutral-800 text-xs"
     >
       {children}
     </code>

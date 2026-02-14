@@ -1,21 +1,21 @@
 ---
-title: "CircleCIでyarn upgradeとかbundle updateをやってプルリクを作ってもらう"
+title: "CircleCIでyarn upgradeやbundle updateを実行してプルリクを作ってもらう方法"
 date: "2018-07-26T00:00+09:00"
 tags: []
 ---
 
-ほんとにライフチェンジングなのでやってない人はぜひやってみてほしい。
+本当にライフチェンジングなので、やっていない方はぜひ試してみてください。
 
 <blockquote class="twitter-tweet" data-lang="en"><p lang="ja" dir="ltr">CIでまいにちbundleとかyarnのアップデートやらせるやつまじで革命的な生活だからもっとはやくやればよかったと思ってる</p>&mdash; dtsuji (@dim0627) <a href="https://twitter.com/dim0627/status/1013387079890264064?ref_src=twsrc%5Etfw">July 1, 2018</a></blockquote>
 
-有志が以下のような素晴らしいツールを公開してくれているので、これらをありがたく使わせてもらう！
+有志が以下のような素晴らしいツールを公開してくれているので、これらをありがたく使わせていただきましょう。
 
 * [masutaka/circleci\-bundle\-update\-pr: Create PullRequest of bundle update in CircleCI](https://github.com/masutaka/circleci-bundle-update-pr)
 * [taichi/ci\-yarn\-upgrade: Keep NPM dependencies up\-to\-date with CI, providing version\-to\-version diff for each library](https://github.com/taichi/ci-yarn-upgrade)
 
 ## CircleCIで依存ライブラリのアップデートを回す
 
-僕はこんな`config.yml`を使っている。
+自分はこのような`config.yml`を使っています。
 
 ``` yml
 version: 2
@@ -72,14 +72,14 @@ workflows:
       - yarn-upgrade
 ```
 
-CircleCI上のcronはUTCで回るので、日本だとAM9時に処理がされる。
+CircleCI上のcronはUTCで回るので、日本だとAM9時に処理が実行されます。
 
-## サービスにやらせるならこれ
+## サービスにやらせるならこちら
 
-たぶん王道はこの辺なのかなー。
+おそらく王道はこのあたりでしょうか。
 
 * [Dependabot \- Automated Dependency Updates](https://dependabot.com/)
 * [renovatebot/renovate: Automated dependency updates\. Flexible, so you don't need to be\.](https://github.com/renovatebot/renovate)
-* [Greenkeeper \| Automate your npm dependency management](https://greenkeeper.io/)
+* [Greenkeeper \| Automate your npm dependency management](https://greenkeeper.io/)
 
-どちらもセルフホスティングできるはずなので、お金払いたくないなら自分でたてちゃえば済むと思う。
+どちらもセルフホスティングできるはずなので、費用をかけたくない場合は自分で立ててしまえば済むと思います。

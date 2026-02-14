@@ -1,5 +1,5 @@
 ---
-title: "React NativeのBlobはJSのBlobに準拠していない"
+title: "React NativeのBlobはJSのBlobに準拠していません"
 date: "2022-03-31T00:00+09:00"
 tags:
   - "React Native"
@@ -8,9 +8,9 @@ tags:
 
 [TypeError: Network request failed when fetching a file:// uri · Issue #2402 · expo/expo](https://github.com/expo/expo/issues/2402)
 
-これめっちゃエッヂケースでしょという気がするんだけど、ファイルアップロードとかでBlobが必要になる場面は結構あって、気軽に踏み抜いてしまった
+これはとてもエッジケースではないかという気がしますが、ファイルアップロードなどでBlobが必要になる場面は結構あり、気軽に踏み抜いてしまいました。
 
-ワークアラウンドとしてはコメントに上がってる通りXHRを使ってBlobを取得すればなんとかなる
+ワークアラウンドとしてはコメントに上がっている通りXHRを使ってBlobを取得すればなんとかなります。
 
 ``` js
 const blob = await new Promise((resolve, reject) => {
@@ -27,6 +27,6 @@ const blob = await new Promise((resolve, reject) => {
 });
 ```
 
-ちなみにCommunityでも議題に上がってはいるけど放置されてる
+ちなみにCommunityでも議題に上がってはいますが、放置されています。
 
 [Fix Blob Compatibility · Issue #109 · react-native-community/discussions-and-proposals](https://github.com/react-native-community/discussions-and-proposals/issues/109)

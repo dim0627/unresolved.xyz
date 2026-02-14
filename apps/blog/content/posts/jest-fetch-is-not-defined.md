@@ -1,5 +1,5 @@
 ---
-title: "Jest実行時にReferenceError: fetch is not defined"
+title: "Jest実行時にReferenceError: fetch is not definedが出る問題"
 date: "2020-07-05T00:00+09:00"
 tags:
   - "TIL"
@@ -7,7 +7,7 @@ tags:
   - "JavaScript"
 ---
 
-しらんかった〜。
+知りませんでした。
 
 > fetch is not available in Node, which is where Jest is running your tests. Is it an experimental browser technology.
 >
