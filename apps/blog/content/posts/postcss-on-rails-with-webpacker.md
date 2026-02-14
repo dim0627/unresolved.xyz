@@ -1,56 +1,56 @@
 ---
-title: "[Rails5.1.3] Sass(SCSS)からwebpacker + PostCSSに移行してみるか"
+title: "[Rails5.1.3] Sass(SCSS)からwebpacker + PostCSSに移行してみます"
 date: "2017-10-11T00:00+09:00"
 tags: []
 ---
 
-僕は結構Asset Pipelineの仕組みが好きなんで特にやめちゃいたいみたいな意識はないんですが、
-個人プロジェクトだし新しいものを実際に使ってみる経験っていうのも大切かなと。
+私は結構Asset Pipelineの仕組みが好きなので特にやめたいという意識はないのですが、
+個人プロジェクトですし新しいものを実際に使ってみる経験というのも大切かなと思いました。
 
-あと、僕のプロジェクトは依存性の解決だけをyarnがやっていて、yarnで落としている3rd Party系アセットをAsset Pipelineで運用していくやり方に限界を感じていました。
+あと、私のプロジェクトは依存性の解決だけをyarnがやっていて、yarnで落としている3rd Party系アセットをAsset Pipelineで運用していくやり方に限界を感じていました。
 
-CSSとその他フォントファイル等が共存しているパッケージとか。
+CSSとその他フォントファイル等が共存しているパッケージなどです。
 
 ## 移行前の状態
 
-現状はそれなりにRailsの基本的な状態です。僕はあんまり色んなものをゴテゴテと入れないタイプなので。
+現状はそれなりにRailsの基本的な状態です。私はあまり色んなものをゴテゴテと入れないタイプなので。
 
 * rails (5.1.3)
 * アセット系はすべてAsset Pipelineで処理
-* 依存性に関してはyarnでやりたかったのでwebpacker:installは済んでる
-* でもwebpackerは使ってない
+* 依存性に関してはyarnでやりたかったのでwebpacker:installは済んでいます
+* でもwebpackerは使っていません
 
 ## 目指すところ
 
-「移行すること」を目的にしちゃうのはあまりにもナンセンスなので、移行後に目指すところと守るべきラインを決めます。
+「移行すること」を目的にしてしまうのはあまりにもナンセンスなので、移行後に目指すところと守るべきラインを決めます。
 
-そもそも、現状の環境に困ってるわけではないですし・・・。
+そもそも、現状の環境に困っているわけではないですし・・・。
 
-* .scssで書いてるやつを全部移行して、PostCSS on webpackerで処理できるようにする
+* .scssで書いているものを全部移行して、PostCSS on webpackerで処理できるようにする
 * scss-lintをやめて、stylelintに移行する
-* なんかAutoprefixerは今でも使うのが常識らしいので入れる（なんか勝手にいらないものと思ってた・・・。）
+* Autoprefixerは今でも使うのが常識らしいので入れます（勝手にいらないものと思っていました・・・。）
 
-[Set Up Your Build Tools  \|  Tools for Web Developers  \|  Google Developers](https://developers.google.com/web/tools/setup/setup-buildtools#dont_trip_up_with_vendor_prefixes)
+[Set Up Your Build Tools  \|  Tools for Web Developers  \|  Google Developers](https://developers.google.com/web/tools/setup/setup-buildtools#dont_trip_up_with_vendor_prefixes)
 
 ### 守るべきライン
 
 CSSに関する部分だけなので、とりあえず以下だけにしました。
 
 * ファイルサイズは極端に増やさない（Autoprefixerなしの状態で）
-* 処理時間は極端に増やさない（Asset Pipelineは移行後も生きるので、webpackの頑張り分が多少増える気がする）
+* 処理時間は極端に増やさない（Asset Pipelineは移行後も生きるので、webpackの頑張り分が多少増える気がします）
 * FontAwesome等の3rd Party系アセットも、きちんとダイジェスト付きで配信する
 * 開発環境は悪化させない（主にwebpack-dev-serverまわりのこと）
-* Roadieはちゃんと動くようにする（HTMLメールを使ってるので）
+* Roadieはちゃんと動くようにする（HTMLメールを使っているので）
 
 これが守れないならmasterブランチにマージしません。
 
-僕はCSSがでっかくなるのがすごく嫌なタイプなので・・・。とはいえ少しくらい増えるのはOKとします。
-10KBとか増えるならNGで。
+私はCSSが大きくなるのがとても嫌なタイプなので・・・。とはいえ少しくらい増えるのはOKとします。
+10KBとか増えるならNGです。
 
 ## 移行前作業 - 現状での出力されるファイルサイズと処理時間を計測
 
-そんなでかいプロジェクトでもないので、言うほどでもないかと。
-FontAwesomeが幅取ってるかもですね・・・。
+そんなに大きいプロジェクトでもないので、言うほどでもないかと思います。
+FontAwesomeが幅を取っているかもしれませんね・・・。
 
 ビルド
 
@@ -82,7 +82,7 @@ total 6832
 -rw-r--r--  1 daisuketsuji  staff    60K Oct 8 17:17 application-b190eef5e6c0c69209dc27227adc2168bfe95ae722ed7cc4a011fb96bd1b11ee.css
 ```
 
-処理時間の計測はこうでいいんでしょうか。こういうの詳しくないので誰か教えて・・・。
+処理時間の計測はこれでいいのでしょうか。こういうのは詳しくないので誰か教えてください・・・。
 
 ## 移行作業その1 - PostCSSが動くようにする
 
@@ -90,25 +90,25 @@ webpackerは標準設定があるので、まずそれを把握するために�
 
 [rails/webpacker: Use Webpack to manage app\-like JavaScript modules in Rails](https://github.com/rails/webpacker)
 
-あれ！`PostCSS - Auto-Prefixer`って書いてあるな・・・。Autoprefixer、デフォルトで有効ってこと・・・？
+あれ！`PostCSS - Auto-Prefixer`って書いてありますね・・・。Autoprefixer、デフォルトで有効ということでしょうか・・・？
 
-**追記: cssnextに標準でAutoprefixerが入ってるからです。**
+**追記: cssnextに標準でAutoprefixerが入っているからです。**
 
 ### application.cssを作成
 
-こういうののディレクトリ構成はデファクトみたいなのがあると思うんですが、僕はこうしました。
+こういったもののディレクトリ構成はデファクトみたいなのがあると思いますが、私はこうしました。
 
 ``` sh
 .
 ├── app
-│   ├── assets
-│   ├── helpers
-│   └── javascript
-│       ├── packs
-│       └── stylesheets
+│   ├── assets
+│   ├── helpers
+│   └── javascript
+│       ├── packs
+│       └── stylesheets
 ```
 
-application.jsはこう。
+application.jsはこうです。
 
 ``` js
 import '../stylesheets/application'
@@ -116,24 +116,24 @@ import '../stylesheets/application'
 
 CSSの中身は移行したものではなく、PostCSSを使っていない暫定の記述だけです。とりあえず疎通が見たかったので。
 
-HTMLからの呼び出しは`stylesheet_pack_tag`を使えばいけるっぽいんですが、この記事に書いてもしょうがない作業なんで割愛します。
+HTMLからの呼び出しは`stylesheet_pack_tag`を使えばいけるようなのですが、この記事に書いてもしょうがない作業なので割愛します。
 
 ### PostCSSがちゃんと動くかを見る
 
 `application.css`の中身をPostCSSぽくして、ちゃんと動くかを見てみたいので、
 まず、webpackerのCSSに対するローダーがデフォルトでどのようになっているかを確認してみます。
 
-設定はここですかね。
+設定はここでしょうか。
 
 [webpacker/style\.js at master · rails/webpacker](https://github.com/rails/webpacker/blob/master/package/loaders/style.js)
 
-逆から読むんでしたっけ？これは以下の順番で処理してくれるということなんでしょうか。webpackの設定ファイルの見方がいまいち・・・。
+逆から読むのでしたっけ？これは以下の順番で処理してくれるということなのでしょうか。webpackの設定ファイルの見方がいまいちわかりません・・・。
 
 1. sass-loader
 1. postcss-loader
 1. css-loader
 
-あれ、sassも読めるのかな・・・。まあどちらにせよ、PostCSSのローダーは入っているようなのでこのまま行ってみましょう。
+あれ、sassも読めるのでしょうか・・・。まあどちらにせよ、PostCSSのローダーは入っているようなのでこのまま行ってみましょう。
 
 PostCSSの設定はルートに`.postcssrc.yml`を置けばいいみたいですね。
 
@@ -149,7 +149,7 @@ plugins:
   postcss-cssnext: {}
 ```
 
-`smart-import`が入ってるので、`import`が使えるかを見てみます。
+`smart-import`が入っているので、`import`が使えるかを見てみます。
 
 `app/javascript/stylesheets/modules`ディレクトリを作って、`test.css`を作ってみます。
 
@@ -159,7 +159,7 @@ plugins:
 }
 ```
 
-`application.css`はこんな感じ。
+`application.css`はこんな感じです。
 
 ``` css
 @import "modules/test";
@@ -174,7 +174,7 @@ $ cat public/packs/application-3cb0874e28a4e33e875112e4732c6ddd.css
 }
 ```
 
-行けてそう！
+うまくいっているようです！
 
 ## 移行作業その2 - とりあえずCSSを移行して処理してみる
 
@@ -186,15 +186,15 @@ Module build failed:
 @import "modules/*";
 ```
 
-あー、まあエラーしたので、章をわけて1個ずつ対応します。
+ああ、まあエラーしたので、章をわけて1個ずつ対応します。
 
 ### smart-importでglob展開はできない
 
-globでの`import`は出来ないんですね。過去に`postcss-import`プラグインがサポートしていたようですが、外されたようです。
+globでの`import`はできないようです。過去に`postcss-import`プラグインがサポートしていたようですが、外されたようです。
 
 [Remove glob support · postcss/postcss\-import@1fbeca6](https://github.com/postcss/postcss-import/commit/1fbeca62a6fc84e39e0fcd53cd3baaf95b94a3a2)
 
-`postcss-easy-import`というプラグインでできるようですが、まあここで増やすのもな・・・という気もするので、1個1個`import`するように書き換えました。
+`postcss-easy-import`というプラグインでできるようですが、まあここで増やすのもどうかな・・・という気もするので、1個1個`import`するように書き換えました。
 
 [TrySound/postcss\-easy\-import: PostCSS plugin to inline @import rules content with extra features](https://github.com/trysound/postcss-easy-import)
 
@@ -202,8 +202,8 @@ globでの`import`は出来ないんですね。過去に`postcss-import`プラ�
 
 ### FontAwesomeを読めるようにする
 
-これまではGemで読んでたので、ダイジェストもいい感じにやってくれてました。
-webpacker経由でうまいことダイジェストも解決する方法を知らないので、ここで解決しちゃいます。
+これまではGemで読んでいたので、ダイジェストもいい感じにやってくれていました。
+webpacker経由でうまいことダイジェストも解決する方法を知らないので、ここで解決してしまいます。
 
 ``` sh
 npm i font-awesome --save
@@ -215,7 +215,7 @@ npm i font-awesome --save
 @import "~font-awesome/css/font-awesome";
 ```
 
-CSSだとフォントファイルにダイジェストがつかなかったりするかな？と思ったら、なんか読み込むだけでうまくいきました・・・。
+CSSだとフォントファイルにダイジェストがつかなかったりするかな？と思ったら、なぜか読み込むだけでうまくいきました・・・。
 
 ``` sh
 $ head -n 20 public/packs/application-b619b7134a47c7bc1d3df67c6b135f76.css
@@ -241,12 +241,12 @@ $ head -n 20 public/packs/application-b619b7134a47c7bc1d3df67c6b135f76.css
   display: inline-block;
 ```
 
-これはなんかのローダーがやってくれてるんでしょうね。ちょっとその辺は追ってませんが、すごいね・・・。
+これは何かのローダーがやってくれているのでしょうね。ちょっとその辺は追っていませんが、すごいですね・・・。
 
 ## 移行間作業 - 出力されるファイルサイズと処理時間を計測
 
 とりあえずビルドは通ったので、ここでちょっと計測してみます。
-変数展開とかが全然できてないはずなので、まだ完成じゃないですが・・・。
+変数展開とかが全然できていないはずなので、まだ完成ではないですが・・・。
 
 ビルド
 
@@ -287,19 +287,19 @@ before   7.71user 2.51system 0:33.19elapsed 30%CPU (0avgtext+0avgdata 125336maxr
 after  19.57user 11.70system 2:20.05elapsed 22%CPU (0avgtext+0avgdata 238252maxresident)k
 ```
 
-あれー！致命的なほど遅くなった！source mapも出しちゃってるからかな・・・。
+あれ！致命的なほど遅くなりました！source mapも出してしまっているからでしょうか・・・。
 
 ## 移行作業その3 - webpackerの設定をちゃんとする & 足りないプラグインを入れる
 
-このままでは失敗に終わってしまう！足りないプラグインを足しながら設定を見直します。
+このままでは失敗に終わってしまいます！足りないプラグインを足しながら設定を見直します。
 
-全然知識がないのでとりあえず調べてみる。
+全然知識がないのでとりあえず調べてみます。
 
 [build performance](http://webpack.github.io/docs/build-performance.html)
 
 > devtool: "eval" has the best performance, but it only maps to compiled source code per module. In many cases this is good enough. (Hint: combine it with output.pathinfo: true.)
 
-ふむふむ。source mapは一旦いっか。
+なるほど。source mapは一旦いいでしょう。
 
 ### source mapを出さないようにしてみる
 
@@ -322,14 +322,14 @@ Compiled all packs in /myapp/public/packs
 0inputs+0outputs (16major+279629minor)pagefaults 0swaps
 ```
 
-む、むしろ遅くなった・・・。
+む、むしろ遅くなりました・・・。
 
 ### SCSSをやめる
 
 source mapの設定はいったんデフォルトに戻して、違う原因を探します。
 
-`application.scss`を削っていったら改善されたので、どうやら`@import`の数か、純粋に処理してるファイル量に応じて遅くなっているらしい・・・。
-SCSSをそのまま移行したのがだめだったのだろうか？
+`application.scss`を削っていったら改善されたので、どうやら`@import`の数か、純粋に処理しているファイル量に応じて遅くなっているようです・・・。
+SCSSをそのまま移行したのがだめだったのでしょうか？
 
 ``` sh
 $ bin/webpack
@@ -340,7 +340,7 @@ Time: 90548ms
 
 90548ms！
 
-とりあえずSCSSをCSSに変えてみよう。
+とりあえずSCSSをCSSに変えてみます。
 拡張子を変えて、処理できるようにいくつかプラグインを追加します。
 
 ``` sh
@@ -350,7 +350,7 @@ npm i postcss-extend --save // extend機能
 npm i postcss-nested --save // ネスト記法
 ```
 
-`.postcssrc.yml`にも。
+`.postcssrc.yml`にも追加します。
 
 ``` yml
 plugins:
@@ -384,7 +384,7 @@ Version: webpack 3.6.0
 Time: 9356ms
 ```
 
-お！10分の1に！
+おお！10分の1になりました！
 
 `assets:precompile`は・・・。
 
@@ -414,7 +414,7 @@ before   7.71user 2.51system 0:33.19elapsed 30%CPU (0avgtext+0avgdata 125336maxr
 after   13.00user 4.80system 0:58.08elapsed 30%CPU (0avgtext+0avgdata 222560maxresident)k
 ```
 
-まだ移行前より遅いけど、だいぶよくなった！もうちょっと頑張ればこえられるかな・・・。一旦は許容範囲ということにしましょう。
+まだ移行前より遅いですが、だいぶよくなりました！もうちょっと頑張れば超えられるかもしれません・・・。一旦は許容範囲ということにしましょう。
 
 ちなみにsource mapを出さないようにしてみると・・・？
 
@@ -437,24 +437,24 @@ Compiled all packs in /myapp/public/packs
 0inputs+0outputs (17major+258170minor)pagefaults 0swaps
 ```
 
-全然はやくならん！やり方違うのかな・・・。
+全然速くなりません！やり方が違うのでしょうか・・・。
 
-ファイルサイズはかわってなさげ。これはいいね。
+ファイルサイズは変わっていなさそうです。これはいいですね。
 
 ``` sh
 -rw-r--r--  1 daisuketsuji  staff    12K Oct 9 10:26 application-c22dd87ef356a17cda53b66b25a442e0.css.gz
 -rw-r--r--  1 daisuketsuji  staff    60K Oct 9 10:26 application-c22dd87ef356a17cda53b66b25a442e0.css
 ```
 
-他に参考にした資料。
+他に参考にした資料です。
 
 [Optimising build performance, initial: 40s, incremental: 6s · Issue \#1574 · webpack/webpack](https://github.com/webpack/webpack/issues/1574)
 
 ## 移行作業その4 - 開発環境でのスタイルシートの更新監視
 
-webpackでCSSを処理するようになったので、これまでのように`rails s`してれば一緒に処理される〜ってことがなくなりました。
+webpackでCSSを処理するようになったので、これまでのように`rails s`していれば一緒に処理される、ということがなくなりました。
 
-（追記 : これ、処理されるみたいです。ただ常駐しないので毎回webpackが立ち上がって・・・って感じの挙動で遅かったです。）
+（追記 : これは処理されるみたいです。ただ常駐しないので毎回webpackが立ち上がって・・・という感じの挙動で遅かったです。）
 
 `bin/webpack-dev-server`を`rails s`と並行して起動する必要があるので、公式も推奨しているForemanを使ってプロセス管理をします。
 
@@ -480,7 +480,7 @@ end
 
 ```
 
-あとは実行するだけ。
+あとは実行するだけです。
 
 ``` sh
 foreman start -f Procfile.local
@@ -488,39 +488,39 @@ foreman start -f Procfile.local
 
 ## 移行後作業 - プラグインの設定とめぼしいプラグインを入れる
 
-さて、ここらへんで今後の運用も考えて、PostCSSにはどんなプラグインがあって、どんなのを入れたいかを考えてみようと思います。
-導入しないにしても、知っておく必要はあると思うので。
+さて、ここらへんで今後の運用も考えて、PostCSSにはどんなプラグインがあって、どんなものを入れたいかを考えてみようと思います。
+導入しないにしても、知っておく必要はあると思いますので。
 
-とりあえず移行した！だけだとただのやってみた記事になるし、そもそももったいないので。
+とりあえず移行しました！だけだとただのやってみた記事になりますし、そもそももったいないので。
 
-以下から探せるんですが、
+以下から探せるのですが、
 
 [PostCSS\.parts \| A searchable catalog of PostCSS plugins](https://www.postcss.parts/)
 
-一覧性が悪かったので、以下をざーっと眺めてみました。
+一覧性が悪かったので、以下をざっと眺めてみました。
 
 [postcss/plugins\.md at master · postcss/postcss](https://github.com/postcss/postcss/blob/master/docs/plugins.md)
 
-CSS4のやつとかは見てて面白いですね。
+CSS4のものなどは見ていて面白いですね。
 
 ### Autoprefixer
 
-まずは目的の1つであったAutoprefixerから。
+まずは目的の1つであったAutoprefixerからです。
 
 ```bash
 npm i autoprefixer --save
 ```
 
-なんか、どのブラウザを対象にするかのジャッジがちょっとむずかしいらしいですね。
-デフォルトだと結構バサッと切り捨てるようなので、一旦そのままにしてあとでちゃんとドキュメントを読んでみようと思います。
+どのブラウザを対象にするかのジャッジがちょっと難しいらしいですね。
+デフォルトだと結構バッサリと切り捨てるようなので、一旦そのままにしてあとでちゃんとドキュメントを読んでみようと思います。
 
 ### hexrgba
 
-これ、僕普段すごく使うので入れなきゃいけませんでした。忘れてた。
+これは私が普段とてもよく使うので入れなければいけませんでした。忘れていました。
 
 [seaneking/postcss\-hexrgba: PostCSS plugin that adds shorthand hex methods to rgba\(\) values](https://github.com/seaneking/postcss-hexrgba)
 
-`rgba(0, 0, 0, .5)`みたいなのを、`rgba(#000, .5)`みたいに書けるようにするやつ。
+`rgba(0, 0, 0, .5)`みたいなものを、`rgba(#000, .5)`みたいに書けるようにするものです。
 
 ```bash
 npm i postcss-hexrgba --save
@@ -528,25 +528,25 @@ npm i postcss-hexrgba --save
 
 ### lazyimagecss
 
-画像のサイズを自動的にwidth、heightに設定してくれるもの。これはすごいですね！
+画像のサイズを自動的にwidth、heightに設定してくれるものです。これはすごいですね！
 
 [Jeff2Ma/postcss\-lazyimagecss: A PostCSS plugin that generates images's CSS width & height properties automatically\.](https://github.com/Jeff2Ma/postcss-lazyimagecss)
 
-導入はしなかったけど覚えておこう。
+導入はしませんでしたが覚えておきます。
 
 ## 移行後作業 - stylelintを入れる
 
 [stylelint](https://stylelint.io/)
 
-これはどちらにしろ入れる方針だったので、最後にやっちゃいます。
+これはどちらにしろ入れる方針だったので、最後にやってしまいます。
 
 ``` json
 npm i stylelint --save
 ```
 
-なんかCLIでも動くようにできるみたいですが、せっかくだしPostCSSの処理に組み込んじゃいます。
+CLIでも動くようにできるみたいですが、せっかくなのでPostCSSの処理に組み込んでしまいます。
 
-僕はCSSのlintはsmacssのソート順になっていることだけをチェックできてれば満足なので、以下の設定を使います。
+私はCSSのlintはsmacssのソート順になっていることだけをチェックできていれば満足なので、以下の設定を使います。
 
 [cahamilton/stylelint\-config\-property\-sort\-order\-smacss: Stylelint config for Property Sort Ordering based on the SMACSS methodology](https://github.com/cahamilton/stylelint-config-property-sort-order-smacss)
 
@@ -554,13 +554,13 @@ npm i stylelint --save
 npm i stylelint-config-property-sort-order-smacss --save
 ```
 
-`.stylelintrc.yml`はこんな。
+`.stylelintrc.yml`はこのようになります。
 
 ``` yml
 extends: stylelint-config-property-sort-order-smacss
 ```
 
-stylefmtとやらを使えばauto correctもできるみたいなので、今度やってみよう。
+stylefmtというものを使えばauto correctもできるみたいなので、今度やってみます。
 
 ## まとめ
 
@@ -568,7 +568,7 @@ stylefmtとやらを使えばauto correctもできるみたいなので、今度
 
 ### 移行前後の処理時間
 
-約30秒も遅くなっちゃいました。悔しいけど妥協します。
+約30秒も遅くなってしまいました。悔しいですが妥協します。
 
 ``` sh
 7.71user 2.51system 0:33.19elapsed 30%CPU (0avgtext+0avgdata 125336maxresident)k
@@ -577,7 +577,7 @@ stylefmtとやらを使えばauto correctもできるみたいなので、今度
 
 ### 移行前後のファイルサイズ
 
-これはAutoprefixerも入った状態のものです。1KB増えましたね。許容範囲です。
+これはAutoprefixerも入った状態のものです。1KB増えました。許容範囲です。
 
 ``` sh
 -rw-r--r--  1 daisuketsuji  staff    60K Oct 8 17:17 application-b190eef5e6c0c69209dc27227adc2168bfe95ae722ed7cc4a011fb96bd1b11ee.css
@@ -621,18 +621,18 @@ plugins:
   autoprefixer: {}
 ```
 
-stylelintはこのプロセスに入れちゃうとnode_modulesが処理されちゃって除外の仕方がわからなかったので、CLIでやるようにしました・・。
+stylelintはこのプロセスに入れてしまうとnode_modulesが処理されてしまって除外の仕方がわからなかったので、CLIでやるようにしました・・・。
 
-エディタ上では効くので、まあCIで弾ければいいかなと。
+エディタ上では効くので、まあCIで弾ければいいかなと思います。
 
 ### 書かなかったけど詰まったところ
 
-* @import "any/styles.css"のように拡張子をつけないと変数周りの処理がうまくいかなかった（css以外の処理が入っちゃう？）
-* @define-mixin、@mixinの引数には括弧を付けちゃだめみたい（エラーしてめちゃくちゃ詰まった！）
+* @import "any/styles.css"のように拡張子をつけないと変数周りの処理がうまくいきませんでした（css以外の処理が入ってしまう？）
+* @define-mixin、@mixinの引数には括弧を付けてはだめみたいです（エラーしてとても詰まりました！）
 * postcss-extendではプレースホルダーセレクタの中でカレント（&）が参照できなかったので、mixinにしました
-* 画像を参照したいときは、url(asset_path())で持ってきたところを普通にurl()にすればみれるようになる。パスは~images/xxx.jpgみたいなかんじ。
+* 画像を参照したいときは、url(asset_path())で持ってきたところを普通にurl()にすれば見れるようになります。パスは~images/xxx.jpgみたいな感じです。
 
 ### 今後
 
-せっかくなので、JSと画像系アセットもwebpack側に寄せようかなと。
-そしたらAsset Pipelineがいらなくなるので、少しは早くなるかな・・・。
+せっかくなので、JSと画像系アセットもwebpack側に寄せようかなと思います。
+そうすればAsset Pipelineがいらなくなるので、少しは速くなるかもしれません・・・。

@@ -1,5 +1,5 @@
 ---
-title: "Docker上のDebianイメージ（ruby/2.3.3-slim）で日本語が打てない"
+title: "Docker上のDebianイメージ（ruby/2.3.3-slim）で日本語が打てない問題の解決方法"
 date: "2017-03-23T00:00+09:00"
 tags:
   - "Ruby"
@@ -7,20 +7,20 @@ tags:
   - "Docker"
 ---
 
-Docker Composeいいよね。
-めちゃくちゃ手軽に使えるし、慣れたらもう戻れない媚薬感がある。
+Docker Composeはいいですよね。
+とても手軽に使えますし、慣れたらもう戻れない魅力があります。
 
-僕の開発環境はcomposeで構築していて、Railsが載ってるWeb用イメージはRubyの公式Dockerイメージをベースに使ってるんだけど、
-これだとDocker上で日本語が受け付けなくて何かと困ることが多い。
+自分の開発環境はcomposeで構築していて、Railsが載っているWeb用イメージはRubyの公式Dockerイメージをベースに使っているのですが、
+これだとDocker上で日本語が受け付けなくて何かと困ることが多いです。
 
-元のDockerfileは以下で、`FROM debian:jessie`でわかるようにdebianが使われてる。
+元のDockerfileは以下で、`FROM debian:jessie`でわかるようにdebianが使われています。
 
 [ruby/Dockerfile at 7a3e1295bbc840c350fc37d406692301b27f4e86 · docker\-library/ruby](https://github.com/docker-library/ruby/blob/7a3e1295bbc840c350fc37d406692301b27f4e86/2.3/slim/Dockerfile)
 
-debianのロケール設定はUbuntuともちょっと違ったりして、調べて出て来る情報だと全然解決できなかったりする。
-そして毎回この問題で困ってる自分も嫌なので、備忘録として残しておきたいと思う。
+debianのロケール設定はUbuntuともちょっと違ったりして、調べて出てくる情報だと全然解決できなかったりします。
+そして毎回この問題で困っている自分も嫌なので、備忘録として残しておきたいと思います。
 
-ちなみに**結論からいうと**、僕の場合の解決方法はこうだった。
+ちなみに**結論からいうと**、自分の場合の解決方法はこちらでした。
 
 ```dockerfile
 ENV LANG C.UTF-8
@@ -28,36 +28,36 @@ ENV LANG C.UTF-8
 
 ## なぜ日本語を受け付けないのか
 
-いろいろ調べてみるとロケールの設定によるものらしい。
-この辺は小難しいのであんまり理解できてないけど、そのうちちゃんと勉強したいところ。
+いろいろ調べてみるとロケールの設定によるもののようです。
+この辺りは少し難しいのであまり理解できていませんが、そのうちちゃんと勉強したいところです。
 
 * [docker の ubuntu イメージで日本語が入力できない件 \- しゅんログ](http://shunlog.hateblo.jp/entry/2016/04/13/114059)
 * [Docker1\.11 / Ubuntu14\.04 でコンテナの bash から日本語入力できない時 \- Qiita](http://qiita.com/narupo/items/ebee3018fb302365c053)
 * [Docker＋Ubuntuで日本語入力できないのを解決した - nocorica](http://blog.nocorica.jp/2017/01/docker-ubuntu-japanese-input/)
 * [Docker: Bash で日本語入力を扱う \- Sarabande\.jp](http://blog.sarabande.jp/post/129574578518)
 
-だいたいは言語のパッケージを入れて、ロケールを設定すればいけるよっていう説明なんだけど、
-Debianだとちょっと勝手が違ったり、そもそもそれじゃ直らなかったりする。
+だいたいは言語のパッケージを入れて、ロケールを設定すればいけるという説明なのですが、
+Debianだと少し勝手が違ったり、そもそもそれでは直らなかったりします。
 
 ### Language Pack
 
-Ubuntuだとこんな感じで、言語パックが導入できるらしい。
+Ubuntuだとこのような形で、言語パックが導入できるようです。
 
 ``` sh
 apt-get install language-pack-ja-base language-pack-ja
 ```
 
-これがDebianだとこう。
+これがDebianだとこうなります。
 
 ``` sh
 apt-get install task-japanese
 ```
 
-まあ**これが原因じゃなかった**んだけど、UbuntuとDebianでこんな些細な違いがあったりするんだなと。
+まあ**これが原因ではなかった**のですが、UbuntuとDebianでこのような些細な違いがあったりするのだなと。
 
 ## 日本語を打てるようにする
 
-散々探し回ったのに、この記事で完璧に説明されていた・・・。
+散々探し回ったのに、この記事で完璧に説明されていました・・・。
 
 > たぶんLANG設定をすればうまくいきます
 >
@@ -68,15 +68,15 @@ apt-get install task-japanese
 
 うまくいきました。
 
-## 結局のところロケールってどう使われてるの？
+## 結局のところロケールってどう使われているのか
 
-OSの動作をどういう言語で行うかを設定するものなんだろうくらいの認識。
+OSの動作をどういう言語で行うかを設定するものなのだろう、くらいの認識です。
 
 > Linux では Locale を使ってユーザーがどの言語を使うか定義します。また、locale は使われる文字セットも定義するので、あなたの使っている言語が非 ASCII 文字を含んでいる場合、正しい locale を設定することは特に重要になります。
 >
 > [ロケール \- ArchWiki](https://wiki.archlinuxjp.org/index.php/%E3%83%AD%E3%82%B1%E3%83%BC%E3%83%AB)
 
-じゃあ`locale`コマンドで表示される変数はどういう意味を持ってるのかというと、
+では`locale`コマンドで表示される変数はどういう意味を持っているのかというと、
 
 ``` sh
 LANG="en_US.UTF-8"
@@ -89,7 +89,7 @@ LC_TIME="en_US.UTF-8"
 LC_ALL="en_US.UTF-8"
 ```
 
-こんな感じらしい。
+このような意味があるようです。
 
 |環境変数|意味|
 |:----|:----|
@@ -104,8 +104,8 @@ LC_ALL="en_US.UTF-8"
 
 ### 利用可能なロケールを確認 / 追加する
 
-言語によっては最初から利用可能だったり、そうじゃなかったりするらしい。
-利用可能なロケールは`locale -a`で確認できる。
+言語によっては最初から利用可能だったり、そうでなかったりするようです。
+利用可能なロケールは`locale -a`で確認できます。
 
 ``` sh
 $ locale -a
@@ -123,9 +123,9 @@ be_BY.ISO8859-5
  :
 ```
 
-Debian系の場合は、`/etc/locale.gen`に書いてあるロケールのコメントアウトを解除して`locale-gen`コマンドを実行することで有効にできるとのこと。
+Debian系の場合は、`/etc/locale.gen`に書いてあるロケールのコメントアウトを解除して`locale-gen`コマンドを実行することで有効にできるとのことです。
 
-## 参考にさせて頂きました
+## 参考にさせていただきました
 
 * [Docker Compose でローカルの Rails 開発環境を作る \- Qiita](http://qiita.com/kbaba1001/items/39f81156589dd9a0d678#comment-6ed4ff57c5a4263b36a8)
 * [Docker / rails console で日本語入力できない問題 · GitHub](https://gist.github.com/tasiyo7333/2163a09129ed36639645145a0146d8d3)

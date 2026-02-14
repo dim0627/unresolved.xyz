@@ -4,4 +4,5 @@ export interface Post {
   date: string;
   tags: string[];
   body: string;
+  draft?: boolean;
 }

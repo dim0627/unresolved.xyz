@@ -1,12 +1,12 @@
 ---
-title: "ブログをGatsbyJS + Contentful + Netlifyで作り直したので今日はGatsby記念日"
+title: "ブログをGatsbyJS + Contentful + Netlifyで作り直したので今日はGatsby記念日です"
 date: "2018-07-07T00:00+09:00"
 tags: []
 ---
 
-SPAがいいねと君が言ったから7月6日はGatsby記念日。ざっと3日くらいおうちで頑張って移行したぞ！
+SPAがいいねと君が言ったから7月6日はGatsby記念日。ざっと3日くらいおうちで頑張って移行しました。
 
-スタックはこう。
+スタックはこちらです。
 
 * [GatsbyJS](https://www.gatsbyjs.org/)
 * [Contentful: Content Infrastructure for Digital Teams](https://www.contentful.com/)
@@ -14,49 +14,49 @@ SPAがいいねと君が言ったから7月6日はGatsby記念日。ざっと3�
 
 ## HugoからGatsbyJSへ
 
-Hugoが嫌いになったわけではないです。
+Hugoが嫌いになったわけではありません。
 
-開発も盛んで気がつけばバージョンが倍くらい上がってたりするような活発さで、ちょっとついていけなかったりしたけどとてもお世話になったプロダクトだった。
+開発も盛んで気がつけばバージョンが倍くらい上がっていたりするような活発さで、ちょっとついていけなかったりもしましたが、とてもお世話になったプロダクトでした。
 
-だけど、ちょっと静的サイトジェネレータ自体の運用に疲れてしまった・・・。
+ただ、静的サイトジェネレータ自体の運用に少し疲れてしまいました・・・。
 
-Markdownをファイル生成して書いて〜コミットして〜みたいなのってすごく楽なんだけど、なんか日付とかカテゴリをファイル内で管理するのが辛くなってきたのが正直なところ。
+Markdownをファイル生成して書いてコミットして・・・というのはとても楽なのですが、日付やカテゴリをファイル内で管理するのが辛くなってきたのが正直なところです。
 
-なんかこう、JSONを手でいじってるときと似た辛さ。
+JSONを手でいじっているときと似た辛さがあります。
 
 ## 静的サイトジェネレータのここが辛かった
 
-思えばいろいろと辛い場面はあった気がする。
+思えばいろいろと辛い場面はあった気がします。
 
-まあでもGatsbyJSも静的サイトジェネレータではあるんけど、融通の利きやすさ（Contentfulとかコンテンツソースが選び放題）という意味で以下の辛さがだいたい解決できるのでは？と思ってる。
+GatsbyJSも静的サイトジェネレータではあるのですが、融通の利きやすさ（Contentfulなどコンテンツソースが選び放題）という意味で以下の辛さがだいたい解決できるのではないかと思っています。
 
 * Frontmattersの管理
-* 画像の配置のめんどうさ、リサイズや最適化
-  * 画像をディレクトリにいれてマークダウンにパスをかいて・・・みたいなの辛い
+* 画像の配置の手間、リサイズや最適化
+  * 画像をディレクトリに入れてマークダウンにパスを書いて・・・というのが辛いです
 * 静的資材の管理、webpack等との共存
-  * HugoもHugoで変更監視をしてるしwebpackにもやらせると仲良くできなかったりした
-  * Ignoreしたり調整すればなんとかなると思う！
-* （Hugoに限る話だが）Goのテンプレートの書きづらさ、エラー原因特定のしづらさ
+  * HugoもHugoで変更監視をしていてwebpackにもやらせると仲良くできなかったりしました
+  * Ignoreしたり調整すればなんとかなると思います
+* （Hugoに限る話ですが）Goのテンプレートの書きづらさ、エラー原因特定のしづらさ
 
-どれも頑張ればなんとかできることだし、実際なんとかしてる人も多いと思うけど、ちょっと個人的に限界が来てしまった。
+どれも頑張ればなんとかできることですし、実際なんとかしている人も多いと思いますが、個人的に限界が来てしまいました。
 
 ## バックエンドのContentful、フロントエンドのGatsbyJS
 
-もうバックエンドは手元で管理するのをやめて、Contentfulに載せることにした。
+もうバックエンドは手元で管理するのをやめて、Contentfulに載せることにしました。
 
-Conntentfulは知ったときから気になってたHeadless CMSというたぐいのサービスで、まあデータ構造とデータ自体の管理だけやってあとはAPI（GraphQL）で配信してあげるよって感じのもの。
+Conntentfulは知ったときから気になっていたHeadless CMSというたぐいのサービスで、データ構造とデータ自体の管理だけやってあとはAPI（GraphQL）で配信するという感じのものです。
 
-これ絶対有用だしこれからの時代でバリバリ使う場面あるっしょと思ってたんだけど、なんだかんだその場面が見いだせずにここまで来てしまった。出遅れた。
+これは絶対に有用ですし、これからの時代で活躍する場面があるだろうと思っていたのですが、なかなかその場面が見いだせずにここまで来てしまいました。出遅れてしまいました。
 
-これがこれまでより楽になるかはもうちょっと運営しないとわからないけど、まあ物は試しで。
+これが従来より楽になるかはもう少し運営しないとわかりませんが、物は試しということで。
 
 ## とにかくGetting Started
 
-まずこれを読む。
+まずこれを読みます。
 
 [GatsbyJS and Contentful in five minutes](https://www.contentful.com/r/knowledgebase/gatsbyjs-and-contentful-in-five-minutes/)
 
-`package.json`を見ると`yarn dev`で動きそうなので叩いてみるけど、こんな感じでエラーしたので、
+`package.json`を見ると`yarn dev`で動きそうなので叩いてみますが、このようなエラーが出たので、
 
 ```text
 error We encountered an error while trying to load your site's gatsby-config. Please fix the error and try again.
@@ -65,7 +65,7 @@ error We encountered an error while trying to load your site's gatsby-config. Pl
   TypeError: Cannot destructure property `spaceId` of 'undefined' or 'null'.
 ```
 
-`gatsby-config.js`を見ながらこんな修正をしてみる。
+`gatsby-config.js`を見ながらこのような修正をしてみます。
 
 ``` diff
 ~/Develop/repositories/src/github.com/dim0627/blog.unresolved.xyz (*master) $ git diff
@@ -84,24 +84,24 @@ index 6f41f16..994f447 100644
      spaceId: process.env.CONTENTFUL_SPACE_ID,
 ```
 
-これで通るようになるんだけど、実際にContentfulに設定されている構造とサンプルのGraphQLのリクエストがミスマッチを起こしてエラーするので、その変を適宜調整。
+これで通るようになるのですが、実際にContentfulに設定されている構造とサンプルのGraphQLのリクエストがミスマッチを起こしてエラーするので、そのあたりを適宜調整します。
 
-GraphQLは初めてで全然わかんなかったけど、読めばなんとなくわかるのですごい。
+GraphQLは初めてで全然わかりませんでしたが、読めばなんとなくわかるのですごいです。
 
 ## カスタマイズ
 
-[Next\.js](https://nextjs.org/)と同様、examplesがたくさん用意されているので疎通だけならほとんど詰まることはなかった。
+[Next\.js](https://nextjs.org/)と同様、examplesがたくさん用意されているので疎通だけならほとんど詰まることはありませんでした。
 
 [gatsby/examples at master · gatsbyjs/gatsby](https://github.com/gatsbyjs/gatsby/tree/master/examples/)
 
-こういうのほんとたすかる。
+こういうのは本当に助かります。
 
-とはいえReact自体の知識がなさすぎるのとGatsbyJSの土地勘がないので、細かい部分までやろうとすると結構詰まった場面は多かった。
+とはいえReact自体の知識がなさすぎるのとGatsbyJSの土地勘がないので、細かい部分までやろうとすると結構詰まった場面は多かったです。
 
-いらないファイル消したりstyled-componentsに置き換えたり地道な作業もあったし。
+いらないファイルを消したりstyled-componentsに置き換えたり、地道な作業もありました。
 
 ## デプロイの自動化、WebHookによるデプロイ
 
-Hugo使ってるときはコンテンツの管理とブログ自体のソースを一緒くたにしてたんだけど、今回はGitHub上にブログのソース、コンテンツはContentfulって感じで切り分けることができた。
+Hugoを使っているときはコンテンツの管理とブログ自体のソースを一緒にしていたのですが、今回はGitHub上にブログのソース、コンテンツはContentfulという形で切り分けることができました。
 
-なのでmaster pushをするとNetlifyがうけとってリビルドしてくれるんだけど、Contentful側でコンテンツをかえた場合はリビルドされないので、ContentfulのWebHookとNetlifyのWebHookをつなげてあげれば自動デプロイの環境が簡単につくれる。
+そのためmaster pushをするとNetlifyが受け取ってリビルドしてくれるのですが、Contentful側でコンテンツを変えた場合はリビルドされないので、ContentfulのWebHookとNetlifyのWebHookをつなげてあげれば自動デプロイの環境が簡単に作れます。

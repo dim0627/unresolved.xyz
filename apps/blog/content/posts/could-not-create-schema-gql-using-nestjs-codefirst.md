@@ -1,5 +1,5 @@
 ---
-title: "Nest.js + CodeFirst GraphQLでschema.gqlが生成できない"
+title: "Nest.js + CodeFirst GraphQLでschema.gqlが生成できない問題"
 date: "2022-01-29T00:00+09:00"
 tags:
   - "Next.js"
@@ -11,7 +11,7 @@ tags:
 Error: Expected undefined to be a GraphQL schema.
 ```
 
-こんな感じのバージョンで動かない。
+このようなバージョンで動きませんでした。
 
 ```json
 "@nestjs/common": "^8.0.0",
@@ -21,9 +21,9 @@ Error: Expected undefined to be a GraphQL schema.
 "graphql": "^16.3.0"
 ```
 
-## graphql v16とは相性が悪いっぽい
+## graphql v16とは相性が悪いようです
 
-一旦ダウングレードすれば動いた感じ
+一旦ダウングレードすれば動きました。
 
 ```bash
 yarn add graphql@15.7.1

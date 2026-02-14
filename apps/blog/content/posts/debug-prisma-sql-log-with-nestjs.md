@@ -1,12 +1,12 @@
 ---
-title: "NestJS + PrismaでSQLをログに出したい"
+title: "NestJS + PrismaでSQLをログに出す方法"
 date: "2023-09-10T00:00+09:00"
 tags:
   - "Prisma"
   - "NestJS"
 ---
 
-こう。
+以下のようにします。
 
 ``` ts
 import config from '@/libs/config';

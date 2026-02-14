@@ -1,5 +1,5 @@
 ---
-title: "@nrwl/expoでeas buildしようとしてクソほど躓いたので供養する"
+title: "@nrwl/expoでeas buildしようとしてかなり躓いたので供養します"
 date: "2022-05-30T00:00+09:00"
 tags:
   - "React Native"
@@ -7,11 +7,11 @@ tags:
   - "TIL"
 ---
 
-最近Nx + NestJS + React Nativeで開発してて、Classic BuildからEAS Buildに移行しようとしたらすごい躓いたので書いておきたい。
+最近Nx + NestJS + React Nativeで開発していて、Classic BuildからEAS Buildに移行しようとしたらとても躓いたので書いておきます。
 
 ## idb/build/index.cjs is not computed
 
-1個めはこれ。
+1つ目はこちらです。
 
 ``` sh
 > Task :app:generatePackageList
@@ -55,15 +55,15 @@ info Run CLI with --verbose flag for more details.
 [stderr] BUILD FAILED in 5m 15s
 ```
 
-metroがデフォだと `.cjs` を読めないので、 `metro.config.js` に
+metroがデフォルトだと `.cjs` を読めないので、 `metro.config.js` に
 
 ``` ts
 defaultConfig.resolver.assetExts.push("cjs");
 ```
 
-を追記すればいい。
+を追記すれば解決します。
 
-全体は多分こんな感じになる。
+全体はおそらくこのような形になります。
 
 ``` ts
 const { withNxMetro } = require('@nrwl/expo');
@@ -95,11 +95,11 @@ module.exports = (async () => {
 ```
 
 - <https://bytemeta.vip/repo/firebase/firebase-js-sdk/issues/6253>
-  - リンク見れなくなった・・・？
+  - リンクが見れなくなったかもしれません・・・
 
 ## Invalid bitcode version
 
-2個めがこれ。
+2つ目がこちらです。
 
 ``` sh
 
@@ -136,7 +136,7 @@ Error: Fastlane build failed with unknown error. Please refer to the "Run fastla
 Fastlane errors in most cases are not printed at the end of the output, so you may not find any useful information in the last lines of output when looking for an error message.
 ```
 
-これはXcodeのバージョンに差異があると発生する。
+これはXcodeのバージョンに差異があると発生します。
 
 `eas.json` に
 
@@ -146,6 +146,6 @@ Fastlane errors in most cases are not printed at the end of the output, so you m
       },
 ```
 
-とかやれば通る
+のように設定すれば通ります。
 
 - <https://github.com/expo/eas-cli/issues/1079>

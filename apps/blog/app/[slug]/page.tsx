@@ -1,4 +1,4 @@
-import { getPost, getPosts, metaTitle } from '@libs';
+import { getAllPostSlugs, getPost, metaTitle } from '@libs';
 import type { Metadata, ResolvingMetadata } from 'next';
 import { Body } from './body';
 
@@ -17,14 +17,14 @@ export default async function Page({ params }: PageProps) {
   return (
     <div>
       <header className="mt-8 mb-4">
-        <h1 className="font-semibold text-2xl">{post.title}</h1>
-        <div className="mt-4 flex justify-between text-xs">
-          <span className="font-semibold text-slate-500">
+        <h1 className="font-semibold text-2xl tracking-widest">{post.title}</h1>
+        <div className="mt-4 flex justify-between text-sm">
+          <span className="font-semibold text-neutral-500">
             {new Date(post.date).toDateString()}
           </span>
           <ul className="flex gap-4">
             {post.tags.map((tag) => (
-              <li key={tag} className="font-semibold text-red-500">
+              <li key={tag} className="font-semibold text-neutral-700">
                 {tag}
               </li>
             ))}
@@ -37,11 +37,7 @@ export default async function Page({ params }: PageProps) {
 }
 
 export function generateStaticParams() {
-  const posts = getPosts();
-
-  return posts.map((post) => ({
-    slug: post.slug,
-  }));
+  return getAllPostSlugs().map((slug) => ({ slug }));
 }
 
 export async function generateMetadata(

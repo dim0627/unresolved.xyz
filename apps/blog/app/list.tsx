@@ -10,14 +10,11 @@ interface ItemProps {
 
 const Item: FC<ItemProps> = ({ item }) => {
   return (
-    <Link
-      className="-mx-4 block rounded-none p-4 duration-200 hover:bg-slate-50 sm:rounded-3xl"
-      href={`/${item.slug}`}
-    >
-      <h2 className="mb-2 font-semibold text-xl tracking-widest">
+    <Link className="group block" href={`/${item.slug}`}>
+      <h2 className="mb-2 font-semibold text-lg tracking-widest group-hover:underline">
         {item.title}
       </h2>
-      <div className="line-clamp-4 text-slate-500">
+      <div className="line-clamp-4 text-neutral-500 text-sm">
         <ReactMarkdown remarkPlugins={[strip]}>{item.body}</ReactMarkdown>
       </div>
     </Link>
@@ -30,7 +27,7 @@ interface ListProps {
 
 export const List: FC<ListProps> = ({ items }) => {
   return (
-    <div className="flex flex-col gap-y-2">
+    <div className="space-y-12">
       {items.map((item) => (
         <Item key={item.slug} item={item} />
       ))}

@@ -1,12 +1,12 @@
 ---
-title: "Heroku + Rails(Sprockets4.0.1)でassets:precompileがエラーする"
+title: "Heroku + Rails(Sprockets4.0.1)でassets:precompileがエラーする問題"
 date: "2020-06-06T00:00+09:00"
 tags:
   - "Ruby on Rails"
   - "TIL"
 ---
 
-dependabotのオートマージで夜中にデプロイ失敗したよってメッセージが来てた 😵
+dependabotのオートマージで夜中にデプロイ失敗したよというメッセージが発生しました。
 
 ```text
 NoMethodError: undefined method `+' for nil:NilClass
@@ -40,13 +40,13 @@ NoMethodError: undefined method `+' for nil:NilClass
   from ./vendor/bundle/bin/rake:29:in `load'
   from ./vendor/bundle/bin/rake:29:in `<main>'
 ```
-  
-以下で解決できた。
+
+以下で解決できました。
 
 ```diff
 -Rails.application.config.assets.version = '1.0'
 +Rails.application.config.assets.version = 'v1.0'
 ```
-  
+
 - <https://stackoverflow.com/questions/62208867/rails-deployment-to-heroku-nomethoderror-undefined-method-for-nilnilclass>
 - <https://github.com/rails/sprockets/issues/683>

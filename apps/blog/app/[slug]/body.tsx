@@ -3,7 +3,7 @@
 import type { FC } from 'react';
 import ReactMarkdown from 'react-markdown';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { nord } from 'react-syntax-highlighter/dist/cjs/styles/prism';
+import { vscDarkPlus } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 import rehypeRaw from 'rehype-raw';
 import rehypeSlug from 'rehype-slug';
 import remarkGfm from 'remark-gfm';
@@ -17,11 +17,11 @@ const CodeBlock = ({
   const match = /language-(\w+)/.exec(className || '');
   return match ? (
     <SyntaxHighlighter
-      style={nord}
+      style={vscDarkPlus}
       language={match[1]}
       codeTagProps={{ className: 'text-xs leading-3' }}
       PreTag={(props) => (
-        <div {...props} className="!my-6 !rounded !bg-slate-800" />
+        <div {...props} className="!my-6 !rounded-xl !bg-neutral-900" />
       )}
       showLineNumbers
     >
@@ -30,7 +30,7 @@ const CodeBlock = ({
   ) : (
     <code
       {...props}
-      className="rounded bg-slate-800 px-2 py-1 text-white text-xs"
+      className="rounded-xl bg-neutral-200 px-2 py-1 text-neutral-800 text-xs"
     >
       {children}
     </code>
@@ -56,7 +56,7 @@ export const Body: FC<BodyProps> = ({ body }) => {
           ),
           p: (props) => <p {...props} className="my-6 text-lg" />,
           code: CodeBlock,
-          a: (props) => <a {...props} className="text-red-500 underline" />,
+          a: (props) => <a {...props} className="text-neutral-700 underline" />,
           b: (props) => <b {...props} className="font-semibold" />,
           strong: (props) => <b {...props} className="font-semibold" />,
           ul: (props) => <ul {...props} className="list-disc pl-8" />,

@@ -6,18 +6,18 @@ tags:
   - "NestJS"
 ---
 
-NestJSで構築している担当プロダクトのビルドが地味に遅くなっているのは薄々気づいてたんだけど、ついにデプロイ時にOOM Killされる自体になったので本腰を上げて調べてみた。
+NestJSで構築している担当プロダクトのビルドが地味に遅くなっているのは薄々気づいていたのですが、ついにデプロイ時にOOM Killされる事態になったので本腰を上げて調べてみました。
 
 ## `tsc` でトランスパイルの効率を調べる
 
-`tsc` はトランスパイルするだけでなく、解析をする機能もいくつかついていて、今回はそれにだいぶお世話になった。
+`tsc` はトランスパイルするだけでなく、解析をする機能もいくつかついていて、今回はそれにだいぶお世話になりました。
 
 - [extendedDiagnostics](https://www.typescriptlang.org/tsconfig/#extendedDiagnostics)
 - [generateTrace](https://www.typescriptlang.org/tsconfig/#generateTrace)
 
 ### `extendedDiagnostics` による解析
 
-まず1つ目の `extendedDiagnostics` はトランスパイルの内訳を時間や行数として出力してくれるもので、こんな感じの数字になった。
+まず1つ目の `extendedDiagnostics` はトランスパイルの内訳を時間や行数として出力してくれるもので、このような数値になりました。
 
 ``` sh
 ❯ npx tsc -p tsconfig.build.json --extendedDiagnostics
@@ -54,7 +54,7 @@ I/O Write time:               0.01s
 Total time:                   7.56s
 ```
 
-一般的な数値がわからなかったのでAIに食わせてみるとこういう見解。
+一般的な数値がわからなかったのでAIに食わせてみると、このような見解でした。
 
 | 指標 | 値 | コメント |
 | --- | --- | --- |
@@ -65,11 +65,11 @@ Total time:                   7.56s
 | Types: | **148,758** | 高め。ジェネリクス + DTO/Entity の組み合わせが複雑かも。 |
 | Instantiations: | **692,686** | 非常に多い。型推論が深く入り込んでいる可能性大。 |
 
-確かにメモリ2GBは食い過ぎだよなというのと、型定義も異様に多いのが気になるところ。
+確かにメモリ2GBは使いすぎですし、型定義も異様に多いのが気になるところです。
 
-ぱっと思いつくところが、依存している外部APIのOpenAPI定義からSDKを作って利用していたので、おそらくこいつがBarrelで対象の不要コードを読ませてしまっていたのでは、というもの。
+すぐに思いついたのが、依存している外部APIのOpenAPI定義からSDKを作って利用していたので、おそらくこれがBarrelで不要なコードを読み込ませてしまっていたのではないか、というものです。
 
-SDKは [Hey API](https://heyapi.dev/) で作成していたので、依存していた6つのAPIそれぞれを利用しているパスのみSDKを生成するようにした結果がこちら。
+SDKは [Hey API](https://heyapi.dev/) で作成していたので、依存していた6つのAPIそれぞれを利用しているパスのみSDKを生成するようにした結果がこちらです。
 
 ``` sh
 ❯ npx tsc -p tsconfig.build.json --extendedDiagnostics
@@ -106,8 +106,8 @@ I/O Write time:              0.01s
 Total time:                  5.27s
 ```
 
-ざっと比べるとこんな感じ。
-メモリは半分以下になって型定義は3分の1とかくらい？
+ざっと比べるとこのような感じです。
+メモリは半分以下になり、型定義は3分の1ほどに減りました。
 
 ``` sh
 # Memory used:
@@ -125,15 +125,15 @@ After      61,760
 
 ### `generateTrace` による解析
 
-`generateTrace` は `extendedDiagnostics` と同じように `tsc` のオプションで、これをつけるとトレース情報をファイルとして出力してくれる。
+`generateTrace` は `extendedDiagnostics` と同じように `tsc` のオプションで、これをつけるとトレース情報をファイルとして出力してくれます。
 
-詳細は末尾に記載する記事に任せるけど、だいたいこんな感じの実行方法。
+詳細は末尾に記載する記事に任せますが、だいたいこのような実行方法です。
 
 ``` sh
 npx tsc -p tsconfig.build.json --generateTrace ~/Desktop/trace --incremental false
 ```
 
-出力されたファイルはChromeの chrome://tracing/ に食わせるとそれぞれのプロセスを可視化してくれる。
+出力されたファイルはChromeの chrome://tracing/ に食わせるとそれぞれのプロセスを可視化してくれます。
 
 ## Refs
 

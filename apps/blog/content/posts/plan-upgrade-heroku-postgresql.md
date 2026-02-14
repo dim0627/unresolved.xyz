@@ -6,7 +6,7 @@ tags:
   - "TIL"
 ---
 
-いつも忘れてほんとに困るので。
+いつも忘れて本当に困るのでメモしておきます。
 
 ```bash
 heroku maintenance:on --app your-app-name
