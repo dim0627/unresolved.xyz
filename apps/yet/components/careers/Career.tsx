@@ -1,8 +1,8 @@
-import type { CareerItemFragment } from '@graphql/graphql';
 import type { FC } from 'react';
+import type { Career as CareerType } from '../../types/content';
 
 interface CareerProps {
-  career: CareerItemFragment;
+  career: CareerType;
 }
 
 export const Career: FC<CareerProps> = ({ career }) => {

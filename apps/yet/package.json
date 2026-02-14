@@ -5,23 +5,17 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
-    "codegen": "DOTENV_CONFIG_PATH='./.env.local' graphql-codegen --config codegen.ts --require dotenv/config"
+    "start": "next start"
   },
   "dependencies": {
-    "graphql": "^16.12.0",
-    "graphql-request": "^7.4.0",
     "next": "^16.1.6",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
     "react-icons": "^5.5.0",
-    "react-markdown": "^10.1.0",
-    "yup": "^1.7.1"
+    "react-markdown": "^10.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.29.0",
-    "@graphql-codegen/cli": "^6.1.1",
-    "@graphql-codegen/client-preset": "^5.2.2",
     "@types/node": "^25.2.1",
     "@types/react": "^19.2.13",
     "@types/react-dom": "^19.2.3",

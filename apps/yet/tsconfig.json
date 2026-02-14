@@ -3,8 +3,6 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@graphql": ["./src/gql/index.ts"],
-      "@graphql/*": ["./src/gql/*"],
       "@libs": ["./libs/index.ts"],
       "@components": ["./components/index.ts"],
       "@styles/*": ["./styles/*"]

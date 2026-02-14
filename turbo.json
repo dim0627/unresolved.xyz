@@ -5,8 +5,6 @@
     "build": {
       "dependsOn": ["^build"],
       "env": [
-        "SCHEMA_PATH",
-        "GRAPHCMS_BEARER_TOKEN",
         "CONTENTFUL_SPACE_ID",
         "CONTENTFUL_ACCESS_TOKEN",
         "CONTENTFUL_PREVIEW_ENABLED"

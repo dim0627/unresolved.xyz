@@ -1,10 +1,10 @@
-import type { ProjectItemFragment } from '@graphql/graphql';
 import type { FC } from 'react';
 import { FiGithub, FiLink } from 'react-icons/fi';
 import ReactMarkdown from 'react-markdown';
+import type { Project as ProjectType } from '../../types/content';
 
 interface ProjectProps {
-  project: ProjectItemFragment;
+  project: ProjectType;
 }
 
 export const Project: FC<ProjectProps> = ({ project }) => {

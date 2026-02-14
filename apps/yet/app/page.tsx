@@ -1,31 +1,15 @@
 import { Careers, Footer, Profile, Projects, Section } from '@components';
-import { graphql } from '@graphql';
-import { graphqlClient } from '@libs';
+import { getCareers, getProfile, getProjects } from '@libs';
 
-export const revalidate = 43200;
-
-const IndexQuery = graphql(/* GraphQL */ `
-  query indexQuery {
-    profiles {
-      ...ProfileItem
-    }
-    projects(orderBy: position_DESC) {
-      ...ProjectItem
-    }
-    careers(orderBy: joinedAt_ASC) {
-      ...CareerItem
-    }
-  }
-`);
-
-export default async function Page() {
-  const { profiles, projects, careers } =
-    await graphqlClient.request(IndexQuery);
+export default function Page() {
+  const profile = getProfile();
+  const projects = getProjects();
+  const careers = getCareers();
 
   return (
     <>
       <Section>
-        <Profile profile={profiles[0]} />
+        <Profile profile={profile} />
       </Section>
       <Section title="Projects">
         <Projects projects={projects} />
