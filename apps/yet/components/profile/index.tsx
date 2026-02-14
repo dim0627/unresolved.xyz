@@ -1,40 +1,21 @@
-import { type FragmentType, graphql, useFragment } from '@graphql';
 import Image from 'next/image';
 import type { FC } from 'react';
 import ReactMarkdown from 'react-markdown';
+import type { Profile as ProfileType } from '../../types/content';
 import { SocialLinks } from './SocialLinks';
 
-export const ProfileFragment = graphql(/* GraphQL */ `
-  fragment ProfileItem on Profile {
-    id
-    thumbnail {
-      url
-    }
-    fullName
-    description
-    details
-    twitterUrl
-    gitHubUrl
-    linkedInUrl
-    facebookUrl
-    emailAddress
-  }
-`);
-
 interface ProfileProps {
-  profile: FragmentType<typeof ProfileFragment>;
+  profile: ProfileType;
 }
 
-export const Profile: FC<ProfileProps> = (props) => {
-  const profile = useFragment(ProfileFragment, props.profile);
-
+export const Profile: FC<ProfileProps> = ({ profile }) => {
   return (
     <>
       <div className="flex h-[40vh] items-center max-md:block">
         <div>
           <div className="mb-6 flex items-center max-md:flex-col">
             <Image
-              src={profile.thumbnail.url}
+              src={profile.thumbnailUrl}
               alt={profile.fullName}
               width={128}
               height={128}

@@ -1,4 +1,3 @@
-import type { ProfileItemFragment } from '@graphql/graphql';
 import type { FC } from 'react';
 import type { IconType } from 'react-icons';
 import {
@@ -8,9 +7,10 @@ import {
   FiMail,
   FiTwitter,
 } from 'react-icons/fi';
+import type { Profile } from '../../types/content';
 
 interface SocialLinksProps {
-  profile: ProfileItemFragment;
+  profile: Profile;
 }
 
 export const SocialLinks: FC<SocialLinksProps> = ({ profile }) => {

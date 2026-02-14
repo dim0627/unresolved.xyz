@@ -6,7 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 Turborepo monorepo containing two Next.js websites:
 - **apps/blog** — Blog at blog.unresolved.xyz (Next.js App Router, Contentful CMS, Tailwind CSS)
-- **apps/yet** — Portfolio at yet.unresolved.xyz (Next.js Pages Router, GraphQL/Hygraph, Vanilla Extract CSS)
+- **apps/yet** — Portfolio at yet.unresolved.xyz (Next.js App Router, static JSON content, Tailwind CSS)
 - **packages/tsconfig** — Shared TypeScript configurations
 
 ## Common Commands
@@ -31,9 +31,6 @@ pnpm syncpack:fix
 
 # Tests
 pnpm test
-
-# GraphQL codegen (yet app only)
-cd apps/yet && pnpm codegen
 ```
 
 Blog dev server runs on port 3001, Yet on port 3000.
@@ -53,11 +50,10 @@ Blog dev server runs on port 3001, Yet on port 3000.
 - ISR with 60-second revalidation
 
 ### Yet App (`apps/yet`)
-- Next.js Pages Router with dynamic `[slug]` routes
-- Data fetched via GraphQL (graphql-request) from Hygraph
-- Generated types in `src/gql/` via GraphQL Code Generator (`codegen.ts`)
-- Vanilla Extract for CSS-in-JS styling
-- Masonry layout with react-responsive-masonry
+- Next.js App Router (single page portfolio)
+- Content managed via static JSON files in `content/` directory
+- Type definitions in `types/content.ts`
+- Tailwind CSS for styling
 
 ### Path Aliases
 Both apps use TypeScript path aliases:
@@ -65,12 +61,11 @@ Both apps use TypeScript path aliases:
 - `@components` → `./components/index.ts`
 - `@styles/*` → `./styles/*`
 - Blog also has `@layouts` → `./layouts/index.ts`
-- Yet also has `@graphql` / `@graphql/*` → `./src/gql/`
 
 ## Environment Variables
 
 **Blog:** `CONTENTFUL_SPACE_ID`, `CONTENTFUL_ACCESS_TOKEN`, `CONTENTFUL_PREVIEW_ENABLED`
-**Yet:** `SCHEMA_PATH`, `GRAPHCMS_BEARER_TOKEN`
+**Yet:** None (static content)
 
 ## CI Pipeline
 

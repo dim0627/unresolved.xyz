@@ -1,0 +1,74 @@
+[
+  {
+    "emoji": "📚",
+    "title": "honn.me",
+    "description": "Book collection maker with dynamic Open Graph image.",
+    "stacks": [
+      "Next.js",
+      "NestJS",
+      "Vercel",
+      "Render",
+      "@vercel/og",
+      "Vitest",
+      "Bunny.net"
+    ],
+    "href": "https://honn.me/",
+    "repositoryUrl": null
+  },
+  {
+    "emoji": "🍳",
+    "title": "yet.unresolved.xyz",
+    "description": "It is about this page you are looking at.",
+    "stacks": ["Next.js", "Vercel", "hygraph", "Turborepo", "vanilla-extract"],
+    "href": "https://yet.unresolved.xyz/",
+    "repositoryUrl": "https://github.com/dim0627/unresolved.xyz/tree/main/apps/yet"
+  },
+  {
+    "emoji": "📔",
+    "title": "blog.unresolved.xyz",
+    "description": "Tech blog.",
+    "stacks": ["Next.js", "Vercel", "Contentful", "Turborepo", "Tailwind CSS"],
+    "href": "https://blog.unresolved.xyz/",
+    "repositoryUrl": "https://github.com/dim0627/unresolved.xyz/tree/main/apps/blog"
+  },
+  {
+    "emoji": "🥗",
+    "title": "nutry.co(Closed)",
+    "description": "Q&A service for registered dietitians.",
+    "stacks": ["Ruby on Rails"],
+    "href": null,
+    "repositoryUrl": null
+  },
+  {
+    "emoji": "ℹ️",
+    "title": "Private Service",
+    "description": "Bookmark service for any URL with OGP.",
+    "stacks": ["Next.js", "Nest.js", "Turborepo", "Prisma"],
+    "href": null,
+    "repositoryUrl": null
+  },
+  {
+    "emoji": "🎪",
+    "title": "p-and-ora.me(Closed)",
+    "description": "Curation media for entertainment content.",
+    "stacks": ["Hugo", "Netlify"],
+    "href": null,
+    "repositoryUrl": null
+  },
+  {
+    "emoji": "🏂",
+    "title": "snowdo.me(Closed)",
+    "description": "Summarized search engine of ski resorts.",
+    "stacks": ["Ruby on Rails"],
+    "href": null,
+    "repositoryUrl": null
+  },
+  {
+    "emoji": "💼",
+    "title": "RECR(Closed)",
+    "description": "Matching service for employee and employer.",
+    "stacks": ["Ruby on Rails"],
+    "href": null,
+    "repositoryUrl": null
+  }
+]
