@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "classnames": "^2.5.1",
-    "contentful": "^11.10.3",
+    "gray-matter": "^4.0.3",
     "next": "^16.1.6",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
@@ -19,18 +19,17 @@
     "rehype-slug": "^6.0.0",
     "remark-gfm": "^4.0.1",
     "remark-toc": "^9.0.0",
-    "strip-markdown": "^6.0.0",
-    "yup": "^1.7.1"
+    "strip-markdown": "^6.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.29.0",
+    "@tailwindcss/postcss": "^4.1.18",
     "@types/node": "^25.2.1",
     "@types/react": "^19.2.13",
     "@types/react-dom": "^19.2.3",
     "@types/react-syntax-highlighter": "^15.5.13",
-    "@tailwindcss/postcss": "^4.1.18",
-    "tailwindcss": "^4.1.18",
     "@unresolved/tsconfig": "workspace:*",
+    "tailwindcss": "^4.1.18",
     "typescript": "^5.9.3"
   }
 }

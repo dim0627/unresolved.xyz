@@ -1,6 +1,5 @@
 'use client';
 
-import type { ContentfulService } from '@libs';
 import type { FC } from 'react';
 import ReactMarkdown from 'react-markdown';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
@@ -39,12 +38,10 @@ const CodeBlock = ({
 };
 
 interface BodyProps {
-  post: Awaited<
-    ReturnType<InstanceType<typeof ContentfulService>['getPosts']>
-  >['items'][0];
+  body: string;
 }
 
-export const Body: FC<BodyProps> = ({ post }) => {
+export const Body: FC<BodyProps> = ({ body }) => {
   return (
     <div className="break-all">
       <ReactMarkdown
@@ -67,7 +64,7 @@ export const Body: FC<BodyProps> = ({ post }) => {
           li: (props) => <li {...props} className="my-2 text-lg" />,
         }}
       >
-        {post.fields.body as string}
+        {body}
       </ReactMarkdown>
     </div>
   );

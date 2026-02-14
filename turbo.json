@@ -4,11 +4,6 @@
   "tasks": {
     "build": {
       "dependsOn": ["^build"],
-      "env": [
-        "CONTENTFUL_SPACE_ID",
-        "CONTENTFUL_ACCESS_TOKEN",
-        "CONTENTFUL_PREVIEW_ENABLED"
-      ],
       "outputs": ["dist/**", ".next/**"]
     },
     "lint": {
