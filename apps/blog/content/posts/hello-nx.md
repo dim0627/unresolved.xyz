@@ -173,7 +173,7 @@ event - compiled successfully (174 modules)
 
 ええ・・・できたけどダセえ・・・
 
-![Screen Shot 2021-12-03 at 8.56.40](//images.contentful.com/ra242vdzwrmo/1OzyGE0Ed6aqTWWtHPHKKc/e97ddfea8226c613a0510dbfea2df46d/Screen_Shot_2021-12-03_at_8.56.40.png)
+![Screen Shot 2021-12-03 at 8.56.40](/images/posts/hello-nx-1.png)
 
 まあいいか。
 

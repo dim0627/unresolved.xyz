@@ -9,13 +9,13 @@ tags:
 
 - [trulia/hologram](https://github.com/trulia/hologram)
 
-![Screen Shot 2020-07-17 at 10.25.42](//images.ctfassets.net/ra242vdzwrmo/2IHvbzKYwauV46nl28976M/6233847301156c52191d177fc72cc295/Screen_Shot_2020-07-17_at_10.25.42.png)
+![Screen Shot 2020-07-17 at 10.25.42](/images/posts/hologram-on-rails-1.png)
 
 ## hologramのここが良い
 
 hologramはCSS上にコメント形式でMarkdownとマジックコードコメントを書くことで「実際の表示」と「コードの例」をそれぞれドキュメント化してくれるRuby製のツール。
 
-![Screen Shot 2020-07-17 at 9.41.17](//images.ctfassets.net/ra242vdzwrmo/Z2sFx9AwsLEhA6itsW1cS/aa12c39263eafdaaf78ea83ec6180209/Screen_Shot_2020-07-17_at_9.41.17.png)
+![Screen Shot 2020-07-17 at 9.41.17](/images/posts/hologram-on-rails-2.png)
 
 普通に自前で作ろうとすると「コードの例」を載せるのがすごく難しいので、それをやってもらうにはやっぱりライブラリを使ったほうが楽。
 
