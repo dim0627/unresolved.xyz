@@ -18,7 +18,7 @@ importers:
         specifier: 14.0.0-alpha.40
         version: 14.0.0-alpha.40
       turbo:
-        specifier: latest
+        specifier: ^2.8.3
         version: 2.8.3
 
   apps/blog:
