@@ -4,6 +4,7 @@ date: "2020-08-10T00:00+09:00"
 tags:
   - "TypeScript"
   - "TIL"
+draft: true
 ---
 
 tsconfigにbaseUrlを設定しているとeslintがコケることがあります。

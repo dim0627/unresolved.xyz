@@ -1,5 +1,5 @@
 ---
-title: "React NativeのBlobはJSのBlobに準拠していません"
+title: "React NativeのBlobがJSのBlobに準拠していない問題について"
 date: "2022-03-31T00:00+09:00"
 tags:
   - "React Native"

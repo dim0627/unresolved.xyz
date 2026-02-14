@@ -6,7 +6,7 @@ tags:
   - "TIL"
 ---
 
-dependabotのオートマージで夜中にデプロイ失敗したよというメッセージが来ていました 😵
+dependabotのオートマージで夜中にデプロイ失敗したよというメッセージが発生しました。
 
 ```text
 NoMethodError: undefined method `+' for nil:NilClass

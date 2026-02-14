@@ -1,5 +1,5 @@
 ---
-title: "nextjs-auth0のgetAccessTokenでOpaque TokenではなくJWTがほしいならAUTH0_AUDIENCEを設定しないといけません"
+title: "nextjs-auth0のgetAccessTokenでOpaque TokenではなくJWTがほしい場合はAUTH0_AUDIENCEを設定しないといけない"
 date: "2021-11-01T00:00+09:00"
 tags:
   - "TIL"

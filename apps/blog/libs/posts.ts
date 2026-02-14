@@ -22,12 +22,13 @@ export function getPosts(): Post[] {
       date: data.date,
       tags: data.tags || [],
       body: content,
+      draft: data.draft ?? false,
     };
   });
 
-  return posts.sort(
-    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
-  );
+  return posts
+    .filter((p) => !p.draft)
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 }
 
 export function getPost(slug: string): Post | undefined {
@@ -46,5 +47,13 @@ export function getPost(slug: string): Post | undefined {
     date: data.date,
     tags: data.tags || [],
     body: content,
+    draft: data.draft ?? false,
   };
+}
+
+export function getAllPostSlugs(): string[] {
+  const fileNames = fs
+    .readdirSync(postsDirectory)
+    .filter((f) => f.endsWith('.md'));
+  return fileNames.map((f) => f.replace(/\.md$/, ''));
 }

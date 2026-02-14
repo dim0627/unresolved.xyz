@@ -1,11 +1,11 @@
 ---
-title: "何もしていないのに5000番ポートが取られていました"
+title: "AirPlay Receiverが5000番ポートが取ってしまう問題"
 date: "2022-01-20T00:00+09:00"
 tags:
   - "TIL"
 ---
 
-MacOS Montereyからでしょうか。
+macOS Montereyからでしょうか。
 
 AirPlay Receiverというもののチェックを外せばすぐに開放されます。
 

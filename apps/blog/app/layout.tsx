@@ -28,7 +28,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         </header>
         <Container>{children}</Container>
         <footer className="mt-8 py-4">
-          <Container fullWidth>
+          <Container>
             <span className="text-neutral-500">
               &copy; {new Date().getFullYear()} blog.unresolved.xyz
             </span>

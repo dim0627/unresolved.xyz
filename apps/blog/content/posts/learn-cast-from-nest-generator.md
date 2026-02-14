@@ -5,6 +5,7 @@ tags:
   - "JavaScript"
   - "NestJS"
   - "TIL"
+draft: true
 ---
 
 Nest.jsの `nest g res xxx` をするとこのようなコントローラが生まれるのですが、この `+id` は何だろうと思っていたら、どうやらHTTPパラメタで渡ってきた文字列のIDを整数にするためにやっているようでした。

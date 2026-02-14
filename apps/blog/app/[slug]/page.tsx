@@ -1,4 +1,4 @@
-import { getPost, getPosts, metaTitle } from '@libs';
+import { getAllPostSlugs, getPost, metaTitle } from '@libs';
 import type { Metadata, ResolvingMetadata } from 'next';
 import { Body } from './body';
 
@@ -37,11 +37,7 @@ export default async function Page({ params }: PageProps) {
 }
 
 export function generateStaticParams() {
-  const posts = getPosts();
-
-  return posts.map((post) => ({
-    slug: post.slug,
-  }));
+  return getAllPostSlugs().map((slug) => ({ slug }));
 }
 
 export async function generateMetadata(
