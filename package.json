@@ -20,5 +20,10 @@
   "engines": {
     "node": ">=18.10.0"
   },
-  "packageManager": "pnpm@10.12.2"
+  "packageManager": "pnpm@10.12.2",
+  "pnpm": {
+    "overrides": {
+      "axios": "1.13.5"
+    }
+  }
 }
