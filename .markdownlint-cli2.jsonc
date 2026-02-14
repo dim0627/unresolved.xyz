@@ -1,0 +1,12 @@
+{
+  "globs": ["apps/blog/content/posts/**/*.md"],
+  "config": {
+    "default": true,
+    // ブログ記事では行の長さを制限しない
+    "MD013": false,
+    // 異なるセクション配下の同名見出しを許可する
+    "MD024": { "siblings_only": true },
+    // ブログ記事ではインラインHTMLを許可する
+    "MD033": false
+  }
+}

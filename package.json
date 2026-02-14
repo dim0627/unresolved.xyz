@@ -5,8 +5,8 @@
   "scripts": {
     "build": "turbo run build",
     "dev": "turbo run dev",
-    "lint": "biome check ./apps ./packages",
-    "lint:fix": "biome check ./apps ./packages --write --unsafe",
+    "lint": "biome check ./apps ./packages && markdownlint-cli2",
+    "lint:fix": "biome check ./apps ./packages --write --unsafe && markdownlint-cli2 --fix",
     "syncpack:fix": "syncpack fix",
     "syncpack:format": "syncpack format",
     "syncpack:lint": "syncpack lint",
@@ -14,6 +14,7 @@
   },
   "devDependencies": {
     "@biomejs/biome": "2.3.14",
+    "markdownlint-cli2": "^0.20.0",
     "syncpack": "14.0.0-alpha.40",
     "turbo": "^2.8.3"
   },

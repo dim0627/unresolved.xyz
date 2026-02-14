@@ -1,14 +1,11 @@
-import { ContentfulService } from '@libs';
+import { getPosts } from '@libs';
 import type { Metadata } from 'next';
 import { List } from './list';
 
-export const revalidate = 3600; // revalidate every hour
+export default function Page() {
+  const posts = getPosts();
 
-export default async function Page() {
-  const client = new ContentfulService();
-  const posts = await client.getPosts();
-
-  return <List items={posts.items} />;
+  return <List items={posts} />;
 }
 
 export const metadata: Metadata = {
