@@ -18,13 +18,13 @@ export default async function Page({ params }: PageProps) {
     <div>
       <header className="mt-8 mb-4">
         <h1 className="font-semibold text-2xl tracking-widest">{post.title}</h1>
-        <div className="mt-4 flex justify-between text-sm">
-          <span className="font-semibold text-neutral-500">
+        <div className="mt-4 flex justify-between text-neutral-500 text-sm">
+          <span className="font-semibold">
             {new Date(post.date).toDateString()}
           </span>
           <ul className="flex gap-4">
             {post.tags.map((tag) => (
-              <li key={tag} className="font-semibold text-neutral-700">
+              <li key={tag} className="font-semibold">
                 {tag}
               </li>
             ))}

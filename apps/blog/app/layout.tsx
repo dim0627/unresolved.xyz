@@ -30,7 +30,10 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <footer className="mt-8 py-4">
           <Container>
             <span className="text-neutral-500">
-              &copy; {new Date().getFullYear()} blog.unresolved.xyz
+              &copy; {new Date().getFullYear()}{' '}
+              <a href="https://yet.unresolved.xyz" className="underline">
+                dim0627@unresolved.xyz
+              </a>
             </span>
           </Container>
         </footer>
