@@ -1,6 +1,6 @@
+import Image from 'next/image';
 import type { FC } from 'react';
 import { FiGithub, FiLink } from 'react-icons/fi';
-import ReactMarkdown from 'react-markdown';
 import type { Project as ProjectType } from '../../types/content';
 
 interface ProjectProps {
@@ -12,12 +12,18 @@ export const Project: FC<ProjectProps> = ({ project }) => {
     <div className="rounded-3xl border-2 border-base shadow-bordered">
       <div className="px-6 pt-4 pb-4">
         <header className="flex">
-          <span className="mt-2 mr-4 text-[2rem] leading-8">
-            {project.emoji}
-          </span>
+          {project.image && (
+            <Image
+              src={project.image}
+              alt={project.title}
+              width={48}
+              height={48}
+              className="mt-2 mr-4 h-12 w-12"
+            />
+          )}
           <div>
-            <h3 className="font-bold text-2xl">{project.title}</h3>
-            <ReactMarkdown>{project.description}</ReactMarkdown>
+            <h3 className="font-bold text-xl">{project.title}</h3>
+            <p className="text-base">{project.description}</p>
           </div>
         </header>
         <ul className="mt-2 flex list-none flex-wrap gap-2">

@@ -1,6 +1,6 @@
 [
   {
-    "emoji": "📚",
+    "image": "/images/projects/honn-me.png",
     "title": "honn.me",
     "description": "Book collection maker with dynamic Open Graph image.",
     "stacks": [
@@ -16,7 +16,7 @@
     "repositoryUrl": null
   },
   {
-    "emoji": "🍳",
+    "image": "/images/projects/yet-unresolved-xyz.png",
     "title": "yet.unresolved.xyz",
     "description": "It is about this page you are looking at.",
     "stacks": ["Next.js", "Vercel", "hygraph", "Turborepo", "vanilla-extract"],
@@ -24,7 +24,7 @@
     "repositoryUrl": "https://github.com/dim0627/unresolved.xyz/tree/main/apps/yet"
   },
   {
-    "emoji": "📔",
+    "image": "/images/projects/blog-unresolved-xyz.png",
     "title": "blog.unresolved.xyz",
     "description": "Tech blog.",
     "stacks": ["Next.js", "Vercel", "Contentful", "Turborepo", "Tailwind CSS"],
@@ -32,7 +32,7 @@
     "repositoryUrl": "https://github.com/dim0627/unresolved.xyz/tree/main/apps/blog"
   },
   {
-    "emoji": "🥗",
+    "image": "/images/projects/nutry-co.png",
     "title": "nutry.co(Closed)",
     "description": "Q&A service for registered dietitians.",
     "stacks": ["Ruby on Rails"],
@@ -40,15 +40,7 @@
     "repositoryUrl": null
   },
   {
-    "emoji": "ℹ️",
-    "title": "Private Service",
-    "description": "Bookmark service for any URL with OGP.",
-    "stacks": ["Next.js", "Nest.js", "Turborepo", "Prisma"],
-    "href": null,
-    "repositoryUrl": null
-  },
-  {
-    "emoji": "🎪",
+    "image": "/images/projects/p-and-ora-me.png",
     "title": "p-and-ora.me(Closed)",
     "description": "Curation media for entertainment content.",
     "stacks": ["Hugo", "Netlify"],
@@ -56,7 +48,7 @@
     "repositoryUrl": null
   },
   {
-    "emoji": "🏂",
+    "image": "/images/projects/snowdo-me.png",
     "title": "snowdo.me(Closed)",
     "description": "Summarized search engine of ski resorts.",
     "stacks": ["Ruby on Rails"],
@@ -64,7 +56,7 @@
     "repositoryUrl": null
   },
   {
-    "emoji": "💼",
+    "image": "/images/projects/recr-biz.png",
     "title": "RECR(Closed)",
     "description": "Matching service for employee and employer.",
     "stacks": ["Ruby on Rails"],
