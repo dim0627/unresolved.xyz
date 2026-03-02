@@ -9,7 +9,7 @@ export const Career: FC<CareerProps> = ({ career }) => {
   return (
     <div>
       <div className="relative text-base before:absolute before:top-1 before:bottom-0 before:-left-[1.75rem] before:box-border before:h-4 before:w-4 before:rounded-[10px] before:border-2 before:border-base before:bg-brand before:content-['']">
-        {career.joinedAt}
+        {career.leavedAt || 'Now'}
       </div>
       <div className="m-2 rounded-3xl border-2 border-base px-6 py-4 shadow-bordered">
         <div className="flex items-end">
@@ -40,7 +40,7 @@ export const Career: FC<CareerProps> = ({ career }) => {
         </ul>
       </div>
       <div className="relative text-base before:absolute before:top-1 before:bottom-0 before:-left-[1.75rem] before:box-border before:h-4 before:w-4 before:rounded-[10px] before:border-2 before:border-base before:bg-brand before:content-['']">
-        {career.leavedAt || 'Now'}
+        {career.joinedAt}
       </div>
     </div>
   );
