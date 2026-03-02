@@ -12,5 +12,7 @@ export function getProjects(): Project[] {
 }
 
 export function getCareers(): Career[] {
-  return careersData as Career[];
+  return (careersData as Career[]).toSorted(
+    (a, b) => new Date(b.joinedAt).getTime() - new Date(a.joinedAt).getTime(),
+  );
 }
