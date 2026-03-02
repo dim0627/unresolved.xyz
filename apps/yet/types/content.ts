@@ -11,7 +11,7 @@ export interface Profile {
 }
 
 export interface Project {
-  emoji: string;
+  image?: string | null;
   title: string;
   description: string;
   stacks: string[];
