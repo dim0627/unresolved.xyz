@@ -14,8 +14,8 @@ export const Career: FC<CareerProps> = ({ career }) => {
         <Icon size={28} />
       </div>
       <div>
-        <h3 className="text-xl font-medium">{career.companyName}</h3>
-        <p className="mt-1 text-sm opacity-60 flex gap-2">
+        <h3 className="font-medium text-xl">{career.companyName}</h3>
+        <p className="mt-1 flex gap-2 text-sm opacity-60">
           <span>
             {[
               career.joinedAt.slice(0, 7),

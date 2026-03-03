@@ -123,7 +123,7 @@ export const careers: Career[] = [
   {
     icon: Palette,
     companyName: 'amana, inc.',
-    stacks: ['Next.js', 'NestJS', 'Turborepo', 'Pulumi', 'WXT',' Astro'],
+    stacks: ['Next.js', 'NestJS', 'Turborepo', 'Pulumi', 'WXT', ' Astro'],
     roles: ['Manager'],
     joinedAt: '2024-01-22',
     leavedAt: '2026-02-28',
