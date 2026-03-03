@@ -1,4 +1,4 @@
-import careersData from '../content/careers.json';
+import { careers } from '../content/careers';
 import profileData from '../content/profile.json';
 import projectsData from '../content/projects.json';
 import type { Career, Profile, Project } from '../types/content';
@@ -12,7 +12,7 @@ export function getProjects(): Project[] {
 }
 
 export function getCareers(): Career[] {
-  return (careersData as Career[]).toSorted(
+  return careers.toSorted(
     (a, b) => new Date(b.joinedAt).getTime() - new Date(a.joinedAt).getTime(),
   );
 }

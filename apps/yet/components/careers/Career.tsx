@@ -6,41 +6,43 @@ interface CareerProps {
 }
 
 export const Career: FC<CareerProps> = ({ career }) => {
+  const Icon = career.icon;
+
   return (
-    <div>
-      <div className="relative text-base before:absolute before:top-1 before:bottom-0 before:-left-[1.75rem] before:box-border before:h-4 before:w-4 before:rounded-[10px] before:border-2 before:border-base before:bg-brand before:content-['']">
-        {career.joinedAt}
+    <div className="flex gap-4">
+      <div className="pt-1">
+        <Icon size={24} />
       </div>
-      <div className="m-2 rounded-3xl border-2 border-base px-6 py-4 shadow-bordered">
-        <div className="flex items-end">
-          <span className="mr-4 text-2xl leading-8">{career.emoji}</span>
-          <div>
-            <ul className="flex list-none flex-wrap gap-2">
-              {career.roles.map((role) => (
-                <li
-                  key={role}
-                  className="inline-block rounded-[3px] bg-base/5 px-2 py-0.5 text-[.7rem] leading-tight"
-                >
-                  {role}
-                </li>
-              ))}
-            </ul>
-            <h3 className="mt-2">{career.companyName}</h3>
-          </div>
-        </div>
+      <div>
+        <h3 className="text-xl font-medium">{career.companyName}</h3>
+        <p className="mt-1 text-sm opacity-60">
+          {[
+            career.joinedAt.slice(0, 7),
+            career.leavedAt ? career.leavedAt.slice(0, 7) : 'Present',
+          ].join(' - ')}
+        </p>
         <ul className="mt-2 flex list-none flex-wrap gap-2">
-          {career.stacks.map((stack) => (
+          {career.roles.map((role) => (
             <li
-              key={stack}
-              className="inline-block rounded-full border border-base/10 px-3 py-1 text-[.7rem]"
+              key={role}
+              className="inline-block rounded bg-base/5 px-3 py-1 text-xs leading-tight"
             >
-              {stack}
+              {role}
             </li>
           ))}
         </ul>
-      </div>
-      <div className="relative text-base before:absolute before:top-1 before:bottom-0 before:-left-[1.75rem] before:box-border before:h-4 before:w-4 before:rounded-[10px] before:border-2 before:border-base before:bg-brand before:content-['']">
-        {career.leavedAt || 'Now'}
+        {career.stacks.length > 0 && (
+          <ul className="mt-2 flex list-none flex-wrap gap-2">
+            {career.stacks.map((stack) => (
+              <li
+                key={stack}
+                className="inline-block rounded-full border border-base/10 px-3 py-1 text-xs"
+              >
+                {stack}
+              </li>
+            ))}
+          </ul>
+        )}
       </div>
     </div>
   );

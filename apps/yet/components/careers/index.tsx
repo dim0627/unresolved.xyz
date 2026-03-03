@@ -8,7 +8,7 @@ interface Props {
 
 export const Careers: FC<Props> = ({ careers }) => {
   return (
-    <div className="relative flex max-w-[32rem] flex-col gap-8 py-6 pl-6 before:absolute before:top-0 before:bottom-0 before:left-0 before:w-1 before:rounded-[10px] before:border-2 before:border-base/10 before:content-['']">
+    <div className="flex max-w-[32rem] flex-col gap-8">
       {careers.map((career) => (
         <Career
           key={`${career.companyName}-${career.joinedAt}`}

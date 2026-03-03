@@ -1,6 +1,6 @@
+import { Github, Link } from 'lucide-react';
 import Image from 'next/image';
 import type { FC } from 'react';
-import { FiGithub, FiLink } from 'react-icons/fi';
 import type { Project as ProjectType } from '../../types/content';
 
 interface ProjectProps {
@@ -9,8 +9,10 @@ interface ProjectProps {
 
 export const Project: FC<ProjectProps> = ({ project }) => {
   return (
-    <div className="rounded-3xl border-2 border-base shadow-bordered">
-      <div className="px-6 pt-4 pb-4">
+    <div
+      className={`rounded-3xl border-2 shadow-bordered ${project.closed ? 'border-base/40' : 'border-base'}`}
+    >
+      <div className={`px-6 pt-4 pb-4 ${project.closed ? 'opacity-60' : ''}`}>
         <header className="flex">
           {project.image && (
             <Image
@@ -18,11 +20,18 @@ export const Project: FC<ProjectProps> = ({ project }) => {
               alt={project.title}
               width={48}
               height={48}
-              className="mt-2 mr-4 h-12 w-12"
+              className={`mt-2 mr-4 h-12 w-12 ${project.closed ? 'grayscale' : ''}`}
             />
           )}
           <div>
-            <h3 className="font-bold text-xl">{project.title}</h3>
+            <h3 className="font-bold text-xl">
+              {project.title}
+              {project.closed && (
+                <span className="ml-2 rounded-full border border-base/30 px-2 py-0.5 align-middle font-normal text-xs">
+                  Closed
+                </span>
+              )}
+            </h3>
             <p className="text-base">{project.description}</p>
           </div>
         </header>
@@ -47,7 +56,7 @@ export const Project: FC<ProjectProps> = ({ project }) => {
                   aria-label={project.title}
                   className="inline-flex rounded-2xl border border-base px-4 py-2 shadow-button"
                 >
-                  <FiLink size={15} />
+                  <Link size={15} />
                 </a>
               </li>
             )}
@@ -57,10 +66,10 @@ export const Project: FC<ProjectProps> = ({ project }) => {
                   href={project.repositoryUrl}
                   rel="nofollow noreferrer"
                   target="_blank"
-                  aria-label="repository url"
+                  aria-label="Repository on GitHub"
                   className="inline-flex rounded-2xl border border-base px-4 py-2 shadow-button"
                 >
-                  <FiGithub size={15} />
+                  <Github size={15} />
                 </a>
               </li>
             )}

@@ -1,3 +1,5 @@
+import type { LucideIcon } from 'lucide-react';
+
 export interface Profile {
   fullName: string;
   description: string;
@@ -17,10 +19,11 @@ export interface Project {
   stacks: string[];
   href?: string | null;
   repositoryUrl?: string | null;
+  closed?: boolean;
 }
 
 export interface Career {
-  emoji: string;
+  icon: LucideIcon;
   companyName: string;
   stacks: string[];
   roles: string[];
