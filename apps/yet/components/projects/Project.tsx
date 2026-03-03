@@ -36,7 +36,6 @@ export const Project: FC<ProjectProps> = ({ project }) => {
                   href={project.href}
                   aria-label={project.title}
                   className="rounded-full bg-base/5 p-3"
-                  rel="nofollow noreferrer"
                   target="_blank"
                 >
                   <Link size={15} />
