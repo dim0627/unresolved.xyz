@@ -57,7 +57,7 @@ export const Project: FC<ProjectProps> = ({ project }) => {
                   href={project.repositoryUrl}
                   rel="nofollow noreferrer"
                   target="_blank"
-                  aria-label="repository url"
+                  aria-label="Repository on GitHub"
                   className="inline-flex rounded-2xl border border-base px-4 py-2 shadow-button"
                 >
                   <FiGithub size={15} />
