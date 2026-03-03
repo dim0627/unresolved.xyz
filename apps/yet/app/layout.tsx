@@ -16,7 +16,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>
+      <body className="text-xl leading-normal">
         <main className={font.className}>
           <Script
             src="https://www.googletagmanager.com/gtag/js?id=G-GQEKXQNCLH"

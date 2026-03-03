@@ -8,12 +8,12 @@ interface Props {
 
 export const Projects: FC<Props> = ({ projects }) => {
   return (
-    <ul className="list-none columns-1 gap-6 sm:columns-2">
+    <div className="flex flex-col gap-8">
       {projects.map((project) => (
-        <li key={project.title} className="mb-6 break-inside-avoid">
+        <div key={project.title}>
           <Project project={project} />
-        </li>
+        </div>
       ))}
-    </ul>
+    </div>
   );
 };
