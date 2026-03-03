@@ -1,12 +1,12 @@
-import type { FC } from 'react';
-import type { IconType } from 'react-icons';
 import {
-  FiFacebook,
-  FiGithub,
-  FiLinkedin,
-  FiMail,
-  FiTwitter,
-} from 'react-icons/fi';
+  Facebook,
+  Github,
+  Linkedin,
+  type LucideIcon,
+  Mail,
+  Twitter,
+} from 'lucide-react';
+import type { FC } from 'react';
 import type { Profile } from '../../types/content';
 
 interface SocialLinksProps {
@@ -16,18 +16,16 @@ interface SocialLinksProps {
 export const SocialLinks: FC<SocialLinksProps> = ({ profile }) => {
   return (
     <ul className="flex list-none gap-4 max-md:justify-center">
-      {profile.twitterUrl && (
-        <Item href={profile.twitterUrl} Icon={FiTwitter} />
-      )}
-      {profile.gitHubUrl && <Item href={profile.gitHubUrl} Icon={FiGithub} />}
+      {profile.twitterUrl && <Item href={profile.twitterUrl} Icon={Twitter} />}
+      {profile.gitHubUrl && <Item href={profile.gitHubUrl} Icon={Github} />}
       {profile.linkedInUrl && (
-        <Item href={profile.linkedInUrl} Icon={FiLinkedin} />
+        <Item href={profile.linkedInUrl} Icon={Linkedin} />
       )}
       {profile.facebookUrl && (
-        <Item href={profile.facebookUrl} Icon={FiFacebook} />
+        <Item href={profile.facebookUrl} Icon={Facebook} />
       )}
       {profile.emailAddress && (
-        <Item href={`mailto:${profile.emailAddress}`} Icon={FiMail} />
+        <Item href={`mailto:${profile.emailAddress}`} Icon={Mail} />
       )}
     </ul>
   );
@@ -35,7 +33,7 @@ export const SocialLinks: FC<SocialLinksProps> = ({ profile }) => {
 
 interface ItemProps {
   href: string;
-  Icon: IconType;
+  Icon: LucideIcon;
 }
 
 const Item: FC<ItemProps> = ({ href, Icon }) => {

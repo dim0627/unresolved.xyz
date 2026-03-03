@@ -1,6 +1,6 @@
+import { Github, Link } from 'lucide-react';
 import Image from 'next/image';
 import type { FC } from 'react';
-import { FiGithub, FiLink } from 'react-icons/fi';
 import type { Project as ProjectType } from '../../types/content';
 
 interface ProjectProps {
@@ -56,7 +56,7 @@ export const Project: FC<ProjectProps> = ({ project }) => {
                   aria-label={project.title}
                   className="inline-flex rounded-2xl border border-base px-4 py-2 shadow-button"
                 >
-                  <FiLink size={15} />
+                  <Link size={15} />
                 </a>
               </li>
             )}
@@ -69,7 +69,7 @@ export const Project: FC<ProjectProps> = ({ project }) => {
                   aria-label="Repository on GitHub"
                   className="inline-flex rounded-2xl border border-base px-4 py-2 shadow-button"
                 >
-                  <FiGithub size={15} />
+                  <Github size={15} />
                 </a>
               </li>
             )}
