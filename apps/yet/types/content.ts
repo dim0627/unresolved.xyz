@@ -17,6 +17,7 @@ export interface Project {
   stacks: string[];
   href?: string | null;
   repositoryUrl?: string | null;
+  closed?: boolean;
 }
 
 export interface Career {

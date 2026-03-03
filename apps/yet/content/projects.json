@@ -41,34 +41,38 @@
   },
   {
     "image": "/images/projects/nutry-co.png",
-    "title": "nutry.co (Closed)",
+    "title": "nutry.co",
     "description": "Q&A service for registered dietitians.",
     "stacks": ["Ruby on Rails"],
     "href": null,
-    "repositoryUrl": null
+    "repositoryUrl": null,
+    "closed": true
   },
   {
     "image": "/images/projects/p-and-ora-me.png",
-    "title": "p-and-ora.me (Closed)",
+    "title": "p-and-ora.me",
     "description": "Entertainment content curation platform.",
     "stacks": ["Hugo", "Netlify"],
     "href": null,
-    "repositoryUrl": null
+    "repositoryUrl": null,
+    "closed": true
   },
   {
     "image": "/images/projects/snowdo-me.png",
-    "title": "snowdo.me (Closed)",
+    "title": "snowdo.me",
     "description": "Aggregated ski resort search engine.",
     "stacks": ["Ruby on Rails"],
     "href": null,
-    "repositoryUrl": null
+    "repositoryUrl": null,
+    "closed": true
   },
   {
     "image": "/images/projects/recr-biz.png",
-    "title": "RECR (Closed)",
+    "title": "RECR",
     "description": "Matching service for employees and employers.",
     "stacks": ["Ruby on Rails"],
     "href": null,
-    "repositoryUrl": null
+    "repositoryUrl": null,
+    "closed": true
   }
 ]
