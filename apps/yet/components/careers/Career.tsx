@@ -15,14 +15,14 @@ export const Career: FC<CareerProps> = ({ career }) => {
       </div>
       <div>
         <h3 className="font-medium text-xl">{career.companyName}</h3>
-        <p className="mt-1 flex gap-2 text-sm opacity-60">
+        <p className="mt-1 flex flex-col text-sm opacity-60 sm:flex-row sm:gap-2">
           <span>
             {[
               career.joinedAt.slice(0, 7),
               career.leavedAt ? career.leavedAt.slice(0, 7) : 'Present',
             ].join(' - ')}
           </span>
-          <span className="opacity-60">・</span>
+          <span className="hidden opacity-60 sm:inline">・</span>
           <span>{career.roles.join(' / ')}</span>
         </p>
         {career.stacks.length > 0 && (
