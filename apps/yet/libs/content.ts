@@ -1,14 +1,14 @@
 import { careers } from '../content/careers';
-import profileData from '../content/profile.json';
-import projectsData from '../content/projects.json';
+import { profile } from '../content/profile';
+import { projects } from '../content/projects';
 import type { Career, Profile, Project } from '../types/content';
 
 export function getProfile(): Profile {
-  return profileData as Profile;
+  return profile;
 }
 
 export function getProjects(): Project[] {
-  return projectsData as Project[];
+  return projects;
 }
 
 export function getCareers(): Career[] {
