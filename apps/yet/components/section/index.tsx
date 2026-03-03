@@ -9,7 +9,9 @@ export const Section: FC<PropsWithChildren<SectionProps>> = (props) => {
   return (
     <section className="py-16">
       <Container>
-        {props.title && <h2 className="mb-6 text-7xl">{props.title}</h2>}
+        {props.title && (
+          <h2 className="mb-12 font-semibold text-7xl">{props.title}</h2>
+        )}
         {props.children}
       </Container>
     </section>

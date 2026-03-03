@@ -11,7 +11,7 @@ export const Career: FC<CareerProps> = ({ career }) => {
   return (
     <div className="flex gap-4">
       <div className="pt-1">
-        <Icon size={28} />
+        <Icon size={32} />
       </div>
       <div>
         <h3 className="font-medium text-xl">{career.companyName}</h3>

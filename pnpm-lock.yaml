@@ -99,6 +99,9 @@ importers:
 
   apps/yet:
     dependencies:
+      '@fontsource/outfit':
+        specifier: ^5.2.8
+        version: 5.2.8
       lucide-react:
         specifier: ^0.474.0
         version: 0.474.0(react@19.2.4)
@@ -280,6 +283,9 @@ packages:
 
   '@fontsource/noto-sans-mono@5.2.10':
     resolution: {integrity: sha512-YG3ev3Bc24UGd1x0THgtU3LG1j+sKahhDgo0vTpEfB0wkXD1+tGSq1fJD+QqnYLXjPhMRNe0ZKWoUi1MPH7Qdg==}
+
+  '@fontsource/outfit@5.2.8':
+    resolution: {integrity: sha512-rXC6g0MqD7cOBjht0bMqc43qM6lRqDLML9KXsmg9uykz0wLQhy8Z/ajrMG6iyoT3NJR+MYgU+OEHp7uHoTb+Yw==}
 
   '@img/colour@1.0.0':
     resolution: {integrity: sha512-A5P/LfWGFSl6nsckYtjw9da+19jB8hkJ6ACTGcDfEJ0aE+l2n2El7dsVM7UVHZQ9s2lmYMWlrS21YLy2IR1LUw==}
@@ -1695,6 +1701,8 @@ snapshots:
   '@fontsource/ibm-plex-mono@5.2.7': {}
 
   '@fontsource/noto-sans-mono@5.2.10': {}
+
+  '@fontsource/outfit@5.2.8': {}
 
   '@img/colour@1.0.0':
     optional: true

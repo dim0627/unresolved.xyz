@@ -22,7 +22,9 @@ export const Profile: FC<ProfileProps> = ({ profile }) => {
               className="mr-8 rounded-2xl shadow-bordered max-md:mr-0"
             />
             <div>
-              <h1 className="text-5xl max-md:mt-4">{profile.fullName}</h1>
+              <h1 className="font-semibold text-5xl max-md:mt-4">
+                {profile.fullName}
+              </h1>
               <div>{profile.description}</div>
             </div>
           </div>
