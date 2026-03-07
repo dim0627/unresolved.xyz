@@ -18,7 +18,7 @@
   "devDependencies": {
     "@babel/core": "^7.29.0",
     "@tailwindcss/postcss": "^4.2.1",
-    "@types/node": "^25.3.2",
+    "@types/node": "^25.3.5",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
     "@unresolved/tsconfig": "workspace:*",
