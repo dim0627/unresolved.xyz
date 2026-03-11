@@ -4,7 +4,7 @@ export const projects: Project[] = [
   {
     image: '/images/projects/taberu-pro.png',
     title: 'taberu.pro',
-    description: 'Food discovery app with playful random food experience.',
+    description: 'Fun and casual meal logging app.',
     stacks: [
       'TanStack Start',
       'Hono',
