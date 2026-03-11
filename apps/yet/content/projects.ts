@@ -2,6 +2,22 @@ import type { Project } from '../types/content';
 
 export const projects: Project[] = [
   {
+    image: '/images/projects/taberu-pro.png',
+    title: 'taberu.pro',
+    description: 'Food discovery app with playful random food experience.',
+    stacks: [
+      'TanStack Start',
+      'Hono',
+      'Drizzle',
+      'Turborepo',
+      'Clerk',
+      'Vercel',
+      'Vitest',
+    ],
+    href: 'https://taberu.pro/',
+    repositoryUrl: 'https://github.com/dim0627/taberu.pro',
+  },
+  {
     image: '/images/projects/honn-me.png',
     title: 'honn.me',
     description: 'Book collection maker with dynamic Open Graph image.',
