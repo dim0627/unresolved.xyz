@@ -15,7 +15,6 @@ export const projects: Project[] = [
       'Vitest',
     ],
     href: 'https://taberu.pro/',
-    repositoryUrl: 'https://github.com/dim0627/taberu.pro',
   },
   {
     image: '/images/projects/honn-me.png',
