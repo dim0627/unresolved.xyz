@@ -37,6 +37,7 @@ export const Project: FC<ProjectProps> = ({ project }) => {
                   aria-label={project.title}
                   className="rounded-full bg-base/5 p-3"
                   target="_blank"
+                  rel="noreferrer"
                 >
                   <Link size={15} />
                 </a>
