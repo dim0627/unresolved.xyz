@@ -1,0 +1,10 @@
+pre-commit:
+  parallel: true
+  jobs:
+    - name: lint
+      run: pnpm biome check --write {staged_files}
+      glob: "*.{js,ts,jsx,tsx,json,jsonc}"
+      stage_fixed: true
+    - name: markdownlint
+      run: pnpm markdownlint-cli2 {staged_files}
+      glob: "*.md"
