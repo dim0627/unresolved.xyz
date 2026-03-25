@@ -5,7 +5,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Project Overview
 
 Turborepo monorepo containing two Next.js websites:
-- **apps/blog** — Blog at blog.unresolved.xyz (Next.js App Router, Contentful CMS, Tailwind CSS)
+- **apps/blog** — Blog at blog.unresolved.xyz (Next.js App Router, local Markdown content, Tailwind CSS)
 - **apps/yet** — Portfolio at yet.unresolved.xyz (Next.js App Router, static JSON content, Tailwind CSS)
 - **packages/tsconfig** — Shared TypeScript configurations
 
@@ -44,10 +44,9 @@ Blog dev server runs on port 3001, Yet on port 3000.
 
 ### Blog App (`apps/blog`)
 - Next.js App Router with dynamic `[slug]` routes
-- Content fetched from Contentful CMS (`libs/contentful.ts`)
+- Content managed via local Markdown files in `content/posts/` with gray-matter frontmatter
 - Markdown rendered via remark/rehype pipeline with syntax highlighting
 - Tailwind CSS for styling
-- ISR with 60-second revalidation
 
 ### Yet App (`apps/yet`)
 - Next.js App Router (single page portfolio)
@@ -64,7 +63,7 @@ Both apps use TypeScript path aliases:
 
 ## Environment Variables
 
-**Blog:** `CONTENTFUL_SPACE_ID`, `CONTENTFUL_ACCESS_TOKEN`, `CONTENTFUL_PREVIEW_ENABLED`
+**Blog:** None (local Markdown content)
 **Yet:** None (static content)
 
 ## CI Pipeline
