@@ -32,6 +32,6 @@
     "@types/react-syntax-highlighter": "^15.5.13",
     "@unresolved/tsconfig": "workspace:*",
     "tailwindcss": "^4.2.2",
-    "typescript": "^5.9.3"
+    "typescript": "^6.0.2"
   }
 }
