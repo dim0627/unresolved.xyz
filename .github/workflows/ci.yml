@@ -54,4 +54,4 @@ jobs:
         run: pnpm test
 
       - name: Security audit
-        run: pnpm audit --audit-level=high --prod
+        run: pnpm audit --audit-level=high --prod --ignore-registry-errors
