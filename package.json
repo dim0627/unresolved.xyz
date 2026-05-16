@@ -17,7 +17,7 @@
     "lefthook": "^2.1.6",
     "markdownlint-cli2": "^0.22.1",
     "syncpack": "15.1.2",
-    "turbo": "^2.9.12"
+    "turbo": "^2.9.14"
   },
   "engines": {
     "node": ">=18.10.0"
