@@ -33,4 +33,5 @@ yarn-error.log*
 # turbo
 .turbo
 
-.claude
+.claude/*
+!.claude/skills/
