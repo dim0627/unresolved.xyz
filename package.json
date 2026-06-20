@@ -16,7 +16,7 @@
     "@biomejs/biome": "2.5.0",
     "lefthook": "^2.1.9",
     "markdownlint-cli2": "^0.22.1",
-    "syncpack": "15.3.1",
+    "syncpack": "15.3.2",
     "turbo": "^2.9.18"
   },
   "engines": {
