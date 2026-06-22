@@ -8,13 +8,9 @@ export const projects: Project[] = [
     stacks: [
       'TanStack Start',
       'Hono',
-      'Cloudflare Workers',
       'Neon',
       'Drizzle',
       'Clerk',
-      'OpenAI',
-      'Turborepo',
-      'Sentry',
       'Vercel',
       'Vitest',
     ],
