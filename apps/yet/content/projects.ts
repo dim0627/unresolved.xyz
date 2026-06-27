@@ -60,8 +60,7 @@ export const projects: Project[] = [
   {
     image: '/images/projects/wasuremono-art.png',
     title: 'wasuremono.art',
-    description:
-      'Found-footage gallery of fictional photographs by an unknown photographer.',
+    description: 'Impossible structures, presented as photographs.',
     stacks: ['Astro', 'Vercel', 'Anthropic', 'Biome'],
     href: 'https://wasuremono.art/',
   },
