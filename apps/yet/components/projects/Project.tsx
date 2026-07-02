@@ -31,7 +31,7 @@ export const Project: FC<ProjectProps> = ({ project }) => {
             alt={project.title}
             width={64}
             height={64}
-            className={`h-16 w-16 shrink-0 ${project.closed ? 'grayscale' : ''}`}
+            className={`h-16 w-16 shrink-0 rounded-xl ${project.closed ? 'grayscale' : ''}`}
           />
         )}
         <div className="min-w-0 flex-1">
