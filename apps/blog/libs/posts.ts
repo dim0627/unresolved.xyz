@@ -52,8 +52,5 @@ export function getPost(slug: string): Post | undefined {
 }
 
 export function getAllPostSlugs(): string[] {
-  const fileNames = fs
-    .readdirSync(postsDirectory)
-    .filter((f) => f.endsWith('.md'));
-  return fileNames.map((f) => f.replace(/\.md$/, ''));
+  return getPosts().map((post) => post.slug);
 }

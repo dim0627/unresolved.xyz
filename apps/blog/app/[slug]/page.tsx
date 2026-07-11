@@ -1,5 +1,6 @@
 import { getAllPostSlugs, getPost, metaTitle } from '@libs';
 import type { Metadata, ResolvingMetadata } from 'next';
+import { notFound } from 'next/navigation';
 import { Body } from './body';
 
 type PageProps = {
@@ -12,7 +13,7 @@ export default async function Page({ params }: PageProps) {
   const { slug } = await params;
   const post = getPost(slug);
 
-  if (!post) return null;
+  if (!post || post.draft) notFound();
 
   return (
     <div>
@@ -47,7 +48,7 @@ export async function generateMetadata(
   const { slug } = await params;
   const post = getPost(slug);
 
-  if (!post) return {};
+  if (!post || post.draft) return {};
 
   return {
     title: metaTitle(post.title),
