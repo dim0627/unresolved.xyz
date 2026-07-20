@@ -3,7 +3,17 @@ import Script from 'next/script';
 import '@styles/global.css';
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://yet.unresolved.xyz'),
   title: 'dtsuji@dim0627 - Portfolio',
+  description: 'Portfolio of Daisuke Tsuji, Software Developer.',
+  openGraph: {
+    siteName: 'dtsuji@dim0627 - Portfolio',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    creator: '@dim0627',
+  },
 };
 
 export default function RootLayout({
