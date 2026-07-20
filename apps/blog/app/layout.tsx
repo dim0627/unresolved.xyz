@@ -1,10 +1,22 @@
-'use client';
-
+import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
 import '@styles/global.css';
 import { Container } from '@components';
 import Image from 'next/image';
 import Link from 'next/link';
+
+export const metadata: Metadata = {
+  metadataBase: new URL('https://blog.unresolved.xyz'),
+  description: 'dim0627 (Daisuke Tsuji) の技術ブログ',
+  openGraph: {
+    siteName: 'blog.unresolved.xyz',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    creator: '@dim0627',
+  },
+};
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
@@ -17,7 +29,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
               className="flex items-center gap-4 font-semibold text-black text-xl tracking-widest hover:underline"
             >
               <Image
-                src="/images/logo.png"
+                src="/images/logo.svg"
                 alt="blog.unresolved.xyz"
                 width={50}
                 height={50}
