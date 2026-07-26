@@ -5,9 +5,9 @@
   // Worker スクリプトを持たない静的アセット専用の Worker。
   // `main` が無いため `assets.binding` は指定できない（指定すると deploy が失敗する）。
   "assets": {
-    // `next build` が output: 'export' で生成する静的ファイル一式。
-    "directory": "./out",
-    // 静的アセットに一致しないリクエストには out/404.html を 404 として返す。
+    // `astro build` が生成する静的ファイル一式。
+    "directory": "./dist",
+    // 静的アセットに一致しないリクエストには dist/404.html を 404 として返す。
     // 既定値のままだと素の 404 になり、生成済みの 404 ページが使われない。
     "not_found_handling": "404-page"
   },

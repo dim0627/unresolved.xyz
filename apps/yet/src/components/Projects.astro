@@ -1,0 +1,20 @@
+---
+import type { Project as ProjectType } from '../types/content';
+import Project from './Project.astro';
+
+interface Props {
+  projects: ProjectType[];
+}
+
+const { projects } = Astro.props;
+---
+
+<div class="flex flex-col gap-8">
+  {
+    projects.map((project) => (
+      <div>
+        <Project project={project} />
+      </div>
+    ))
+  }
+</div>

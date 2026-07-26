@@ -1,9 +1,6 @@
-import type { LucideIcon } from 'lucide-react';
-
 export interface Profile {
   fullName: string;
   description: string;
-  details: string;
   thumbnailUrl: string;
   twitterUrl?: string | null;
   gitHubUrl?: string | null;
@@ -23,7 +20,8 @@ export interface Project {
 }
 
 export interface Career {
-  icon: LucideIcon;
+  /** lucide-static の SVG を `?raw` で読み込んだ文字列。ビルド時にインライン展開される。 */
+  icon: string;
   companyName: string;
   stacks: string[];
   roles: string[];

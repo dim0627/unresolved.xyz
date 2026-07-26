@@ -14,6 +14,10 @@ out/
 build
 next-env.d.ts
 
+# astro
+dist/
+.astro/
+
 # misc
 .DS_Store
 *.pem

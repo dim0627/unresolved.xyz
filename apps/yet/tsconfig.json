@@ -1,14 +1,13 @@
 {
-  "extends": "@unresolved/tsconfig/nextjs.json",
+  "extends": "astro/tsconfigs/strict",
   "compilerOptions": {
-    "ignoreDeprecations": "6.0",
     "baseUrl": ".",
     "paths": {
-      "@libs": ["./libs/index.ts"],
-      "@components": ["./components/index.ts"],
-      "@styles/*": ["./styles/*"]
+      "@libs": ["./src/libs/index.ts"],
+      "@components/*": ["./src/components/*"],
+      "@styles/*": ["./src/styles/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
-  "exclude": ["node_modules"]
+  "include": [".astro/types.d.ts", "**/*"],
+  "exclude": ["node_modules", "dist"]
 }

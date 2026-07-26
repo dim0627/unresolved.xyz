@@ -1,0 +1,26 @@
+---
+import Careers from '@components/Careers.astro';
+import Footer from '@components/Footer.astro';
+import Profile from '@components/Profile.astro';
+import Projects from '@components/Projects.astro';
+import Section from '@components/Section.astro';
+import { getCareers, getProfile, getProjects } from '@libs';
+import Layout from '../layouts/Layout.astro';
+
+const profile = getProfile();
+const projects = getProjects();
+const careers = getCareers();
+---
+
+<Layout>
+  <Section>
+    <Profile profile={profile} />
+  </Section>
+  <Section title="Projects">
+    <Projects projects={projects} />
+  </Section>
+  <Section title="Careers">
+    <Careers careers={careers} />
+  </Section>
+  <Footer />
+</Layout>
