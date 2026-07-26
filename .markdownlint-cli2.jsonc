@@ -1,5 +1,5 @@
 {
-  "globs": ["apps/blog/content/posts/**/*.md"],
+  "globs": ["apps/blog/src/content/posts/**/*.md"],
   "config": {
     "default": true,
     // ブログ記事では行の長さを制限しない

@@ -42,27 +42,34 @@ Blog dev server runs on port 3001, Yet on port 3000 (set explicitly in `astro.co
 - **Biome** (2.1.1) for linting and formatting (single quotes, space indentation, import organization)
 - **Node** 22.12.0 (`.node-version`)
 
+Both apps are Astro and ship no client-side JavaScript. Points that apply to both:
+- Tailwind CSS v4 via `@tailwindcss/vite` (no PostCSS config)
+- `build` runs `astro check` before `astro build`. `astro build` does not type-check on its own, and Biome only parses the frontmatter of an `.astro` file (never the template), so `astro check` is the only thing covering `.astro` types. Biome's unused-import/variable rules are therefore disabled for `**/*.astro` in `biome.json` — they produce nothing but false positives there
+- Astro 7 renders Markdown with **Sätteri**, not remark/rehype. Pipeline extensions are `mdastPlugins`/`hastPlugins` passed to `satteri()` in `astro.config.mjs`; using remark/rehype plugins instead would require installing `@astrojs/markdown-remark`. Sätteri's smart punctuation is disabled in both apps to match the pre-migration output
+- A hast/mdast plugin object is reused across documents, so per-document state must live in `ctx.data` (fresh per compile), never in a closure variable
+
 ### Blog App (`apps/blog`)
-- Next.js App Router with dynamic `[slug]` routes
-- Content managed via local Markdown files in `content/posts/` with gray-matter frontmatter
-- Markdown rendered via remark/rehype pipeline with syntax highlighting
-- Tailwind CSS for styling
+- Astro with a dynamic `[slug]` route; posts are Markdown in `src/content/posts/`, typed as an Astro content collection in `src/content.config.ts`
+- `build.format: 'file'` emits `<slug>.html` instead of `<slug>/index.html`, so published post URLs keep working without a trailing-slash redirect
+- `## Table of contents` headings get a nested link list inserted by the hast plugin in `astro.config.mjs` (replaces `remark-toc`). It assigns heading IDs itself with `github-slugger`, because Astro's own heading-ID plugin runs *after* user plugins and honours IDs that already exist
+- Syntax highlighting is Shiki's `dark-plus`; code-block line numbers are a CSS counter in `src/styles/global.css` (Shiki has no line-number feature)
+- `src/libs/excerpt.ts` turns post bodies into plain text for the index. It drops code blocks and disables GFM on purpose — the previous list rendering applied only `strip-markdown` and behaved that way
+- Known issue, predating the migration: `toDateString()` formats in the build machine's timezone, so CI (UTC) renders post dates a day earlier than the `+09:00` frontmatter intends
 
 ### Yet App (`apps/yet`)
-- Astro, single page, ships no client-side JavaScript
+- Astro, single page
 - Content managed via static TypeScript modules in `src/content/` (`profile.ts`, `projects.ts`, `careers.ts`), plus `profile-details.md` for the prose block
 - Type definitions in `src/types/content.ts`
-- Tailwind CSS v4 via `@tailwindcss/vite` (no PostCSS config)
 - Icons come from `lucide-static`, imported as raw SVG (`...svg?raw`) and inlined at build time. Brand icons Lucide dropped in v1.x live in `src/components/brand-icons.ts`
-- `build` runs `astro check` before `astro build`. `astro build` does not type-check on its own, and Biome only parses the frontmatter of an `.astro` file (never the template), so `astro check` is the only thing covering `.astro` types. Biome's unused-import/variable rules are therefore disabled for `**/*.astro` in `biome.json` — they produce nothing but false positives there
-- Astro 7 renders Markdown with Sätteri, not remark/rehype. Pipeline extensions are `mdastPlugins`/`hastPlugins` passed to `satteri()` in `astro.config.mjs`; using remark/rehype plugins instead would require installing `@astrojs/markdown-remark`. Sätteri's smart punctuation is disabled there to match the previous output
 
 ### Path Aliases
-Both apps use TypeScript path aliases:
-- Blog: `@libs` → `./libs/index.ts`, `@components` → `./components/index.ts`, `@styles/*` → `./styles/*`, `@layouts` → `./layouts/index.ts`
-- Yet: `@libs` → `./src/libs/index.ts`, `@components/*` → `./src/components/*`, `@styles/*` → `./src/styles/*`
+Both apps use the same TypeScript path aliases:
+- `@libs` → `./src/libs/index.ts`
+- `@components/*` → `./src/components/*`
+- `@layouts/*` → `./src/layouts/*` (blog only)
+- `@styles/*` → `./src/styles/*`
 
-Yet aliases components per file rather than through a barrel, because `.astro` components cannot be re-exported from an `index.ts`.
+Components are aliased per file rather than through a barrel, because `.astro` components cannot be re-exported from an `index.ts`.
 
 ## Environment Variables
 
@@ -73,10 +80,10 @@ Yet aliases components per file rather than through a barrel, because `.astro` c
 
 `.github/workflows/ci.yml` runs on push to main and PRs: build → syncpack lint → biome lint → test → security audit.
 
-The security audit runs `pnpm audit --audit-level=high --prod`. Because transitive dependencies pinned by Next.js can trip it without any direct dependency being at fault, such advisories are resolved with `pnpm.overrides` in the root `package.json`.
+The security audit runs `pnpm audit --audit-level=high --prod`. Transitive dependencies can trip it without any direct dependency being at fault; such advisories are resolved with `pnpm.overrides` in the root `package.json`.
 
 ## Deployment
 
 `.github/workflows/deploy.yml` runs on push to main and deploys both apps to Cloudflare Workers with `wrangler`, then notifies Slack.
 
-Both apps build to plain static files and are served as static asset Workers, configured per app in `wrangler.jsonc` with custom domains. The build output directory differs per app and must match `assets.directory`: blog (Next.js `output: 'export'`) emits `out/`, yet (Astro) emits `dist/`. Deploys require the `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID` repository secrets; the Slack notification requires `SLACK_WEBHOOK_URL`.
+Both apps build to plain static files in `dist/` and are served as static asset Workers, configured per app in `wrangler.jsonc` with custom domains (`assets.directory` must match the build output). `not_found_handling: "404-page"` expects a `dist/404.html`, which Astro only emits if `src/pages/404.astro` exists. Deploys require the `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID` repository secrets; the Slack notification requires `SLACK_WEBHOOK_URL`.

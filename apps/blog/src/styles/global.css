@@ -1,0 +1,89 @@
+@import "@fontsource/noto-sans-mono/400.css";
+@import "@fontsource/noto-sans-mono/600.css";
+@import "@fontsource/ibm-plex-mono/400.css";
+@import "@fontsource/ibm-plex-mono/600.css";
+@import "tailwindcss";
+
+html {
+  font-family: "IBM Plex Mono", "Noto Sans Mono", monospace;
+  background-color: #fff;
+  color: #1a1a1a;
+}
+
+/*
+ * 記事本文のスタイル。移行前は react-markdown の `components` で要素ごとに
+ * Tailwind のクラスを当てていたが、Astro は Markdown を素の HTML として
+ * 描画するため、同じ指定を子孫セレクタとしてここに持つ。
+ */
+.markdown {
+  h2 {
+    @apply mt-16 mb-4 font-semibold text-xl;
+  }
+
+  h3 {
+    @apply mt-10 mb-4 font-semibold text-lg;
+  }
+
+  p {
+    @apply my-6 text-lg;
+  }
+
+  a {
+    @apply text-neutral-700 underline;
+  }
+
+  b,
+  strong {
+    @apply font-semibold;
+  }
+
+  ul {
+    @apply list-disc pl-8;
+  }
+
+  ol {
+    @apply list-decimal pl-8;
+  }
+
+  li {
+    @apply my-2 text-lg;
+  }
+
+  /* インラインコード。コードブロック内の code には当てない。 */
+  :not(pre) > code {
+    @apply rounded-xl bg-neutral-200 px-2 py-1 text-neutral-800 text-xs;
+  }
+
+  pre {
+    @apply my-6 rounded-xl bg-neutral-900 py-4 text-xs;
+
+    /* Shiki はテーマ由来の背景色を pre の style 属性に直接書き込む。
+       インラインスタイルに勝つには !important しか手段がない。 */
+    /* biome-ignore lint/complexity/noImportantStyles: Shiki のインラインスタイルを上書きするため */
+    background-color: var(--color-neutral-900) !important;
+  }
+
+  pre code {
+    @apply grid;
+
+    counter-reset: line;
+  }
+
+  /*
+   * 行番号。移行前は react-syntax-highlighter の showLineNumbers が出していた。
+   * Shiki には相当する機能が無いため、Shiki が各行に付ける .line を使って
+   * CSS カウンタで描画する（クライアント JS は不要）。
+   */
+  pre code .line {
+    counter-increment: line;
+  }
+
+  pre code .line::before {
+    @apply mr-4 inline-block w-8 text-right;
+
+    /* 移行前の react-syntax-highlighter は行番号に vscDarkPlus の
+       コメント色をそのまま当てていた。見え方を揃えるため同じ値を使う。 */
+    color: #6a9955;
+    content: counter(line);
+  }
+}

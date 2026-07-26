@@ -22,7 +22,8 @@
       "!**/packages/vendor-api-client/**/schema.json",
       "!**/packages/vendor-api-client/**/generated",
       "!**/next-env.d.ts",
-      "!**/.astro"
+      "!**/.astro",
+      "!**/.wrangler"
     ]
   },
   "css": {

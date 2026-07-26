@@ -1,0 +1,31 @@
+---
+import Layout from '@layouts/Layout.astro';
+import { getPosts, toPlainTextBlocks } from '@libs';
+
+const posts = await getPosts();
+
+const items = posts.map((post) => ({
+  id: post.id,
+  title: post.data.title,
+  blocks: toPlainTextBlocks(post.body ?? ''),
+}));
+---
+
+<Layout>
+  <div class="space-y-12">
+    {
+      items.map((item) => (
+        <a class="group block" href={`/${item.id}`}>
+          <h2 class="mb-2 font-semibold text-lg tracking-widest group-hover:underline">
+            {item.title}
+          </h2>
+          <div class="line-clamp-4 text-neutral-500 text-sm">
+            {item.blocks.map((block) => (
+              <p>{block}</p>
+            ))}
+          </div>
+        </a>
+      ))
+    }
+  </div>
+</Layout>
