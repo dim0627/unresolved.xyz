@@ -35,7 +35,7 @@ export const projects: Project[] = [
     image: '/images/projects/yet-unresolved-xyz.png',
     title: 'yet.unresolved.xyz',
     description: 'This portfolio site.',
-    stacks: ['Next.js', 'Vercel', 'Turborepo', 'Tailwind CSS'],
+    stacks: ['Next.js', 'Cloudflare Workers', 'Turborepo', 'Tailwind CSS'],
     href: 'https://yet.unresolved.xyz/',
     repositoryUrl:
       'https://github.com/dim0627/unresolved.xyz/tree/main/apps/yet',
@@ -44,7 +44,7 @@ export const projects: Project[] = [
     image: '/images/projects/blog-unresolved-xyz.png',
     title: 'blog.unresolved.xyz',
     description: 'Tech blog.',
-    stacks: ['Next.js', 'Vercel', 'Turborepo', 'Tailwind CSS'],
+    stacks: ['Next.js', 'Cloudflare Workers', 'Turborepo', 'Tailwind CSS'],
     href: 'https://blog.unresolved.xyz/',
     repositoryUrl:
       'https://github.com/dim0627/unresolved.xyz/tree/main/apps/blog',

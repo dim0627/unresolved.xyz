@@ -6,7 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 Turborepo monorepo containing two Next.js websites:
 - **apps/blog** — Blog at blog.unresolved.xyz (Next.js App Router, local Markdown content, Tailwind CSS)
-- **apps/yet** — Portfolio at yet.unresolved.xyz (Next.js App Router, static JSON content, Tailwind CSS)
+- **apps/yet** — Portfolio at yet.unresolved.xyz (Next.js App Router, static TypeScript content, Tailwind CSS)
 - **packages/tsconfig** — Shared TypeScript configurations
 
 ## Common Commands
@@ -50,7 +50,7 @@ Blog dev server runs on port 3001, Yet on port 3000.
 
 ### Yet App (`apps/yet`)
 - Next.js App Router (single page portfolio)
-- Content managed via static JSON files in `content/` directory
+- Content managed via static TypeScript modules in `content/` (`profile.ts`, `projects.ts`, `careers.ts`)
 - Type definitions in `types/content.ts`
 - Tailwind CSS for styling
 
@@ -68,4 +68,12 @@ Both apps use TypeScript path aliases:
 
 ## CI Pipeline
 
-GitHub Actions runs on push to main and PRs: build → syncpack lint → biome lint → test.
+`.github/workflows/ci.yml` runs on push to main and PRs: build → syncpack lint → biome lint → test → security audit.
+
+The security audit runs `pnpm audit --audit-level=high --prod`. Because transitive dependencies pinned by Next.js can trip it without any direct dependency being at fault, such advisories are resolved with `pnpm.overrides` in the root `package.json`.
+
+## Deployment
+
+`.github/workflows/deploy.yml` runs on push to main and deploys both apps to Cloudflare Workers with `wrangler`, then notifies Slack.
+
+Both apps use `output: 'export'` and are served as static asset Workers, configured per app in `wrangler.jsonc` with custom domains. Deploys require the `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID` repository secrets; the Slack notification requires `SLACK_WEBHOOK_URL`.
