@@ -10,5 +10,12 @@
     // 静的アセットに一致しないリクエストには out/404.html を 404 として返す。
     // 既定値のままだと素の 404 になり、生成済みの 404 ページが使われない。
     "not_found_handling": "404-page"
-  }
+  },
+  // Custom Domain は DNS レコードと証明書を Cloudflare 側が自動で用意する。
+  // 対象ホスト名に既存の CNAME があると作成に失敗するため、Vercel を向いていた
+  // レコードは事前に削除してある。
+  "routes": [{ "pattern": "blog.unresolved.xyz", "custom_domain": true }],
+  // workers.dev のURLは当面残す。カスタムドメイン側で問題が起きたときに、
+  // Worker 自体の問題か DNS / 証明書の問題かを切り分けられるようにするため。
+  "workers_dev": true
 }
