@@ -11,6 +11,11 @@ concurrency:
   group: deploy
   cancel-in-progress: false
 
+# このワークフローはリポジトリの読み取りしか行わない（デプロイ先は Cloudflare で、
+# 認証は CLOUDFLARE_API_TOKEN が担う）。GITHUB_TOKEN の権限は最小限に絞る。
+permissions:
+  contents: read
+
 jobs:
   deploy:
     name: Deploy to Cloudflare Workers
@@ -20,6 +25,9 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v7
+        with:
+          # git への書き込みは行わないため、認証情報を .git/config に残さない。
+          persist-credentials: false
 
       - name: Setup pnpm environment
         uses: pnpm/action-setup@v6
@@ -69,6 +77,9 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v7
+        with:
+          # コミットメッセージを git log で読むだけなので認証情報は不要。
+          persist-credentials: false
 
       - name: Build Slack payload
         # コミットメッセージに引用符やバックスラッシュが含まれても payload が壊れないよう、
