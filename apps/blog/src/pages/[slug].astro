@@ -1,0 +1,34 @@
+---
+import { render } from 'astro:content';
+import Layout from '@layouts/Layout.astro';
+import { formatPostDate, getPosts, metaTitle } from '@libs';
+
+export async function getStaticPaths() {
+  const posts = await getPosts();
+
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+---
+
+<Layout title={metaTitle(post.data.title)}>
+  <div>
+    <header class="mt-8 mb-4">
+      <h1 class="font-semibold text-2xl tracking-widest">{post.data.title}</h1>
+      <div class="mt-4 flex justify-between text-neutral-500 text-sm">
+        <span class="font-semibold">{formatPostDate(post.data.date)}</span>
+        <ul class="flex gap-4">
+          {post.data.tags.map((tag) => <li class="font-semibold">{tag}</li>)}
+        </ul>
+      </div>
+    </header>
+    <div class="markdown break-all">
+      <Content />
+    </div>
+  </div>
+</Layout>

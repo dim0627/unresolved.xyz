@@ -1,0 +1,79 @@
+---
+import Container from '@components/Container.astro';
+import '@styles/global.css';
+
+interface Props {
+  title?: string;
+}
+
+const { title } = Astro.props;
+
+const siteName = 'blog.unresolved.xyz';
+const description = 'dim0627 (Daisuke Tsuji) の技術ブログ';
+const ogImage = new URL('/opengraph-image.png', Astro.site).href;
+---
+
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title ?? siteName}</title>
+    <meta name="description" content={description} />
+
+    <meta property="og:title" content={title ?? siteName} />
+    <meta property="og:description" content={description} />
+    <meta property="og:site_name" content={siteName} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={siteName} />
+    <meta property="og:type" content="website" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:creator" content="@dim0627" />
+    <meta name="twitter:title" content={title ?? siteName} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:image:alt" content={siteName} />
+    <meta name="twitter:image:type" content="image/png" />
+    <meta name="twitter:image:width" content="1200" />
+    <meta name="twitter:image:height" content="630" />
+
+    <link rel="icon" href="/favicon.ico" sizes="32x32" type="image/x-icon" />
+    <link rel="icon" href="/icon.svg" sizes="any" type="image/svg+xml" />
+    <link
+      rel="apple-touch-icon"
+      href="/apple-icon.png"
+      sizes="180x180"
+      type="image/png"
+    />
+  </head>
+  <body>
+    <header class="mb-10 py-4">
+      <Container>
+        <a
+          href="/"
+          class="flex items-center gap-4 font-semibold text-black text-xl tracking-widest hover:underline"
+        >
+          <img src="/images/logo.svg" alt={siteName} width="50" height="50" />
+          {siteName}
+        </a>
+      </Container>
+    </header>
+    <Container>
+      <slot />
+    </Container>
+    <footer class="mt-8 py-4">
+      <Container>
+        <span class="text-neutral-500">
+          &copy; {new Date().getFullYear()}{' '}
+          <a href="https://yet.unresolved.xyz" class="underline">
+            dim0627@unresolved.xyz
+          </a>
+        </span>
+      </Container>
+    </footer>
+  </body>
+</html>
