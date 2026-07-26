@@ -1,7 +1,7 @@
 ---
 import { render } from 'astro:content';
 import Layout from '@layouts/Layout.astro';
-import { getPosts, metaTitle } from '@libs';
+import { formatPostDate, getPosts, metaTitle } from '@libs';
 
 export async function getStaticPaths() {
   const posts = await getPosts();
@@ -21,9 +21,7 @@ const { Content } = await render(post);
     <header class="mt-8 mb-4">
       <h1 class="font-semibold text-2xl tracking-widest">{post.data.title}</h1>
       <div class="mt-4 flex justify-between text-neutral-500 text-sm">
-        <span class="font-semibold">
-          {new Date(post.data.date).toDateString()}
-        </span>
+        <span class="font-semibold">{formatPostDate(post.data.date)}</span>
         <ul class="flex gap-4">
           {post.data.tags.map((tag) => <li class="font-semibold">{tag}</li>)}
         </ul>
