@@ -21,7 +21,8 @@
       "!**/apps/cli/bin/**/*",
       "!**/packages/vendor-api-client/**/schema.json",
       "!**/packages/vendor-api-client/**/generated",
-      "!**/next-env.d.ts"
+      "!**/next-env.d.ts",
+      "!**/.astro"
     ]
   },
   "css": {
@@ -80,6 +81,17 @@
     }
   },
   "overrides": [
+    {
+      "includes": ["**/*.astro"],
+      "linter": {
+        "rules": {
+          "correctness": {
+            "noUnusedImports": "off",
+            "noUnusedVariables": "off"
+          }
+        }
+      }
+    },
     {
       "includes": ["**/apps/api/**/*"],
       "linter": {

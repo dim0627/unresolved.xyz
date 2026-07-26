@@ -1,23 +1,21 @@
-import {
-  Archive,
-  Citrus,
-  CookingPot,
-  Euro,
-  House,
-  Mic,
-  Package,
-  Palette,
-  PoundSterling,
-  Sandwich,
-  Stethoscope,
-  Store,
-  Ticket,
-} from 'lucide-react';
+import archive from 'lucide-static/icons/archive.svg?raw';
+import citrus from 'lucide-static/icons/citrus.svg?raw';
+import cookingPot from 'lucide-static/icons/cooking-pot.svg?raw';
+import euro from 'lucide-static/icons/euro.svg?raw';
+import house from 'lucide-static/icons/house.svg?raw';
+import mic from 'lucide-static/icons/mic.svg?raw';
+import packageIcon from 'lucide-static/icons/package.svg?raw';
+import palette from 'lucide-static/icons/palette.svg?raw';
+import poundSterling from 'lucide-static/icons/pound-sterling.svg?raw';
+import sandwich from 'lucide-static/icons/sandwich.svg?raw';
+import stethoscope from 'lucide-static/icons/stethoscope.svg?raw';
+import store from 'lucide-static/icons/store.svg?raw';
+import ticket from 'lucide-static/icons/ticket.svg?raw';
 import type { Career } from '../types/content';
 
 export const careers: Career[] = [
   {
-    icon: PoundSterling,
+    icon: poundSterling,
     companyName: 'Kakaku.com, inc.',
     stacks: ['C#', 'VB Script'],
     roles: ['Backend'],
@@ -25,7 +23,7 @@ export const careers: Career[] = [
     leavedAt: '2015-01-01',
   },
   {
-    icon: Stethoscope,
+    icon: stethoscope,
     companyName: 'MedPeer, inc.',
     stacks: ['Laravel', 'CloudSearch'],
     roles: ['Backend', 'Frontend'],
@@ -33,7 +31,7 @@ export const careers: Career[] = [
     leavedAt: '2015-09-01',
   },
   {
-    icon: Ticket,
+    icon: ticket,
     companyName: 'Pharma Information Network, inc.',
     stacks: ['Laravel', 'Python', 'Golang', 'Ruby on Rails', 'Elasticsearch'],
     roles: ['Technical Lead', 'Backend', 'Frontend', 'SEO Expert'],
@@ -41,7 +39,7 @@ export const careers: Career[] = [
     leavedAt: '2016-11-01',
   },
   {
-    icon: Archive,
+    icon: archive,
     companyName: 'Rista, inc.',
     stacks: ['Ruby on Rails', 'Elasticsearch'],
     roles: ['Backend', 'Frontend', 'SEO Expert'],
@@ -49,7 +47,7 @@ export const careers: Career[] = [
     leavedAt: '2017-12-01',
   },
   {
-    icon: Sandwich,
+    icon: sandwich,
     companyName: 'Fitsplus, inc.',
     stacks: ['Ruby on Rails'],
     roles: ['PjM', 'Backend', 'Frontend', 'Infra', 'UI Design'],
@@ -57,7 +55,7 @@ export const careers: Career[] = [
     leavedAt: '2019-08-01',
   },
   {
-    icon: Ticket,
+    icon: ticket,
     companyName: 'Pharma Information Network, inc.',
     stacks: ['Ruby on Rails', 'Hugo'],
     roles: ['Technical Lead'],
@@ -65,7 +63,7 @@ export const careers: Career[] = [
     leavedAt: '2021-04-30',
   },
   {
-    icon: CookingPot,
+    icon: cookingPot,
     companyName: 'DMM.com LLC',
     stacks: ['Ruby', 'Ruby on Rails', 'Elasticsearch'],
     roles: ['Backend', 'Frontend'],
@@ -73,7 +71,7 @@ export const careers: Career[] = [
     leavedAt: '2018-12-31',
   },
   {
-    icon: Mic,
+    icon: mic,
     companyName: 'Lang-8, inc.',
     stacks: ['Ruby on Rails', 'I18n', 'Elasticsearch'],
     roles: ['Backend', 'Frontend'],
@@ -81,7 +79,7 @@ export const careers: Career[] = [
     leavedAt: '2021-03-31',
   },
   {
-    icon: Citrus,
+    icon: citrus,
     companyName: 'mikan',
     stacks: ['Next.js', 'Cloud Functions', 'Firebase Hosting'],
     roles: ['Backend', 'Frontend'],
@@ -89,7 +87,7 @@ export const careers: Career[] = [
     leavedAt: '2021-03-31',
   },
   {
-    icon: Package,
+    icon: packageIcon,
     companyName: 'shizai, inc.',
     stacks: ['Golang', 'NestJS', 'Next.js'],
     roles: ['Backend', 'Frontend'],
@@ -97,7 +95,7 @@ export const careers: Career[] = [
     leavedAt: '2022-03-31',
   },
   {
-    icon: Store,
+    icon: store,
     companyName: 'STORES, Inc.',
     stacks: ['Ruby on Rails', 'Next.js'],
     roles: ['Backend', 'Frontend'],
@@ -105,7 +103,7 @@ export const careers: Career[] = [
     leavedAt: '2022-01-31',
   },
   {
-    icon: House,
+    icon: house,
     companyName: 'famitra, Inc.',
     stacks: ['Ruby on Rails', 'Next.js', 'Nx'],
     roles: ['Technical Lead', 'Backend', 'Frontend'],
@@ -113,7 +111,7 @@ export const careers: Career[] = [
     leavedAt: '2023-07-31',
   },
   {
-    icon: Euro,
+    icon: euro,
     companyName: 'STRACT, Inc.',
     stacks: ['Lerna', 'NestJS', 'Next.js', 'Ionic', 'AWS CDK', 'Turborepo'],
     roles: ['Backend', 'Frontend'],
@@ -121,7 +119,7 @@ export const careers: Career[] = [
     leavedAt: '2023-12-31',
   },
   {
-    icon: Palette,
+    icon: palette,
     companyName: 'amana, inc.',
     stacks: ['Next.js', 'NestJS', 'Turborepo', 'Pulumi', 'WXT', ' Astro'],
     roles: ['Manager'],

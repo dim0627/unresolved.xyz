@@ -1,0 +1,40 @@
+---
+import type { Career } from '../types/content';
+import Icon from './Icon.astro';
+
+interface Props {
+  career: Career;
+}
+
+const { career } = Astro.props;
+
+const period = [
+  career.joinedAt.slice(0, 7),
+  career.leavedAt ? career.leavedAt.slice(0, 7) : 'Present',
+].join(' - ');
+---
+
+<div class="flex gap-4">
+  <div class="pt-1">
+    <Icon svg={career.icon} size={32} />
+  </div>
+  <div>
+    <h3 class="font-medium text-xl">{career.companyName}</h3>
+    <p class="mt-1 flex flex-col text-sm opacity-60 sm:flex-row sm:gap-2">
+      <span>{period}</span>
+      <span class="hidden opacity-60 sm:inline">・</span>
+      <span>{career.roles.join(' / ')}</span>
+    </p>
+    {
+      career.stacks.length > 0 && (
+        <ul class="mt-2 flex list-none flex-wrap gap-2">
+          {career.stacks.map((stack) => (
+            <li class="inline-block rounded-full border border-base/10 px-3 py-1 text-xs">
+              {stack}
+            </li>
+          ))}
+        </ul>
+      )
+    }
+  </div>
+</div>

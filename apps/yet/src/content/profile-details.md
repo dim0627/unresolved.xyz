@@ -1,9 +1,4 @@
-import type { Profile } from '../types/content';
-
-export const profile: Profile = {
-  fullName: 'Daisuke Tsuji',
-  description: 'Software Developer',
-  details: `Earned a B.S. in Computer Science, then joined a small SIer as a new graduate. After about four years there, I moved on to companies like Kakaku.com and MedPeer, hopping between startups and freelancing. Most recently, I served as the Head of IT at amana, inc., where I led a comprehensive overhaul of internal systems and managed a wide range of corporate IT operations.
+Earned a B.S. in Computer Science, then joined a small SIer as a new graduate. After about four years there, I moved on to companies like Kakaku.com and MedPeer, hopping between startups and freelancing. Most recently, I served as the Head of IT at amana, inc., where I led a comprehensive overhaul of internal systems and managed a wide range of corporate IT operations.
 
 🛡️ [Turbulent Defender (ISFJ-T) | 16Personalities](https://www.16personalities.com/profiles/20e687f3b55c8)
 
@@ -41,11 +36,3 @@ export const profile: Profile = {
 ## 🤝 Open to Opportunities
 
 Always happy to connect 🙂
-`,
-  thumbnailUrl: '/images/thumbnail.jpg',
-  twitterUrl: 'https://twitter.com/dim0627',
-  gitHubUrl: 'https://github.com/dim0627',
-  linkedInUrl: 'https://www.linkedin.com/in/daisuke-tsuji-2a379a118',
-  facebookUrl: 'https://www.facebook.com/daisuke.tsuji.735',
-  emailAddress: 'dim0627@gmail.com',
-};

@@ -1,0 +1,14 @@
+---
+import type { Career as CareerType } from '../types/content';
+import Career from './Career.astro';
+
+interface Props {
+  careers: CareerType[];
+}
+
+const { careers } = Astro.props;
+---
+
+<div class="flex max-w-lg flex-col gap-8">
+  {careers.map((career) => <Career career={career} />)}
+</div>

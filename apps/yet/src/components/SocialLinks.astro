@@ -1,0 +1,43 @@
+---
+import mailIcon from 'lucide-static/icons/mail.svg?raw';
+import type { Profile } from '../types/content';
+import { facebookIcon, githubIcon, linkedinIcon, xIcon } from './brand-icons';
+import Icon from './Icon.astro';
+
+interface Props {
+  profile: Profile;
+}
+
+const { profile } = Astro.props;
+
+const links = [
+  { href: profile.twitterUrl, svg: xIcon, label: 'X (Twitter)' },
+  { href: profile.gitHubUrl, svg: githubIcon, label: 'GitHub' },
+  { href: profile.linkedInUrl, svg: linkedinIcon, label: 'LinkedIn' },
+  { href: profile.facebookUrl, svg: facebookIcon, label: 'Facebook' },
+  {
+    href: profile.emailAddress ? `mailto:${profile.emailAddress}` : null,
+    svg: mailIcon,
+    label: 'Email',
+  },
+].filter((link): link is { href: string; svg: string; label: string } =>
+  Boolean(link.href),
+);
+---
+
+<ul class="flex list-none gap-4 max-md:justify-center">
+  {
+    links.map((link) => (
+      <li>
+        <a
+          href={link.href}
+          rel="nofollow noreferrer"
+          target="_blank"
+          class="inline-flex rounded-2xl border border-base p-4 shadow-button"
+        >
+          <Icon svg={link.svg} size={20} label={link.label} />
+        </a>
+      </li>
+    ))
+  }
+</ul>

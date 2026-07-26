@@ -1,0 +1,23 @@
+---
+// lucide-static の生 SVG 文字列をビルド時にインライン展開する。
+// SVG 自体は width/height="24" を持つが、ラッパー側のサイズに追従させる。
+interface Props {
+  svg: string;
+  size: number;
+  label?: string;
+}
+
+const { svg, size, label } = Astro.props;
+---
+
+<!-- ラッパーは block。inline-block だとインラインレベルの箱になり、
+     ベースライン下の余白ぶんだけ行送りが伸びる（Tailwind preflight は
+     svg 自体を display:block にするため、素の svg では起きない）。 -->
+<span
+  class="block shrink-0 [&>svg]:h-full [&>svg]:w-full"
+  style={`width:${size}px;height:${size}px`}
+  role={label ? 'img' : undefined}
+  aria-label={label}
+  aria-hidden={label ? undefined : 'true'}
+  set:html={svg}
+/>
