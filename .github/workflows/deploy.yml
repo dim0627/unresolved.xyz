@@ -1,0 +1,145 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+# 同時に複数のデプロイを走らせない。実行中のものは中断せず、最新をキューイングする。
+concurrency:
+  group: deploy
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    name: Deploy to Cloudflare Workers
+    timeout-minutes: 15
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Setup pnpm environment
+        uses: pnpm/action-setup@v6
+
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v7
+        with:
+          node-version-file: ".node-version"
+          cache: "pnpm"
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      # blog / yet の両方を turbo でまとめてビルドする。
+      # 各アプリは output: 'export' なので、成果物は apps/*/out に出る。
+      - name: Build
+        run: pnpm build
+
+      - name: Deploy blog
+        uses: cloudflare/wrangler-action@v4
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          workingDirectory: apps/blog
+          packageManager: pnpm
+          # 指定なしだと action が古い v3 を入れることがあり、
+          # wrangler.jsonc の記法を解釈できずに落ちるため固定する。
+          wranglerVersion: "4"
+          command: deploy
+
+      - name: Deploy yet
+        uses: cloudflare/wrangler-action@v4
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          workingDirectory: apps/yet
+          packageManager: pnpm
+          wranglerVersion: "4"
+          command: deploy
+
+  notify:
+    name: Notify Slack
+    runs-on: ubuntu-latest
+    # deploy が失敗・中断した場合でも通知したいので always() を使う。
+    needs: [deploy]
+    if: always()
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Build Slack payload
+        # コミットメッセージに引用符やバックスラッシュが含まれても payload が壊れないよう、
+        # jq で安全に JSON エンコードして payload-file-path に渡す。
+        env:
+          DEPLOY_RESULT: ${{ needs.deploy.result }}
+          BRANCH: ${{ github.ref_name }}
+          ACTOR: ${{ github.actor }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          set -euo pipefail
+          short_sha="${GITHUB_SHA::7}"
+          commit_msg="$(git log -1 --pretty=%s "$GITHUB_SHA")"
+
+          if [ "$DEPLOY_RESULT" = "success" ]; then
+            icon="✅"
+            status="deploy succeeded"
+          elif [ "$DEPLOY_RESULT" = "failure" ]; then
+            icon="❌"
+            status="deploy failed"
+          else
+            # cancelled / skipped 等、上記に当てはまらないケースの fallback。
+            icon="⚠️"
+            status="deploy ${DEPLOY_RESULT}"
+          fi
+
+          header_text="${icon} unresolved.xyz ${status}"
+
+          jq -n \
+            --arg header_text "$header_text" \
+            --arg short_sha "$short_sha" \
+            --arg commit_msg "$commit_msg" \
+            --arg actor "$ACTOR" \
+            --arg branch "$BRANCH" \
+            --arg run_url "$RUN_URL" \
+            '{
+              username: "unresolved.xyz deploy",
+              icon_emoji: ":globe_with_meridians:",
+              text: $header_text,
+              blocks: [
+                {
+                  type: "header",
+                  text: { type: "plain_text", text: $header_text, emoji: true }
+                },
+                {
+                  type: "section",
+                  fields: [
+                    { type: "mrkdwn", text: ("*Sites*\nblog / yet") },
+                    { type: "mrkdwn", text: ("*Commit*\n`" + $short_sha + "` " + $commit_msg) },
+                    { type: "mrkdwn", text: ("*Triggered by*\n" + $actor) },
+                    { type: "mrkdwn", text: ("*Branch*\n" + $branch) }
+                  ]
+                },
+                {
+                  type: "actions",
+                  elements: [
+                    {
+                      type: "button",
+                      text: { type: "plain_text", text: "Open in GitHub Actions", emoji: true },
+                      url: $run_url
+                    }
+                  ]
+                }
+              ]
+            }' > slack-payload.json
+
+      - name: Notify Slack
+        # このリポジトリは public なので、他リポジトリのように webhook URL を
+        # ワークフローに直書きしない。必ず repository secrets 経由で渡すこと。
+        uses: slackapi/slack-github-action@v4
+        with:
+          webhook: ${{ secrets.SLACK_WEBHOOK_URL }}
+          webhook-type: incoming-webhook
+          payload-file-path: slack-payload.json

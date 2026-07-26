@@ -34,5 +34,9 @@ yarn-error.log*
 # turbo
 .turbo
 
+# cloudflare / wrangler
+.wrangler
+.dev.vars*
+
 .claude/*
 !.claude/skills/

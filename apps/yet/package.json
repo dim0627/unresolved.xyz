@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "wrangler dev"
   },
   "dependencies": {
     "@fontsource/outfit": "^5.2.8",
@@ -23,6 +23,7 @@
     "@types/react-dom": "^19.2.3",
     "@unresolved/tsconfig": "workspace:*",
     "tailwindcss": "^4.3.3",
-    "typescript": "^6.0.3"
+    "typescript": "^6.0.3",
+    "wrangler": "^4.114.0"
   }
 }
