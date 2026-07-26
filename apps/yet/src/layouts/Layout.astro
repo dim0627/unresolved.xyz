@@ -1,6 +1,13 @@
 ---
 import '@styles/global.css';
 
+interface Props {
+  /** `<title>` だけを差し替える。OG は常にサイト全体のものを使う。 */
+  pageTitle?: string;
+}
+
+const { pageTitle } = Astro.props;
+
 const title = 'dtsuji@dim0627 - Portfolio';
 const description = 'Portfolio of Daisuke Tsuji, Software Developer.';
 const ogImage = new URL('/opengraph-image.png', Astro.site).href;
@@ -13,7 +20,7 @@ const gaMeasurementId = 'G-GQEKXQNCLH';
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{title}</title>
+    <title>{pageTitle ?? title}</title>
     <meta name="description" content={description} />
 
     <meta property="og:title" content={title} />

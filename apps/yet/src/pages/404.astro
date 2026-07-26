@@ -1,0 +1,13 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+// wrangler.jsonc の `not_found_handling: "404-page"` がこのページを返す。
+// Next は 404 ページを自動生成していたが、Astro は明示的に置く必要がある。
+---
+
+<Layout pageTitle="404: This page could not be found.">
+  <div class="flex min-h-[60vh] items-center justify-center gap-6 px-6">
+    <h1 class="border-base/30 border-r pr-6 font-semibold text-4xl">404</h1>
+    <p>This page could not be found.</p>
+  </div>
+</Layout>
