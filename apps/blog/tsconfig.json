@@ -1,19 +1,14 @@
 {
-  "extends": "@unresolved/tsconfig/nextjs.json",
+  "extends": "astro/tsconfigs/strict",
   "compilerOptions": {
+    "baseUrl": ".",
     "paths": {
-      "@libs": ["./libs/index.ts"],
-      "@components": ["./components/index.ts"],
-      "@layouts": ["./layouts/index.ts"],
-      "@styles/*": ["./styles/*"]
-    },
-    "plugins": [
-      {
-        "name": "next"
-      }
-    ],
-    "strictNullChecks": true
+      "@libs": ["./src/libs/index.ts"],
+      "@components/*": ["./src/components/*"],
+      "@layouts/*": ["./src/layouts/*"],
+      "@styles/*": ["./src/styles/*"]
+    }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
-  "exclude": ["node_modules"]
+  "include": [".astro/types.d.ts", "**/*"],
+  "exclude": ["node_modules", "dist"]
 }

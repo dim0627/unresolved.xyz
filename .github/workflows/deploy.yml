@@ -42,8 +42,8 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       # blog / yet の両方を turbo でまとめてビルドする。
-      # 成果物は静的ファイル一式で、blog (Next.js output: 'export') は apps/blog/out、
-      # yet (Astro) は apps/yet/dist に出る。参照先は各 wrangler.jsonc の assets.directory。
+      # どちらも Astro で、成果物は apps/*/dist に出る静的ファイル一式。
+      # 参照先は各 wrangler.jsonc の assets.directory。
       - name: Build
         run: pnpm build
 

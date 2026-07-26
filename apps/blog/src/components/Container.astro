@@ -1,0 +1,11 @@
+---
+interface Props {
+  fullWidth?: boolean;
+}
+
+const { fullWidth = false } = Astro.props;
+---
+
+<div class:list={['mx-auto px-4', !fullWidth && 'max-w-4xl']}>
+  <slot />
+</div>
