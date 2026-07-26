@@ -54,7 +54,7 @@ Both apps are Astro and ship no client-side JavaScript. Points that apply to bot
 - `## Table of contents` headings get a nested link list inserted by the hast plugin in `astro.config.mjs` (replaces `remark-toc`). It assigns heading IDs itself with `github-slugger`, because Astro's own heading-ID plugin runs *after* user plugins and honours IDs that already exist
 - Syntax highlighting is Shiki's `dark-plus`; code-block line numbers are a CSS counter in `src/styles/global.css` (Shiki has no line-number feature)
 - `src/libs/excerpt.ts` turns post bodies into plain text for the index. It drops code blocks and disables GFM on purpose — the previous list rendering applied only `strip-markdown` and behaved that way
-- Known issue, predating the migration: `toDateString()` formats in the build machine's timezone, so CI (UTC) renders post dates a day earlier than the `+09:00` frontmatter intends
+- Post dates are formatted by `src/libs/date.ts`, pinned to `Asia/Tokyo`. Do not go back to `toDateString()` — it formats in the build machine's local timezone, which made CI (UTC) render dates a day earlier than the `+09:00` frontmatter intends
 
 ### Yet App (`apps/yet`)
 - Astro, single page

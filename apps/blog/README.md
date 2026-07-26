@@ -66,9 +66,9 @@ pnpm start --filter blog
 
 This runs `wrangler dev` against the built assets rather than the Astro development server.
 
-## Known issue: post dates depend on the build machine's timezone
+## Dates
 
-`new Date(post.data.date).toDateString()` formats in the timezone of whatever machine runs the build. Frontmatter dates carry a `+09:00` offset, and CI builds in UTC, so published dates render one day earlier than intended. This behaviour predates the Astro migration and is unchanged by it.
+Post dates are formatted by `src/libs/date.ts`, pinned to `Asia/Tokyo`. Frontmatter dates carry a `+09:00` offset, and `Date#toDateString()` formats in the build machine's local timezone, so it rendered dates one day early whenever the build ran in UTC — which CI does. Pinning the zone makes the build output identical regardless of where it runs.
 
 ## Deployment
 
