@@ -5,21 +5,21 @@ export const projects: Project[] = [
     image: '/images/projects/taberu-pro.png',
     title: 'taberu.pro',
     description: 'Fun and casual meal logging app.',
-    stacks: ['TanStack Start', 'Hono', 'Neon', 'Drizzle', 'Clerk', 'Vitest'],
+    stacks: ['TanStack Start', 'Hono', 'Neon', 'Drizzle', 'Clerk'],
     href: 'https://taberu.pro/',
   },
   {
     image: '/images/projects/honn-me.png',
     title: 'honn.me',
     description: 'Book collection maker with dynamic Open Graph image.',
-    stacks: ['TanStack Start', 'NestJS', 'Satori', 'Vitest'],
+    stacks: ['TanStack Start', 'NestJS', 'Satori'],
     href: 'https://honn.me/',
   },
   {
     image: '/images/projects/yet-unresolved-xyz.png',
     title: 'yet.unresolved.xyz',
     description: 'This portfolio site.',
-    stacks: ['Astro', 'Turborepo', 'Tailwind CSS'],
+    stacks: ['Astro', 'Tailwind CSS'],
     href: 'https://yet.unresolved.xyz/',
     repositoryUrl:
       'https://github.com/dim0627/unresolved.xyz/tree/main/apps/yet',
@@ -28,7 +28,7 @@ export const projects: Project[] = [
     image: '/images/projects/blog-unresolved-xyz.png',
     title: 'blog.unresolved.xyz',
     description: 'Tech blog.',
-    stacks: ['Astro', 'Turborepo', 'Tailwind CSS'],
+    stacks: ['Astro', 'Tailwind CSS'],
     href: 'https://blog.unresolved.xyz/',
     repositoryUrl:
       'https://github.com/dim0627/unresolved.xyz/tree/main/apps/blog',
@@ -38,14 +38,14 @@ export const projects: Project[] = [
     title: 'r0213.xyz',
     description:
       'Archive of fictional undelivered documents generated with an LLM.',
-    stacks: ['Astro', 'OpenAI', 'Anthropic', 'Vitest'],
+    stacks: ['Astro', 'OpenAI', 'Anthropic'],
     href: 'https://r0213.xyz/',
   },
   {
     image: '/images/projects/wasuremono-art.png',
     title: 'wasuremono.art',
     description: 'Impossible structures, presented as photographs.',
-    stacks: ['Astro', 'Anthropic', 'Biome'],
+    stacks: ['Astro', 'Anthropic'],
     href: 'https://wasuremono.art/',
   },
   {
