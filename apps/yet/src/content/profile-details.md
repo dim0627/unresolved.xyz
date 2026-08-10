@@ -18,9 +18,8 @@ Earned a B.S. in Computer Science, then joined a small SIer as a new graduate. A
 
 ## 🥊 What I'm Curious About
 
-- [TanStack Start](https://tanstack.com/start/latest)
-- [n8n](https://n8n.io/)
-- [Neon](https://neon.tech/)
+- What's still worth learning deeply when tools change faster than skills
+- AI can make the artifact, never the joy of making it. Then what happens to art?
 
 ## 😭 What I Can't Do Yet
 
