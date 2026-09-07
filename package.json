@@ -13,8 +13,8 @@
     "test": "turbo run test"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.5.10",
-    "lefthook": "^2.1.10",
+    "@biomejs/biome": "2.5.12",
+    "lefthook": "^2.1.12",
     "markdownlint-cli2": "^0.23.2",
     "syncpack": "15.3.3",
     "turbo": "^2.10.12"
