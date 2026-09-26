@@ -10,10 +10,10 @@
     "start": "wrangler dev"
   },
   "dependencies": {
-    "@astrojs/markdown-satteri": "^0.4.1",
+    "@astrojs/markdown-satteri": "^0.4.2",
     "@fontsource/ibm-plex-mono": "^5.3.0",
     "@fontsource/noto-sans-mono": "^5.3.0",
-    "astro": "^7.3.2",
+    "astro": "^7.3.4",
     "github-slugger": "^2.0.0",
     "satteri": "^0.10.5"
   },
