@@ -1,8 +1,10 @@
 ---
+
 title: "Nxに入門したので覚書します"
 date: "2021-11-26T00:00+09:00"
 tags:
-  - "Nx"
+- "Nx"
+
 ---
 
 [Nx: Smart, Extensible Build Framework](https://nx.dev/)
@@ -24,7 +26,7 @@ tags:
 
 とりあえずAPIから作ります、Nest.jsです。
 
-``` sh
+```sh
 [21-12-03 8:34] ~/Desktop/nx $ npx create-nx-workspace
 npx: installed 48 in 8.219s
 ✔ Workspace name (e.g., org name)     · myapp
@@ -35,7 +37,7 @@ npx: installed 48 in 8.219s
 
 実行が終わるとこんな感じでワークスペース名のディレクトリができます。
 
-``` sh
+```sh
 [21-12-03 8:37] ~/Desktop/nx (master) $ tree -L 2
 .
 └── myapp
@@ -57,7 +59,7 @@ npx: installed 48 in 8.219s
 
 この `apps` の中に見慣れたNest.jsのファイル群が配置されています。
 
-``` sh
+```sh
 [21-12-03 8:38] ~/Desktop/nx/myapp/apps (main) $ tree -L 3
 .
 └── api
@@ -81,13 +83,13 @@ npx: installed 48 in 8.219s
 
 `@nrwl/next` を使いたいので依存性に追加します。
 
-``` sh
+```sh
 [21-12-03 8:49] ~/Desktop/nx/myapp (main) $ yarn add -D @nrwl/next
 ```
 
 インストールできたらgenerateコマンドでアプリケーションを追加します、 `web` という命名にしておきます。
 
-``` sh
+```sh
 [21-12-03 8:50] ~/Desktop/nx/myapp (main) $ npx nx g @nrwl/next:application web
 ✔ Which stylesheet format would you like to use? · css
 ```
@@ -128,7 +130,7 @@ e2eは何でしょうか？一旦置いておきます。
 
 `npx nx serve [application]` で起動できる模様です、まずはAPIから。
 
-``` sh
+```sh
 [21-12-03 8:54] ~/Desktop/nx/myapp (main) $ npx nx serve api
 
 > nx run api:serve
@@ -149,14 +151,14 @@ No issues found.
 
 できてそうです。
 
-``` sh
+```sh
 [21-12-03 8:55] ~/Desktop/nx/myapp (main) $ curl http://localhost:3333/api
 {"message":"Welcome to api!"}
 ```
 
 webも起動してみます。
 
-``` sh
+```sh
 [21-12-03 8:55] ~/Desktop/nx/myapp (main) $ npx nx serve web
 
 > nx run web:serve
@@ -187,7 +189,7 @@ event - compiled successfully (174 modules)
 
 `--project` を指定しないと `nx.json` で指定されているデフォルトプロジェクトの `api` 側に作ってしまうので注意が必要です。
 
-``` sh
+```sh
 [21-12-03 9:01] ~/Desktop/nx/myapp (main) $ npx nx g @nrwl/next:component Header --project=web --dry-run
 ✔ Which stylesheet format would you like to use? · css
 CREATE apps/web/components/header/header.module.css
@@ -201,7 +203,7 @@ specもできるのがいいですね！ファイル名がアッパーキャメ�
 
 コンポーネントのtsxはこんな感じで、 `React.FC<HeaderProps>` になっていないのが少し気になるところです。
 
-``` tsx
+```tsx
 import './header.module.css';
 
 /* eslint-disable-next-line */
@@ -220,7 +222,7 @@ export default Header;
 
 specはこのようになっています。
 
-``` tsx
+```tsx
 import { render } from '@testing-library/react';
 
 import Header from './header';

@@ -1,14 +1,16 @@
 ---
+
 title: "NestJS + PrismaでSQLをログに出す方法"
 date: "2023-09-10T00:00+09:00"
 tags:
-  - "Prisma"
-  - "NestJS"
+- "Prisma"
+- "NestJS"
+
 ---
 
 以下のようにします。
 
-``` ts
+```ts
 import config from '@/libs/config';
 import { Injectable, Logger, OnModuleInit } from '@nestjs/common';
 import { Prisma, PrismaClient } from '@prisma/client';

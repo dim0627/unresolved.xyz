@@ -1,9 +1,11 @@
 ---
+
 title: "MissingAPIError: indexedDB API missingの解決方法"
 date: "2020-06-13T00:00+09:00"
 tags:
-  - "Jest"
-  - "JavaScript"
+- "Jest"
+- "JavaScript"
+
 ---
 
 初めてIndexedDBを使ったのですが、Jestが落ちるようになってしまったので直しました。メモしておきます。

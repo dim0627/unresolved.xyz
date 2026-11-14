@@ -1,10 +1,12 @@
 ---
+
 title: "tsconfigのbaseUrlとeslintを共存させる方法"
 date: "2020-08-10T00:00+09:00"
 tags:
   - "TypeScript"
   - "TIL"
 draft: true
+
 ---
 
 tsconfigにbaseUrlを設定しているとeslintがコケることがあります。
@@ -25,7 +27,7 @@ yarn add -D eslint-import-resolver-typescript
 
 して、
 
-``` json
+```json
 {
   // other configuration are omitted for brevity
   settings: {

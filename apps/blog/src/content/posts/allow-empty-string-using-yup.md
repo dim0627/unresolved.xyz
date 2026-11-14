@@ -1,14 +1,16 @@
 ---
+
 title: "yupでnumber型バリデーションで空文字を許容する方法"
 date: "2021-12-14T00:00+09:00"
 tags:
-  - "TIL"
-  - "JavaScript"
+- "TIL"
+- "JavaScript"
+
 ---
 
 漏れがあるかもしれませんが、ひとまずこれで動きました。
 
-``` ts
+```ts
   weight: yup.number().positive().integer().nullable().transform((a) => isNaN(a) ? null : a),
 ```
 

@@ -1,4 +1,5 @@
 ---
+
 title: "CircleCIでyarn upgradeやbundle updateを実行してプルリクを作ってもらう方法"
 date: "2018-07-26T00:00+09:00"
 tags: []
@@ -10,14 +11,14 @@ tags: []
 
 有志が以下のような素晴らしいツールを公開してくれているので、これらをありがたく使わせていただきましょう。
 
-* [masutaka/circleci\-bundle\-update\-pr: Create PullRequest of bundle update in CircleCI](https://github.com/masutaka/circleci-bundle-update-pr)
-* [taichi/ci\-yarn\-upgrade: Keep NPM dependencies up\-to\-date with CI, providing version\-to\-version diff for each library](https://github.com/taichi/ci-yarn-upgrade)
+- [masutaka/circleci\-bundle\-update\-pr: Create PullRequest of bundle update in CircleCI](https://github.com/masutaka/circleci-bundle-update-pr)
+- [taichi/ci\-yarn\-upgrade: Keep NPM dependencies up\-to\-date with CI, providing version\-to\-version diff for each library](https://github.com/taichi/ci-yarn-upgrade)
 
 ## CircleCIで依存ライブラリのアップデートを回す
 
 自分はこのような`config.yml`を使っています。
 
-``` yml
+```yml
 version: 2
 jobs:
   build:
@@ -78,8 +79,8 @@ CircleCI上のcronはUTCで回るので、日本だとAM9時に処理が実行�
 
 おそらく王道はこのあたりでしょうか。
 
-* [Dependabot \- Automated Dependency Updates](https://dependabot.com/)
-* [renovatebot/renovate: Automated dependency updates\. Flexible, so you don't need to be\.](https://github.com/renovatebot/renovate)
-* [Greenkeeper \| Automate your npm dependency management](https://greenkeeper.io/)
+- [Dependabot \- Automated Dependency Updates](https://dependabot.com/)
+- [renovatebot/renovate: Automated dependency updates\. Flexible, so you don't need to be\.](https://github.com/renovatebot/renovate)
+- [Greenkeeper \| Automate your npm dependency management](https://greenkeeper.io/)
 
 どちらもセルフホスティングできるはずなので、費用をかけたくない場合は自分で立ててしまえば済むと思います。

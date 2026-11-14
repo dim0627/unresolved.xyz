@@ -1,8 +1,10 @@
 ---
+
 title: "AirPlay Receiverが5000番ポートが取ってしまう問題"
 date: "2022-01-20T00:00+09:00"
 tags:
-  - "TIL"
+- "TIL"
+
 ---
 
 macOS Montereyからでしょうか。

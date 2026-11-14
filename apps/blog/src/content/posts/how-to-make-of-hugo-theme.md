@@ -1,4 +1,5 @@
 ---
+
 title: "Hugoのテーマを何個か作ったので知見をまとめてみます"
 date: "2016-10-03T00:00+09:00"
 tags: []
@@ -42,12 +43,12 @@ cloneしたHugoBasicExampleのルートディレクトリでコマンドを実�
 
 Hugoのページ構造はだいたい次の通りです。
 
-* HomePage
-* list
-* single
-* taxonomies
-* terms
-* 404.html
+- HomePage
+- list
+- single
+- taxonomies
+- terms
+- 404.html
 
 で、`hugo new`で作られるテーマファイルの構成は次の通りです。
 
@@ -254,7 +255,7 @@ DisqusもGoogleAnalytics同様、内部テンプレートが用意されてい�
 
 HugoはHugoのコミュニティを成長させるために、metaタグにgeneratorを明記することを推奨しています。
 
-``` html
+```html
 <meta name="generator" content="Hugo 0.17-DEV" />
 ```
 
@@ -425,11 +426,11 @@ README.mdはユーザにもっとも近いドキュメントになります。
 
 例えば次のようなものです。
 
-* Screenshots
-* Features
-* config.toml example
-* frontmatter example
-* Shortcodes example
+- Screenshots
+- Features
+- config.toml example
+- frontmatter example
+- Shortcodes example
 
 必要であれば、画像も使って説明をします。
 

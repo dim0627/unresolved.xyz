@@ -13,11 +13,11 @@
     "test": "turbo run test"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.5.13",
-    "lefthook": "^2.1.12",
-    "markdownlint-cli2": "^0.23.2",
+    "@biomejs/biome": "2.6.4",
+    "lefthook": "^2.2.2",
+    "markdownlint-cli2": "^0.24.0",
     "syncpack": "15.3.3",
-    "turbo": "^2.10.12"
+    "turbo": "^2.11.10"
   },
   "engines": {
     "node": ">=18.10.0"
@@ -33,7 +33,9 @@
       "js-yaml@3": "^3.15.0",
       "js-yaml@5": "^5.2.2",
       "postcss@8": "^8.5.18",
-      "sharp@0.34": "^0.35.0"
+      "sharp": "^0.35.5",
+      "source-map-js": "^1.2.2",
+      "undici@8": "^8.12.2"
     }
   }
 }

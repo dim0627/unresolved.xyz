@@ -1,10 +1,12 @@
 ---
+
 title: "nextjs-auth0のgetAccessTokenでOpaque TokenではなくJWTがほしい場合はAUTH0_AUDIENCEを設定しないといけない"
 date: "2021-11-01T00:00+09:00"
 tags:
-  - "TIL"
-  - "Auth0"
-  - "Next.js"
+- "TIL"
+- "Auth0"
+- "Next.js"
+
 ---
 
 これは本当に数週間詰まって大変でした。

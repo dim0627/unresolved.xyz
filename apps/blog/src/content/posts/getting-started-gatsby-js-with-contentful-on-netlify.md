@@ -1,4 +1,5 @@
 ---
+
 title: "ブログをGatsbyJS + Contentful + Netlifyで作り直したので今日はGatsby記念日です"
 date: "2018-07-07T00:00+09:00"
 tags: []
@@ -8,9 +9,9 @@ SPAがいいねと君が言ったから7月6日はGatsby記念日。ざっと3�
 
 スタックはこちらです。
 
-* [GatsbyJS](https://www.gatsbyjs.org/)
-* [Contentful: Content Infrastructure for Digital Teams](https://www.contentful.com/)
-* [Netlify: All\-in\-one platform for automating modern web projects\.](https://www.netlify.com/)
+- [GatsbyJS](https://www.gatsbyjs.org/)
+- [Contentful: Content Infrastructure for Digital Teams](https://www.contentful.com/)
+- [Netlify: All\-in\-one platform for automating modern web projects\.](https://www.netlify.com/)
 
 ## HugoからGatsbyJSへ
 
@@ -30,13 +31,13 @@ JSONを手でいじっているときと似た辛さがあります。
 
 GatsbyJSも静的サイトジェネレータではあるのですが、融通の利きやすさ（Contentfulなどコンテンツソースが選び放題）という意味で以下の辛さがだいたい解決できるのではないかと思っています。
 
-* Frontmattersの管理
-* 画像の配置の手間、リサイズや最適化
-  * 画像をディレクトリに入れてマークダウンにパスを書いて・・・というのが辛いです
-* 静的資材の管理、webpack等との共存
-  * HugoもHugoで変更監視をしていてwebpackにもやらせると仲良くできなかったりしました
-  * Ignoreしたり調整すればなんとかなると思います
-* （Hugoに限る話ですが）Goのテンプレートの書きづらさ、エラー原因特定のしづらさ
+- Frontmattersの管理
+- 画像の配置の手間、リサイズや最適化
+  - 画像をディレクトリに入れてマークダウンにパスを書いて・・・というのが辛いです
+- 静的資材の管理、webpack等との共存
+  - HugoもHugoで変更監視をしていてwebpackにもやらせると仲良くできなかったりしました
+  - Ignoreしたり調整すればなんとかなると思います
+- （Hugoに限る話ですが）Goのテンプレートの書きづらさ、エラー原因特定のしづらさ
 
 どれも頑張ればなんとかできることですし、実際なんとかしている人も多いと思いますが、個人的に限界が来てしまいました。
 
@@ -67,7 +68,7 @@ error We encountered an error while trying to load your site's gatsby-config. Pl
 
 `gatsby-config.js`を見ながらこのような修正をしてみます。
 
-``` diff
+```diff
 ~/Develop/repositories/src/github.com/dim0627/blog.unresolved.xyz (*master) $ git diff
 diff --git a/gatsby-config.js b/gatsby-config.js
 index 6f41f16..994f447 100644

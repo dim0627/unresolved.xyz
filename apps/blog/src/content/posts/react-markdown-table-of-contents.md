@@ -1,8 +1,10 @@
 ---
+
 title: "react-markdownで目次（Table of Contents）を表示させます"
 date: "2021-12-28T00:00+09:00"
 tags:
-  - "React"
+- "React"
+
 ---
 
 Hackyなことをしなければいけないのかなと思いましたが、ちゃんとremark/rehypeのプラグインを渡せるようになっていました。
@@ -13,7 +15,7 @@ Hackyなことをしなければいけないのかなと思いましたが、ち
 
 - [rehypejs/rehype-slug: plugin to add `id` attributes to headings](https://github.com/rehypejs/rehype-slug)
 
-``` ts
+```ts
 rehypePlugins={[slug]}
 ```
 
@@ -33,7 +35,7 @@ rehypePlugins={[slug]}
 
 これでいけます。
 
-``` ts
+```ts
 remarkPlugins={[[toc, { tight: true }]]}
 ```
 
