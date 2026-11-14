@@ -1,9 +1,11 @@
 ---
+
 title: "Hygenで大文字小文字の制御をする方法"
 date: "2020-05-31T00:00+09:00"
 tags:
-  - "JavaScript"
-  - "TIL"
+- "JavaScript"
+- "TIL"
+
 ---
 
 最近[Next.js](https://nextjs.org/) + [TypeScript](https://www.typescriptlang.org/) + [GraphQL](https://graphql.org/)のスタックで個人プロジェクトを進めているのですが、Railsと違ってコードジェネレータがないのが辛かったので[Hygen](https://github.com/jondot/hygen/)を使ってみたときの些細なメモです。

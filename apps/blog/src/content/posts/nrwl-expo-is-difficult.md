@@ -1,10 +1,12 @@
 ---
+
 title: "@nrwl/expoでeas buildしようとしてかなり躓いたので供養します"
 date: "2022-05-30T00:00+09:00"
 tags:
-  - "React Native"
-  - "Expo"
-  - "TIL"
+- "React Native"
+- "Expo"
+- "TIL"
+
 ---
 
 最近Nx + NestJS + React Nativeで開発していて、Classic BuildからEAS Buildに移行しようとしたらとても躓いたので書いておきます。
@@ -13,7 +15,7 @@ tags:
 
 1つ目はこちらです。
 
-``` sh
+```sh
 > Task :app:generatePackageList
 > Task :app:preBuild
 > Task :app:preReleaseBuild
@@ -57,15 +59,15 @@ info Run CLI with --verbose flag for more details.
 
 metroがデフォルトだと `.cjs` を読めないので、 `metro.config.js` に
 
-``` ts
-defaultConfig.resolver.assetExts.push("cjs");
+```ts
+defaultConfig.resolver.assetExts.push('cjs');
 ```
 
 を追記すれば解決します。
 
 全体はおそらくこのような形になります。
 
-``` ts
+```ts
 const { withNxMetro } = require('@nrwl/expo');
 const { getDefaultConfig } = require('@expo/metro-config');
 
@@ -73,13 +75,13 @@ const defaultConfig = getDefaultConfig(__dirname);
 
 module.exports = (async () => {
   defaultConfig.transformer.babelTransformerPath = require.resolve(
-    'react-native-svg-transformer'
+    'react-native-svg-transformer',
   );
   defaultConfig.resolver.assetExts = defaultConfig.resolver.assetExts.filter(
-    (ext) => ext !== 'svg'
+    (ext) => ext !== 'svg',
   );
   defaultConfig.resolver.sourceExts.push('svg');
-  defaultConfig.resolver.assetExts.push("cjs");
+  defaultConfig.resolver.assetExts.push('cjs');
   return withNxMetro(defaultConfig, {
     // Change this to true to see debugging info.
     // Useful if you have issues resolving modules
@@ -89,7 +91,7 @@ module.exports = (async () => {
     // the project root to start the metro server
     projectRoot: __dirname,
     // Specify any additional (to projectRoot) watch folders, this is used to know which files to watch
-    watchFolders: []
+    watchFolders: [],
   });
 })();
 ```
@@ -101,7 +103,7 @@ module.exports = (async () => {
 
 2つ目がこちらです。
 
-``` sh
+```sh
 
 ❌  ld: could not reparse object file in bitcode bundle: 'Invalid bitcode version (Producer: '1316.0.21.2.3_0' Reader: '1300.0.29.3_0')', using libLTO version 'LLVM version 13.0.0, (clang-1300.0.29.3)' for architecture arm64
 
@@ -140,7 +142,7 @@ Fastlane errors in most cases are not printed at the end of the output, so you m
 
 `eas.json` に
 
-``` sh
+```sh
       "ios": {
         "image": "latest"
       },

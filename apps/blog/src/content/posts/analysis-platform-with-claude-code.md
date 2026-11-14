@@ -1,10 +1,12 @@
 ---
+
 title: "Claude Code駆動の分析基盤を作って、個人プロダクトのファネル分析を自動化した話"
 date: "2026-03-15T00:00+09:00"
 tags:
-  - "AI"
-  - "Claude Code"
-  - "個人開発"
+- "AI"
+- "Claude Code"
+- "個人開発"
+
 ---
 
 自分が運営している複数の個人プロダクトを横断的に分析するために、Claude Codeを分析エンジンとして活用する `analysis` リポジトリを構築しました。最初のターゲットは [honn.me](https://honn.me) のファネル分析。GitHub Actionsでデータ収集を自動化し、Claude Codeで分析するハイブリッド方式に至るまでのストーリーを、失敗談も含めて書いていきます。
@@ -61,16 +63,19 @@ const funnelEvents = [
   'book_select',
   'create_button_click',
   'share_button_click',
-] as const
+] as const;
 
-const results = await pool.query(`
+const results = await pool.query(
+  `
   SELECT event_type, COUNT(*) as count
   FROM events
   WHERE event_type = ANY($1)
     AND created_at >= $2
     AND created_at < $3
   GROUP BY event_type
-`, [funnelEvents, startDate, endDate])
+`,
+  [funnelEvents, startDate, endDate],
+);
 ```
 
 ### SSL接続とスキーマ修正
@@ -86,18 +91,21 @@ Render.comのPostgreSQLに接続する際、SSL設定でハマりました。`ss
 const blocks = [
   {
     type: 'header',
-    text: { type: 'plain_text', text: '📊 honn.me Daily Funnel Report' }
+    text: { type: 'plain_text', text: '📊 honn.me Daily Funnel Report' },
   },
   {
     type: 'section',
     text: {
       type: 'mrkdwn',
-      text: funnelSteps.map(step =>
-        `${step.emoji} ${step.label}: *${step.count}* (${step.rate}%)`
-      ).join('\n')
-    }
-  }
-]
+      text: funnelSteps
+        .map(
+          (step) =>
+            `${step.emoji} ${step.label}: *${step.count}* (${step.rate}%)`,
+        )
+        .join('\n'),
+    },
+  },
+];
 ```
 
 実際にSlackに届くレポートはこんな感じです。
@@ -115,7 +123,7 @@ const blocks = [
 name: Fetch Metrics
 on:
   schedule:
-    - cron: '0 0 * * *'  # 毎日UTC 0:00
+    - cron: "0 0 * * *" # 毎日UTC 0:00
   workflow_dispatch:
 
 jobs:

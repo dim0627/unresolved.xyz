@@ -1,9 +1,11 @@
 ---
+
 title: "Vitest導入覚書き"
 date: "2023-10-01T00:00+09:00"
 tags:
-  - "Next.js"
-  - "Testing"
+- "Next.js"
+- "Testing"
+
 ---
 
 [Turborepo](https://turbo.build/repo)環境に配置した[Next.js](https://nextjs.org/)に[Vitest](https://vitest.dev/)を入れようとして結構詰まったので、いろいろメモしておきます。
@@ -38,7 +40,7 @@ expect.extend(matchers);
 のようにしていたのが、
 
 ```ts
-import '@testing-library/jest-dom/vitest'
+import '@testing-library/jest-dom/vitest';
 ```
 
 だけで良くなりました。

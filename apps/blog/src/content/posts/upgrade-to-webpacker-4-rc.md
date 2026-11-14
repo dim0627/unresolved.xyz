@@ -1,9 +1,11 @@
 ---
+
 title: "webpacker3系の依存しているwebpack-dev-server2系がCVE-2018-14732脆弱性に引っかかるのでwebpacker4.0.0.rc.2を使うようにしました"
 date: "2019-01-05T00:00+09:00"
 tags:
-  - "TIL"
-  - "Ruby on Rails"
+- "TIL"
+- "Ruby on Rails"
+
 ---
 
 GitHubのSecurity AlertをOnにしていたら以下のようなAlertがあがってきました。
@@ -30,14 +32,14 @@ CHANGELOGはここです。
 
 Gemfile
 
-``` diff
+```diff
 - gem 'webpacker'
 + gem 'webpacker', '>= 4.0.0.rc.2'
 ```
 
 package.json
 
-``` diff
+```diff
 -     "@rails/webpacker": "^3.5.5",
 +     "@rails/webpacker": "https://github.com/rails/webpacker",
 ```
@@ -77,7 +79,7 @@ bin/rails webpacker:install
 webpacker.ymlに以下の記載をすることで設定ができるようです。
 
 ```yaml
-  extract_css: true
+extract_css: true
 ```
 
 trueにすればこれまでと同じ挙動をする模様です。

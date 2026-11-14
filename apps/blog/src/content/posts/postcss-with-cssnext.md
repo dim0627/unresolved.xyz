@@ -1,8 +1,10 @@
 ---
+
 title: "今後もPostCSSを使っていく上でどうしていくべきかを考えてみました"
 date: "2017-10-19T00:00+09:00"
 tags:
-  - "CSS"
+- "CSS"
+
 ---
 
 この記事は酔っ払いながら書いているので正しくない可能性があります。
@@ -27,8 +29,8 @@ PostCSSはプラグイン形式でいろいろな機能を追加していける�
 
 webpackerではPostCSSのプラグインとして、デフォルトで以下の2個が入っています。
 
-* postcss-smart-import
-* postcss-cssnext
+- postcss-smart-import
+- postcss-cssnext
 
 これはまあいい落とし所だと思っていて、ギリギリ最低限のものに見えます。
 
@@ -62,7 +64,7 @@ CSS4の文法に則っていますし、もしプラグインが死んでも自�
 
 これまでは
 
-``` scss
+```scss
 $font-size: 1rem;
 .container {
   font-size: $font-size;
@@ -71,7 +73,7 @@ $font-size: 1rem;
 
 と書いていたのを、
 
-``` css
+```css
 :root {
   --font-size: 1rem;
 }
@@ -87,7 +89,7 @@ $font-size: 1rem;
 
 置換したコマンドはちょっとどれだったか覚えていませんが、これでしょうか・・・。
 
-``` sh
+```sh
 grep -rl "\\$" ./ | xargs perl -i -pe 's/\$([a-z|-]+)/var(--\1)/g'
 ```
 
@@ -99,7 +101,7 @@ grep -rl "\\$" ./ | xargs perl -i -pe 's/\$([a-z|-]+)/var(--\1)/g'
 
 これによって以下が、
 
-``` css
+```css
 .container {
   .element {
     font-size: 1rem;
@@ -113,7 +115,7 @@ grep -rl "\\$" ./ | xargs perl -i -pe 's/\$([a-z|-]+)/var(--\1)/g'
 
 こう書かなければいけなくなりました。
 
-``` css
+```css
 .container {
   & .element {
     font-size: 1rem;
@@ -138,7 +140,7 @@ postcss-applyを使えばだいたい同じことができます。
 
 こう書いていたものが、
 
-``` css
+```css
 %filled {
   background-color: #fff;
   line-height: 1.25rem;
@@ -151,7 +153,7 @@ postcss-applyを使えばだいたい同じことができます。
 
 こうなります。
 
-``` css
+```css
 :root {
   --filled {
     background-color: #fff;
@@ -176,14 +178,14 @@ postcss-applyを使えばだいたい同じことができます。
 
 最終的に、cssnextにないけど残したプラグインは以下の2個です。
 
-* postcss-hexrgba
-* postcss-mixins
+- postcss-hexrgba
+- postcss-mixins
 
 これらは最悪やめるときがきても、grepで引っ掛けられるからいいかなと思います。
 
 ### 今使っている.postcssrc.yml
 
-``` yml
+```yml
 plugins:
   postcss-smart-import: {}
   postcss-mixins: {}

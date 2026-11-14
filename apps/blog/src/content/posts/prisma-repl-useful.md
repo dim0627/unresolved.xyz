@@ -1,9 +1,11 @@
 ---
+
 title: "prisma-replがとても便利でした"
 date: "2021-10-17T00:00+09:00"
 tags:
-  - "TIL"
-  - "Prisma"
+- "TIL"
+- "Prisma"
+
 ---
 
 - [egoist/prisma-repl: REPL for Prisma databases.](https://github.com/egoist/prisma-repl)

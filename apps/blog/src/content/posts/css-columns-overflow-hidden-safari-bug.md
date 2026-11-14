@@ -1,10 +1,12 @@
 ---
+
 title: "CSS columns + overflow:hidden が iOS Safari で壊れる問題と解決策"
 date: "2026-03-25T00:00+09:00"
 tags:
-  - "CSS"
-  - "Safari"
-  - "Tailwind CSS"
+- "CSS"
+- "Safari"
+- "Tailwind CSS"
+
 ---
 
 CSS columns による Masonry レイアウトを実装した際に、iOS Safari の実機でだけ表示が壊れる問題に遭遇しました。原因の特定から解決までの過程を記録します。

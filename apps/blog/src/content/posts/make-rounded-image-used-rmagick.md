@@ -1,4 +1,5 @@
 ---
+
 title: "rmagickで画像合成をするときにradiusをかける方法"
 date: "2020-05-15T00:00+09:00"
 tags: []
@@ -10,7 +11,7 @@ tags: []
 
 完全に動かしたコードのコピペですが、このような感じです。ビジネス的な命名だったところは雑に直したので動かなくなっているかもしれません。
 
-``` ruby
+```ruby
 class OgpGenerator < OgpGenerator::Base
   include Magick
 

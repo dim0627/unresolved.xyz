@@ -1,9 +1,11 @@
 ---
+
 title: "HerokuのPostgreSQLのプランを変更するときの移行手順メモ"
 date: "2019-02-23T00:00+09:00"
 tags:
-  - "Heroku"
-  - "TIL"
+- "Heroku"
+- "TIL"
+
 ---
 
 いつも忘れて本当に困るのでメモしておきます。

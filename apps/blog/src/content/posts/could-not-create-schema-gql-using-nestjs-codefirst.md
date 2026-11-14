@@ -1,10 +1,12 @@
 ---
+
 title: "Nest.js + CodeFirst GraphQLでschema.gqlが生成できない問題"
 date: "2022-01-29T00:00+09:00"
 tags:
-  - "Next.js"
-  - "GraphQL"
-  - "TIL"
+- "Next.js"
+- "GraphQL"
+- "TIL"
+
 ---
 
 ```text

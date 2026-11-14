@@ -1,10 +1,12 @@
 ---
+
 title: "Jest実行時にReferenceError: fetch is not definedが出る問題"
 date: "2020-07-05T00:00+09:00"
 tags:
-  - "TIL"
-  - "Jest"
-  - "JavaScript"
+- "TIL"
+- "Jest"
+- "JavaScript"
+
 ---
 
 知りませんでした。
@@ -20,12 +22,12 @@ tags:
 `jest.setup.js` に
 
 ```javascript
-const fetchPolifill = require('whatwg-fetch')
+const fetchPolifill = require('whatwg-fetch');
 
-global.fetch = fetchPolifill.fetch
-global.Request = fetchPolifill.Request
-global.Headers = fetchPolifill.Headers
-global.Response = fetchPolifill.Response
+global.fetch = fetchPolifill.fetch;
+global.Request = fetchPolifill.Request;
+global.Headers = fetchPolifill.Headers;
+global.Response = fetchPolifill.Response;
 ```
 
 - [`fetch` undefined when running tests with jest](https://github.com/facebook/react-native/issues/11537)

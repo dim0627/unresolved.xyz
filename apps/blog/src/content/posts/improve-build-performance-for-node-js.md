@@ -1,9 +1,11 @@
 ---
+
 title: "Node.js（NestJS）のビルドパフォーマンスを改善する"
 date: "2025-06-16T00:00+09:00"
 tags:
-  - "TypeScript"
-  - "NestJS"
+- "TypeScript"
+- "NestJS"
+
 ---
 
 NestJSで構築している担当プロダクトのビルドが地味に遅くなっているのは薄々気づいていたのですが、ついにデプロイ時にOOM Killされる事態になったので本腰を上げて調べてみました。
@@ -19,7 +21,7 @@ NestJSで構築している担当プロダクトのビルドが地味に遅く�
 
 まず1つ目の `extendedDiagnostics` はトランスパイルの内訳を時間や行数として出力してくれるもので、このような数値になりました。
 
-``` sh
+```sh
 ❯ npx tsc -p tsconfig.build.json --extendedDiagnostics
 Files:                         4775
 Lines of Library:             41198
@@ -56,14 +58,14 @@ Total time:                   7.56s
 
 一般的な数値がわからなかったのでAIに食わせてみると、このような見解でした。
 
-| 指標 | 値 | コメント |
-| --- | --- | --- |
-| Memory used: | **約2GB（2035800K）** | 通常 Nest アプリの tsc では 400〜800MB 程度。明らかに高い。 |
-| Lines of Definitions: | **2,212,971 行** | 明らかに外部ライブラリ or 型定義が大量。→ node_modules/@types や SDK類の影響が濃厚。 |
-| Identifiers: | **2,286,631** | 通常数十万程度。TypeScript の型システムが相当な負荷に。 |
-| Symbols: | **1,440,909** | 同上。依存型の解決コストが大きい。 |
-| Types: | **148,758** | 高め。ジェネリクス + DTO/Entity の組み合わせが複雑かも。 |
-| Instantiations: | **692,686** | 非常に多い。型推論が深く入り込んでいる可能性大。 |
+| 指標                  | 値                    | コメント                                                                             |
+| --------------------- | --------------------- | ------------------------------------------------------------------------------------ |
+| Memory used:          | **約2GB（2035800K）** | 通常 Nest アプリの tsc では 400〜800MB 程度。明らかに高い。                          |
+| Lines of Definitions: | **2,212,971 行**      | 明らかに外部ライブラリ or 型定義が大量。→ node_modules/@types や SDK類の影響が濃厚。 |
+| Identifiers:          | **2,286,631**         | 通常数十万程度。TypeScript の型システムが相当な負荷に。                              |
+| Symbols:              | **1,440,909**         | 同上。依存型の解決コストが大きい。                                                   |
+| Types:                | **148,758**           | 高め。ジェネリクス + DTO/Entity の組み合わせが複雑かも。                             |
+| Instantiations:       | **692,686**           | 非常に多い。型推論が深く入り込んでいる可能性大。                                     |
 
 確かにメモリ2GBは使いすぎですし、型定義も異様に多いのが気になるところです。
 
@@ -71,7 +73,7 @@ Total time:                   7.56s
 
 SDKは [Hey API](https://heyapi.dev/) で作成していたので、依存していた6つのAPIそれぞれを利用しているパスのみSDKを生成するようにした結果がこちらです。
 
-``` sh
+```sh
 ❯ npx tsc -p tsconfig.build.json --extendedDiagnostics
 Files:                        3907
 Lines of Library:            41836
@@ -109,7 +111,7 @@ Total time:                  5.27s
 ざっと比べるとこのような感じです。
 メモリは半分以下になり、型定義は3分の1ほどに減りました。
 
-``` sh
+```sh
 # Memory used:
 Before 2,035,800K
 After    906,866K
@@ -129,7 +131,7 @@ After      61,760
 
 詳細は末尾に記載する記事に任せますが、だいたいこのような実行方法です。
 
-``` sh
+```sh
 npx tsc -p tsconfig.build.json --generateTrace ~/Desktop/trace --incremental false
 ```
 

@@ -1,9 +1,11 @@
 ---
+
 title: "Heroku + Rails(Sprockets4.0.1)でassets:precompileがエラーする問題"
 date: "2020-06-06T00:00+09:00"
 tags:
-  - "Ruby on Rails"
-  - "TIL"
+- "Ruby on Rails"
+- "TIL"
+
 ---
 
 dependabotのオートマージで夜中にデプロイ失敗したよというメッセージが発生しました。

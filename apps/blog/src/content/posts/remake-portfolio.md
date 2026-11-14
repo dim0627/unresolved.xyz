@@ -1,9 +1,11 @@
 ---
+
 title: "例によってポートフォリオをリニューアルしました"
 date: "2020-07-28T00:00+09:00"
 tags:
-  - "TIL"
-  - "poem"
+- "TIL"
+- "poem"
+
 ---
 
 [Daisuke Tsuji's portfolio](https://yet.unresolved.xyz/)
