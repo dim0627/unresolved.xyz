@@ -11,9 +11,7 @@ html {
 }
 
 /*
- * 記事本文のスタイル。移行前は react-markdown の `components` で要素ごとに
- * Tailwind のクラスを当てていたが、Astro は Markdown を素の HTML として
- * 描画するため、同じ指定を子孫セレクタとしてここに持つ。
+ * 記事本文のスタイル。
  */
 .markdown {
   h2 {
@@ -81,8 +79,6 @@ html {
   pre code .line::before {
     @apply mr-4 inline-block w-8 text-right;
 
-    /* 移行前の react-syntax-highlighter は行番号に vscDarkPlus の
-       コメント色をそのまま当てていた。見え方を揃えるため同じ値を使う。 */
     color: #6a9955;
     content: counter(line);
   }
