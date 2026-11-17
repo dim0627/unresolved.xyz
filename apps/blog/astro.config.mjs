@@ -4,7 +4,7 @@ import tailwindcss from '@tailwindcss/vite';
 import { defineConfig } from 'astro/config';
 import Slugger from 'github-slugger';
 
-/** remark-toc が目次を差し込む対象にしていた見出し。 */
+/** 目次を差し込む対象の見出し。 */
 const TOC_HEADING = /^(table[ -]of[ -])?contents?$|^toc$/i;
 
 const isHeading = (/** @type {any} */ node) =>
@@ -12,7 +12,6 @@ const isHeading = (/** @type {any} */ node) =>
 
 /**
  * `## Table of contents` の直後に、以降の見出しへのリンク一覧を差し込む。
- * 移行前は remark-toc（`tight: true`）が担っていた処理。
  *
  * 見出しの id は Astro の heading-ids プラグインが付けるが、そちらはユーザーの
  * hast プラグインより後に走るため、この時点ではまだ付いていない。そこで同じ
@@ -61,7 +60,7 @@ const tocPlugin = {
 
 /**
  * 見出しの深さに沿って入れ子の `ul` を組み立てる。
- * 移行前と同じく、より深い見出しは直前の項目の子リストにぶら下げる。
+ * より深い見出しは直前の項目の子リストにぶら下げる。
  *
  * @param {{depth: number, text: string, id: string}[]} entries
  */
@@ -79,7 +78,6 @@ function buildList(entries) {
   });
 
   const root = el('ul', []);
-  // 各段の「今開いているリスト」と、そこに直近で追加した項目を持って回る。
   const stack = [{ depth: entries[0].depth, list: root }];
 
   for (const entry of entries) {
@@ -110,20 +108,14 @@ function buildList(entries) {
 
 export default defineConfig({
   site: 'https://blog.unresolved.xyz',
-  // Astro の既定は 4321 だが、移行前の Next と同じ 3001 を使う（yet は 3000）。
   server: { port: 3001 },
   build: {
-    // 既定の 'directory' は `<slug>/index.html` を出力し、`/<slug>` へのアクセスが
-    // 末尾スラッシュへリダイレクトされる。移行前（Next の output: 'export'）は
-    // `<slug>.html` だったため、公開済み記事の URL を変えないよう合わせる。
+    // `<slug>.html` を出力して、公開済み記事の URL を維持する。
     format: 'file',
   },
   markdown: {
-    // 移行前は react-syntax-highlighter の vscDarkPlus を使っていた。
-    // dark-plus は同じ VS Code Dark+ を Shiki に移植したもの。
     shikiConfig: { theme: 'dark-plus' },
-    // Sätteri はスマート約物が既定で有効だが、移行前の react-markdown は
-    // 変換していなかった。本文の文字が変わってしまうため無効にする。
+    // 本文の文字が変わってしまうため、スマート約物は無効にする。
     processor: satteri({
       features: { smartPunctuation: false },
       hastPlugins: [tocPlugin],

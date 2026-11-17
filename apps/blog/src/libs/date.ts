@@ -1,6 +1,5 @@
 // frontmatter の日付は `+09:00` 付きで書かれているので、表示も JST で固定する。
-// `Date#toDateString()` はビルドマシンのローカルタイムで整形するため、UTC で
-// 走る CI では 1 日前の日付が出てしまう。体裁は toDateString() に合わせてある。
+// `toDateString()` は UTC で走る CI では 1 日前の日付が出てしまうため、この実装にしている。
 const formatter = new Intl.DateTimeFormat('en-US', {
   timeZone: 'Asia/Tokyo',
   weekday: 'short',
