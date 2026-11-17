@@ -5,7 +5,7 @@ const posts = defineCollection({
   loader: glob({ base: './src/content/posts', pattern: '**/*.md' }),
   schema: z.object({
     title: z.string(),
-    // ISO 文字列のまま扱う。移行前も文字列を `new Date()` に渡していた。
+    // ISO 文字列のまま扱う。
     date: z.string(),
     tags: z.array(z.string()).default([]),
     draft: z.boolean().default(false),

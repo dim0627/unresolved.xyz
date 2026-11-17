@@ -4,7 +4,7 @@ import tailwindcss from '@tailwindcss/vite';
 import { defineConfig } from 'astro/config';
 import Slugger from 'github-slugger';
 
-/** remark-toc が目次を差し込む対象にしていた見出し。 */
+/** 目次を差し込む対象の見出し。 */
 const TOC_HEADING = /^(table[ -]of[ -])?contents?$|^toc$/i;
 
 const isHeading = (/** @type {any} */ node) =>
