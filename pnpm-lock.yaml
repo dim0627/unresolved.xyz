@@ -63,9 +63,6 @@ importers:
       '@types/node':
         specifier: ^26.6.6
         version: 26.6.6
-      '@unresolved/tsconfig':
-        specifier: workspace:*
-        version: link:../../packages/tsconfig
       tailwindcss:
         specifier: ^4.3.5
         version: 4.3.5
@@ -100,9 +97,6 @@ importers:
       '@types/node':
         specifier: ^26.6.6
         version: 26.6.6
-      '@unresolved/tsconfig':
-        specifier: workspace:*
-        version: link:../../packages/tsconfig
       tailwindcss:
         specifier: ^4.3.5
         version: 4.3.5
@@ -112,8 +106,6 @@ importers:
       wrangler:
         specifier: ^4.160.0
         version: 4.162.0(@types/node@26.6.6)
-
-  packages/tsconfig: {}
 
 packages:
 
