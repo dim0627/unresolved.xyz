@@ -12,8 +12,8 @@
   "dependencies": {
     "@astrojs/markdown-satteri": "^0.4.5",
     "@fontsource/outfit": "^5.3.0",
-    "astro": "^7.4.7",
-    "lucide-static": "^1.75.0"
+    "astro": "^7.4.13",
+    "lucide-static": "^1.80.0"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.12",
